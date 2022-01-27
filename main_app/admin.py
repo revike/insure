@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from main_app.models import ProductCategory, Product, ProductOption
+from main_app.models import ProductCategory, Product, ProductOption, \
+    ProductResponse
 
 
 class InlineProduct(admin.StackedInline):
@@ -21,3 +22,4 @@ class ProductAdmin(admin.ModelAdmin):
 
 admin.site.register(ProductCategory, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)
+admin.site.register(ProductResponse)

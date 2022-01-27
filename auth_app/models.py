@@ -34,6 +34,8 @@ class CompanyUserProfile(models.Model):
     tax_id = models.BigIntegerField(unique=True, db_index=True,
                                     verbose_name='ИНН')
     about_company = models.TextField(blank=True, verbose_name='о компании')
+    label = models.ImageField(
+        upload_to='company_labels', blank=True, verbose_name='лейбл')
 
     def __str__(self):
         return f'{self.name}'
