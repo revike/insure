@@ -1,0 +1,50 @@
+<a class="header__icon" href="{% url 'main_app:index' %}">
+    <img class="header__img" src="/media/img/icon.svg"
+         alt="icon">
+</a>
+
+<a class="header__menu" href="{% url 'main_app:products' %}">
+    <h3>Продукты</h3>
+</a>
+
+<div class="dropdown header__menu">
+    <button class="drop__btn">
+        <h3>Категории</h3>
+    </button>
+    <div class="dropdown-content">
+        {% for category in categories %}
+            <a href="{% url 'main_app:category' pk=category.id %}">{{ category }}</a>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="dropdown header__menu">
+    <button class="drop__btn">
+        <h3>О нас</h3>
+    </button>
+    <div class="dropdown-content">
+        <a href="#">Контакты</a>
+        <a href="#">Правовая информация</a>
+        <a href="#">Политика конфиденциальности</a>
+        <a href="#">Cookies</a>
+        <a href="#">Обратная связь</a>
+    </div>
+</div>
+
+<form class="form__search" action="#">
+    <div>
+        <label>
+            <input class="header__input" type="text" required
+                   oninvalid="this.setCustomValidity('Введите то что хотите найти...')"
+                   oninput="setCustomValidity('')"
+                   placeholder="поиск...">
+        </label>
+        <button class="header__button" type="submit">🔎
+        </button>
+    </div>
+</form>
+
+<a class="header__login" href="#">
+    <img class="header__img" src="/media/img/user.svg"
+         alt="icon">
+</a>

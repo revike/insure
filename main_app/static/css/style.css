@@ -112,6 +112,7 @@ body {
     text-decoration: none;
     display: block;
     text-align: left;
+    border-radius: 10px;
 }
 
 .dropdown-content a:hover {
@@ -132,6 +133,11 @@ body {
 }
 
 /*=================*/
+
+.sort {
+    display: flex;
+    justify-content: right;
+}
 
 .content {
     margin: 80px 60px 0 60px;

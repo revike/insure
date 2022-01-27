@@ -1,5 +1,8 @@
+import random
+
 from django.core.validators import RegexValidator
 from django.db import models
+
 from auth_app.models import CompanyUser
 
 
@@ -15,6 +18,10 @@ class ProductCategory(models.Model):
     description = models.TextField(blank=True, verbose_name='описание')
     is_active = models.BooleanField(default=True, db_index=True,
                                     verbose_name='активна')
+
+    @classmethod
+    def get_categories(cls):
+        return cls.objects.filter(is_active=True)
 
     def __str__(self):
         return f'{self.name}'
@@ -56,6 +63,12 @@ class ProductOption(models.Model):
     term = models.IntegerField(verbose_name='срок в месяцах')
     rate = models.DecimalField(max_digits=4, decimal_places=2, default=0,
                                blank=True, verbose_name='процентная ставка')
+
+    @classmethod
+    def get_product_for_category(cls, category):
+        products = cls.objects.filter(product__is_active=True,
+                                      product__category=category)
+        return random.sample(list(products), products.count())
 
     def __str__(self):
         return f'{self.product}, {self.price} на {self.term} мес.'
