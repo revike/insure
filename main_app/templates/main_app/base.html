@@ -34,6 +34,7 @@
 
     <div class="footer">
         {% block footer %}
+            {% include 'main_app/includes/inc_paginator.html' %}
             <p>Застрахуй братуху Corporation &copy; {% now 'Y' %}</p>
         {% endblock %}
     </div>

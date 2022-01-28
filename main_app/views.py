@@ -1,4 +1,3 @@
-import random
 from django.views.generic import TemplateView, DetailView, ListView
 from main_app.models import ProductCategory, ProductOption
 
@@ -31,13 +30,11 @@ class ProductForCategoryDetailView(DetailView):
 class ProductListView(ListView):
     """Контроллер списка продуктов"""
     template_name = 'main_app/products.html'
+    model = ProductOption
+    paginate_by = 15
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'продукты'
         context['categories'] = ProductCategory.get_categories()
         return context
-
-    def get_queryset(self):
-        queryset = ProductOption.objects.all()
-        return random.sample(list(queryset), queryset.count())

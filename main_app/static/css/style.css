@@ -20,6 +20,10 @@ body {
     flex-grow: 1;
 }
 
+.step-links a {
+    text-decoration: none;
+}
+
 .header {
     background-color: lightsteelblue;
     max-height: 80px;
@@ -137,11 +141,38 @@ body {
 .sort {
     display: flex;
     justify-content: right;
+    position: fixed;
+    width: 90%;
+}
+
+.sort__text {
+    color: cornflowerblue;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.sort__text:hover {
+    color:grey;
 }
 
 .content {
     margin: 80px 60px 0 60px;
 }
+
+/*=================*/
+.product {
+    width: 80%;
+    height: 150px;
+    border: 1px solid red;
+    display: flex;
+    margin-top: 30px;
+}
+
+.content__product {
+    position: absolute;
+}
+
+/*=================*/
 
 .footer {
     color: slategrey;
