@@ -1,9 +1,7 @@
-import random
-
 from django.core.validators import RegexValidator
 from django.db import models
 
-from auth_app.models import CompanyUser
+from auth_app.models import CompanyUserProfile
 
 
 class ProductCategory(models.Model):
@@ -36,7 +34,7 @@ class Product(models.Model):
 
     category = models.ForeignKey(to=ProductCategory, on_delete=models.CASCADE,
                                  db_index=True, verbose_name='категория')
-    company = models.ForeignKey(to=CompanyUser, on_delete=models.CASCADE,
+    company = models.ForeignKey(to=CompanyUserProfile, on_delete=models.CASCADE,
                                 verbose_name='компания')
     name = models.CharField(max_length=128, verbose_name='название продукта')
     short_desc = models.CharField(max_length=128,
@@ -63,6 +61,8 @@ class ProductOption(models.Model):
     term = models.IntegerField(verbose_name='срок в месяцах')
     rate = models.DecimalField(max_digits=4, decimal_places=2, default=0,
                                blank=True, verbose_name='процентная ставка')
+    is_active = models.BooleanField(default=True, verbose_name='активна',
+                                    db_index=True)
 
     @classmethod
     def get_product_for_category(cls, category):
@@ -80,7 +80,7 @@ class ProductResponse(models.Model):
         verbose_name_plural = 'отклики'
         verbose_name = 'отклики'
 
-    product = models.ForeignKey(to=Product, on_delete=models.CASCADE,
+    product = models.ForeignKey(to=ProductOption, on_delete=models.CASCADE,
                                 db_index=True, verbose_name='продукт')
     last_name = models.CharField(max_length=150, blank=False,
                                  verbose_name='фамилия')
