@@ -34,7 +34,8 @@ class Product(models.Model):
 
     category = models.ForeignKey(to=ProductCategory, on_delete=models.CASCADE,
                                  db_index=True, verbose_name='категория')
-    company = models.ForeignKey(to=CompanyUserProfile, on_delete=models.CASCADE,
+    company = models.ForeignKey(to=CompanyUserProfile,
+                                on_delete=models.CASCADE,
                                 verbose_name='компания')
     name = models.CharField(max_length=128, verbose_name='название продукта')
     short_desc = models.CharField(max_length=128,
@@ -67,6 +68,7 @@ class ProductOption(models.Model):
     @classmethod
     def get_product_for_category(cls, category):
         return cls.objects.filter(product__is_active=True,
+                                  product__category__is_active=True,
                                   product__category=category)
 
     def __str__(self):

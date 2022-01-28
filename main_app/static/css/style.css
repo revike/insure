@@ -164,6 +164,18 @@ body {
 }
 
 /*=================*/
+.all_products {
+    display: flex;
+    justify-content: center;
+    margin-right: 20%;
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    margin-right: 20%;
+}
+
 .product {
     width: 80%;
     height: 150px;
@@ -183,7 +195,8 @@ body {
 }
 
 .product__img {
-    width: 160px;
+    width: 100px;
+    height: 100px;
     border: black solid 1px;
     border-radius: 50%;
     box-shadow: 0 0 7px #666;
@@ -195,6 +208,13 @@ body {
 }
 
 .product__info {
+}
+
+.product__info_2 {
+}
+
+.product__button {
+    margin-right: 30px;
 }
 
 /*=================*/

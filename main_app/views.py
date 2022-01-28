@@ -23,7 +23,7 @@ class ProductForCategoryDetailView(ListView):
 
     def get_context_data(self, **kwargs):
         queryset = ProductOption.get_product_for_category(
-            category=self.kwargs['pk'])
+            category=self.kwargs['pk']).select_related()
         context = super().get_context_data(**kwargs, object_list=queryset)
         categories = ProductCategory.get_categories()
         context['title'] = categories.filter(id=self.kwargs['pk']).first()
@@ -46,3 +46,9 @@ class ProductListView(ListView):
         context['title'] = 'продукты'
         context['categories'] = ProductCategory.get_categories()
         return context
+
+    def get_queryset(self):
+        return ProductOption.objects.filter(
+            is_active=True,
+            product__is_active=True,
+            product__category__is_active=True).select_related()
