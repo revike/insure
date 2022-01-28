@@ -1,0 +1,23 @@
+{% for product in object_list %}
+    <div class="product">
+        <div class="product__label">
+            <img class="product__img"
+                 src="/media/{{ product.product.company.label }}"
+                 alt="{{ product.product.company }}">
+            <p class="product__company">{{ product.product.company }}</p>
+        </div>
+        <div class="product__info">
+            <p>Категория: {{ product.product.category }}</p>
+            <p>{{ product.product.name }}</p>
+            <p>{{ product.product.short_desc }}</p>
+        </div>
+        <div class="product__info_2">
+            <p>На {{ product.term }} мес.</p>
+            <p>{{ product.price }} &#8381;</p>
+            <p>{{ product.rate }} %</p>
+        </div>
+        <div class="product__button">
+            BUTTONS
+        </div>
+    </div>
+{% endfor %}

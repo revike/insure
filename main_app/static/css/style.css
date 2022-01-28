@@ -139,6 +139,7 @@ body {
 .active {
     color: grey;
 }
+
 /*=================*/
 
 .sort {
@@ -155,7 +156,7 @@ body {
 }
 
 .sort__text:hover {
-    color:grey;
+    color: grey;
 }
 
 .content {
@@ -163,16 +164,57 @@ body {
 }
 
 /*=================*/
+.all_products {
+    display: flex;
+    justify-content: center;
+    margin-right: 20%;
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    margin-right: 20%;
+}
+
 .product {
     width: 80%;
     height: 150px;
-    border: 1px solid red;
+    border: 1px solid black;
+    border-radius: 15px;
+    box-shadow: 0 0 7px #666;
     display: flex;
     margin-top: 30px;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.content__product {
-    position: absolute;
+.product__label {
+    /*position: absolute;*/
+    /*display: flex;*/
+    margin-left: 30px;
+}
+
+.product__img {
+    width: 100px;
+    height: 100px;
+    border: black solid 1px;
+    border-radius: 50%;
+    box-shadow: 0 0 7px #666;
+}
+
+.product__company {
+    font-size: x-large;
+    font-style: oblique;
+}
+
+.product__info {
+}
+
+.product__info_2 {
+}
+
+.product__button {
+    margin-right: 30px;
 }
 
 /*=================*/
