@@ -66,9 +66,8 @@ class ProductOption(models.Model):
 
     @classmethod
     def get_product_for_category(cls, category):
-        products = cls.objects.filter(product__is_active=True,
-                                      product__category=category)
-        return random.sample(list(products), products.count())
+        return cls.objects.filter(product__is_active=True,
+                                  product__category=category)
 
     def __str__(self):
         return f'{self.product}, {self.price} на {self.term} мес.'

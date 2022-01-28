@@ -136,6 +136,9 @@ body {
     display: block;
 }
 
+.active {
+    color: grey;
+}
 /*=================*/
 
 .sort {

@@ -3,12 +3,16 @@
          alt="icon">
 </a>
 
-<a class="header__menu" href="{% url 'main_app:products' %}">
+<a {% if request.resolver_match.url_name.split.0 == 'product' %}class="header__menu active"
+   {% else %}class="header__menu"{% endif %}
+   href="{% url 'main_app:product' %}">
     <h3>Продукты</h3>
 </a>
 
 <div class="dropdown header__menu">
-    <button class="drop__btn">
+    <button
+            {% if request.resolver_match.url_name.split.0 == 'category' %}class="drop__btn active"
+            {% else %}class="drop__btn"{% endif %}>
         <h3>Категории</h3>
     </button>
     <div class="dropdown-content">
@@ -19,7 +23,8 @@
 </div>
 
 <div class="dropdown header__menu">
-    <button class="drop__btn">
+    <button {% if request.resolver_match.url_name.split.0 == 'about' %}class="drop__btn active"
+            {% else %}class="drop__btn"{% endif %}>
         <h3>О нас</h3>
     </button>
     <div class="dropdown-content">

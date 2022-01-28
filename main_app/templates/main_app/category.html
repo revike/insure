@@ -4,7 +4,7 @@
 {% block content %}
     {% include 'main_app/includes/inc_sort.html' %}
 
-    {% for product in products %}
+    {% for product in object_list %}
         <div class="product">
             <div class="content__product">
                 {{ product }}
