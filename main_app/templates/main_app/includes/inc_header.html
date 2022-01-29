@@ -3,6 +3,12 @@
          alt="icon">
 </a>
 
+<a {% if request.resolver_match.url_name.split.0 == 'index' %}class="header__menu active"
+   {% else %}class="header__menu"{% endif %}
+   href="{% url 'main_app:index' %}">
+    <h3>Главная</h3>
+</a>
+
 <a {% if request.resolver_match.url_name.split.0 == 'product' %}class="header__menu active"
    {% else %}class="header__menu"{% endif %}
    href="{% url 'main_app:product' %}">
@@ -40,7 +46,7 @@
     <div>
         <label>
             <input class="header__input" type="text" required
-                   oninvalid="this.setCustomValidity('Введите то что хотите найти...')"
+                   oninvalid="this.setCustomValidity('Введите то, что хотите найти...')"
                    oninput="setCustomValidity('')"
                    placeholder="поиск...">
         </label>

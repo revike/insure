@@ -124,6 +124,37 @@ body {
     color: cornflowerblue;
 }
 
+.dropdown-content-filter {
+    position: fixed;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.dropdown-content-filter p {
+    font-weight: bold;
+    font-size: large;
+    float: none;
+    color: black;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    border-radius: 10px;
+}
+
+.dropdown-content-filter span {
+    float: none;
+    color: cornflowerblue;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    border-radius: 10px;
+}
+
 .drop__btn:hover {
     color: grey;
 }
@@ -140,6 +171,73 @@ body {
     color: grey;
 }
 
+.filter-controls label {
+    font-size: 14px;
+    line-height: 38px;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+.filter-controls .min,
+.filter-controls .max {
+    width: 90px;
+    padding-left: 25px;
+}
+
+.filter-controls input {
+    width: 50px;
+    margin: 0;
+    font: inherit;
+    color: cornflowerblue;
+    background: none;
+    border: none;
+    outline: none;
+    font-weight: bold;
+}
+
+.filter-controls ::-webkit-input-placeholder {
+    color: grey;
+}
+
+.filter__button {
+    padding: 5px;
+    width: 100%;
+    text-align: center;
+}
+
+.filter__clear {
+    padding: 5px;
+    width: 100%;
+    text-align: center;
+}
+
+.filter__button button {
+    background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
+    border: black solid 1px;
+    padding: 5px;
+    border-radius: 15px;
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+.filter__clear a {
+    background-image: linear-gradient(to right, #9EEFE1 0%, indianred 51%, #9EEFE1 100%);
+    border: black solid 1px;
+    padding: 3px;
+    border-radius: 15px;
+    font-weight: bold;
+    transition: 0.5s;
+    text-decoration: none;
+}
+
+.filter__button button:hover {
+    transform: scale(1.05);
+    color: red;
+}
+
+.filter__clear a:hover {
+    color: blue;
+}
 /*=================*/
 
 .sort {
@@ -153,10 +251,6 @@ body {
     color: cornflowerblue;
     font-size: 20px;
     font-weight: bold;
-}
-
-.sort__text:hover {
-    color: grey;
 }
 
 .content {
@@ -189,8 +283,6 @@ body {
 }
 
 .product__label {
-    /*position: absolute;*/
-    /*display: flex;*/
     margin-left: 30px;
 }
 
@@ -205,16 +297,83 @@ body {
 .product__company {
     font-size: x-large;
     font-style: oblique;
+    text-decoration: none;
+    color: orangered;
+}
+
+.product__company p{
+    transition: 0.5s;
+}
+
+.product__company :hover {
+    color: grey;
+    transform: scale(1.05);
 }
 
 .product__info {
 }
 
+.product__category {
+    font-style: italic;
+    font-size: larger;
+}
+
+.product__category span {
+    font-style: normal;
+}
+
+.product__name {
+    font-size: xx-large;
+    color: red;
+}
+
+.product__description {
+    color: grey;
+}
+
+
 .product__info_2 {
 }
 
+.product__term span {
+    font-size: x-large;
+    color: red;
+}
+
+.product__price {
+    color: black;
+    font-size: large;
+}
+
+.product__price span {
+    color: grey;
+    font-size: medium;
+}
+
+.product__rate span {
+    color: red;
+}
+
 .product__button {
+    transition: 0.5s;
+}
+
+.product__button a {
     margin-right: 30px;
+    text-decoration: none;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 5px;
+    box-shadow: 0 0 7px #666;
+    background-color: #5897fb;
+    color: black;
+    font-size: large;
+    font-weight: bolder;
+    background-image: linear-gradient(to right, #9EEFE1 0%, cornflowerblue 51%, #9EEFE1 100%);
+}
+
+.product__button :hover {
+    color: grey;
 }
 
 /*=================*/
