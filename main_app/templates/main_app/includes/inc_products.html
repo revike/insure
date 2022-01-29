@@ -4,20 +4,27 @@
             <img class="product__img"
                  src="/media/{{ product.product.company.label }}"
                  alt="{{ product.product.company }}">
-            <p class="product__company">{{ product.product.company }}</p>
+            <a class="product__company" href="#"><p>{{ product.product.company }}</p></a>
         </div>
         <div class="product__info">
-            <p>Категория: {{ product.product.category }}</p>
-            <p>{{ product.product.name }}</p>
-            <p>{{ product.product.short_desc }}</p>
+            <p class="product__category">Категория:
+                <span>{{ product.product.category }}</span></p>
+            <p class="product__name">{{ product.product.name }}</p>
+            <p class="product__description">{{ product.product.short_desc }}</p>
         </div>
         <div class="product__info_2">
-            <p>На {{ product.term }} мес.</p>
-            <p>{{ product.price }} &#8381;</p>
-            <p>{{ product.rate }} %</p>
+            <p class="product__term">На <span>{{ product.term }}</span> мес.
+            </p>
+            <p class="product__price"><span>{{ product.price }}</span> &#8381;
+            </p>
+            {% if product.rate != 0 %}
+                <p class="product__rate">Ставка: <span>{{ product.rate }} %</span></p>
+            {% endif %}
         </div>
         <div class="product__button">
-            BUTTONS
+            <a href="#">
+                Посмотреть
+            </a>
         </div>
     </div>
 {% endfor %}

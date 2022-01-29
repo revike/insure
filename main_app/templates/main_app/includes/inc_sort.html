@@ -1,13 +1,67 @@
 <div class="sort">
     <div class="dropdown">
         <button class="drop__btn">
-            <p class="sort__text">Сортировать по:</p>
+            <p class="sort__text">Фильтровать по:</p>
         </button>
-        <div class="dropdown-content">
-            <a href="#">Цене</a>
-            <a href="#">Сроку</a>
-            <a href="#">Компании</a>
-            <a href="#">Процентной ставке</a>
-        </div>
+        <form action="{% url 'main_app:product' %}">
+            <div class="dropdown-content-filter">
+                <p>Категории</p>
+                {% for category in categories %}
+                    <span><label>
+                    <input type="checkbox" name="{{ category }}" value="true"
+                           {% if category.name in request.GET %}
+                           checked="checked"
+                           {% elif category.id == request.resolver_match.kwargs.pk %}
+                           checked="checked"
+                           {% endif %}>
+                </label> {{ category }}</span>
+                {% endfor %}
+                <p>Цене</p>
+                <div class="filter-controls">
+                    <label class="min">от <input type="number"
+                                                 name="min_price"
+                                                 placeholder="..."
+                                                 value="{{ request.GET.min_price }}"
+                    >-</label>
+                    <label class="max">до <input type="number"
+                                                 name="max_price"
+                                                 placeholder="..."
+                                                 value="{{ request.GET.max_price }}"
+                    ></label>
+                </div>
+                <p>Сроку</p>
+                <div class="filter-controls">
+                    <label class="min">от <input type="number"
+                                                 name="min_term"
+                                                 placeholder="..."
+                                                 value="{{ request.GET.min_term }}"
+                    >-</label>
+                    <label class="max">до <input type="number"
+                                                 name="max_term"
+                                                 placeholder="..."
+                                                 value="{{ request.GET.max_term }}"
+                    ></label>
+                </div>
+                <p>Процентной ставке</p>
+                <div class="filter-controls">
+                    <label class="min">от <input type="number"
+                                                 name="min_rate"
+                                                 placeholder="..."
+                                                 value="{{ request.GET.min_rate }}"
+                    >-</label>
+                    <label class="max">до <input type="number"
+                                                 name="max_rate"
+                                                 placeholder="..."
+                                                 value="{{ request.GET.max_rate }}"
+                    ></label>
+                </div>
+                <div class="filter__button">
+                    <button type="submit">Применить фильтр</button>
+                </div>
+                <div class="filter__clear">
+                    <a href="{% url 'main_app:product' %}">Удалить фильтр</a>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
