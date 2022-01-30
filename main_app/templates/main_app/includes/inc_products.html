@@ -1,30 +1,39 @@
-{% for product in object_list %}
-    <div class="product">
-        <div class="product__label">
-            <img class="product__img"
-                 src="/media/{{ product.product.company.label }}"
-                 alt="{{ product.product.company }}">
-            <a class="product__company" href="#"><p>{{ product.product.company }}</p></a>
+{% if object_list %}
+    {% for product in object_list %}
+        <div class="product">
+            <div class="product__label">
+                <img class="product__img"
+                     src="/media/{{ product.product.company.label }}"
+                     alt="{{ product.product.company }}">
+                <a class="product__company" href="#">
+                    <p>{{ product.product.company }}</p></a>
+            </div>
+            <div class="product__info">
+                <p class="product__category">Категория:
+                    <span>{{ product.product.category }}</span></p>
+                <a class="product__name" href="#">
+                    <p>{{ product.product.name }}</p></a>
+                <p class="product__description">{{ product.product.short_desc }}</p>
+            </div>
+            <div class="product__info_2">
+                <p class="product__term">На <span>{{ product.term }}</span>
+                    мес.
+                </p>
+                <p class="product__price"><span>{{ product.price }}</span>
+                    &#8381;
+                </p>
+                {% if product.rate != 0 %}
+                    <p class="product__rate">Ставка:
+                        <span>{{ product.rate }} %</span></p>
+                {% endif %}
+            </div>
+            <div class="product__button">
+                <a href="#">
+                    Посмотреть
+                </a>
+            </div>
         </div>
-        <div class="product__info">
-            <p class="product__category">Категория:
-                <span>{{ product.product.category }}</span></p>
-            <p class="product__name">{{ product.product.name }}</p>
-            <p class="product__description">{{ product.product.short_desc }}</p>
-        </div>
-        <div class="product__info_2">
-            <p class="product__term">На <span>{{ product.term }}</span> мес.
-            </p>
-            <p class="product__price"><span>{{ product.price }}</span> &#8381;
-            </p>
-            {% if product.rate != 0 %}
-                <p class="product__rate">Ставка: <span>{{ product.rate }} %</span></p>
-            {% endif %}
-        </div>
-        <div class="product__button">
-            <a href="#">
-                Посмотреть
-            </a>
-        </div>
-    </div>
-{% endfor %}
+    {% endfor %}
+{% else %}
+    <h3>Не найдено продуктов по вашему запросу...</h3>
+{% endif %}

@@ -2,7 +2,12 @@
 {% load static %}
 
 {% block content %}
-    <h1 class="all_products">Продукты</h1>
+    {% if request.GET.search %}
+        <h1 class="all_products">{{ request.GET.search }}</h1>
+    {% else %}
+        <h1 class="all_products">{{ title|title }}</h1>
+    {% endif %}
+
     {% include 'main_app/includes/inc_sort.html' %}
 
     {% include 'main_app/includes/inc_products.html' %}
