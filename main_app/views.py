@@ -1,6 +1,8 @@
+from django.contrib.postgres.search import SearchVector
 from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView, ListView
 
+from insure.settings import DATABASES
 from main_app.models import ProductCategory, ProductOption
 from main_app.search import get_query
 
@@ -91,12 +93,14 @@ class ProductListView(ListView):
         if max_rate:
             object_list = object_list.filter(rate__lte=max_rate)
         if search:
-            # object_list = object_list.annotate(
-            # search=SearchVector('...'),).filter(search=search)
-
-            query_string = self.request.GET['search']
-            entry_query = get_query(query_string,
-                                    ['product__name'])
-            object_list = object_list.filter(entry_query)
+            if DATABASES['default']['NAME'] == 'insure':
+                object_list = object_list.annotate(
+                    search=SearchVector('product__name'), ).filter(
+                    search=search)
+            else:
+                query_string = self.request.GET['search']
+                entry_query = get_query(query_string,
+                                        ['product__name'])
+                object_list = object_list.filter(entry_query)
 
         return object_list
