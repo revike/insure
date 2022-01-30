@@ -28,9 +28,9 @@ with open(BASE_DIR / 'insure/env.json', 'r') as f:
     SECRET_KEY = ENV['SECRET_KEY']
     DEBUG_MODE = ENV['DEBUG_MODE']
     ALLOWED_HOSTS = ENV['ALLOWED_HOSTS']
-    MYSQL_DB = ENV['MYSQL_DB']
-    MYSQL_USER = ENV['MYSQL_USER']
-    MYSQL_PASSWORD = ENV['MYSQL_PASSWORD']
+    POSTGRES_DB = ENV['POSTGRES_DB']
+    POSTGRES_USER = ENV['POSTGRES_USER']
+    POSTGRES_PASSWORD = ENV['POSTGRES_PASSWORD']
     EMAIL_PASSWORD = ENV['EMAIL_PASSWORD']
 
 if DEBUG_MODE == "True":
@@ -88,13 +88,13 @@ WSGI_APPLICATION = 'insure.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-if MYSQL_PASSWORD != "":
+if POSTGRES_PASSWORD != "":
     DATABASES = {
         'default': {
-            'NAME': MYSQL_DB,
-            'ENGINE': 'django.db.backends.mysql',
-            'USER': MYSQL_USER,
-            'PASSWORD': MYSQL_PASSWORD,
+            'NAME': POSTGRES_DB,
+            'ENGINE': 'django.db.backends.postgresql',
+            'USER': POSTGRES_USER,
+            'PASSWORD': POSTGRES_PASSWORD,
             'HOST': 'localhost'
         }
     }

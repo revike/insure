@@ -1,0 +1,13 @@
+<form action="{% url 'main_app:product' %}">
+    <div class="form__search">
+        <label>
+            <input class="header__input" type="text"
+{#                   oninvalid="this.setCustomValidity('Введите то, что хотите найти...')"#}
+{#                   oninput="setCustomValidity('')"#}
+                   placeholder="поиск..."
+                   name="search" value="{{ request.GET.search }}">
+        </label>
+        <button class="header__button" type="submit">🔎
+        </button>
+    </div>
+</form>

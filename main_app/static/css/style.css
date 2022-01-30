@@ -313,6 +313,10 @@ body {
 .product__info {
 }
 
+.product__info a:hover{
+    color: grey;
+}
+
 .product__category {
     font-style: italic;
     font-size: larger;
@@ -325,6 +329,12 @@ body {
 .product__name {
     font-size: xx-large;
     color: red;
+    text-decoration: none;
+}
+
+.product__name :hover{
+    color: darkred;
+    transform: scale(1.05);
 }
 
 .product__description {

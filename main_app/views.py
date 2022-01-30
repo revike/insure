@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView, ListView
 
 from main_app.models import ProductCategory, ProductOption
+from main_app.search import get_query
 
 
 class IndexView(TemplateView):
@@ -53,19 +54,15 @@ class ProductListView(ListView):
 
     def get_queryset(self):
         """Возвращает список элементов для этого представления"""
-        return ProductOption.objects.filter(
+        object_list = ProductOption.objects.filter(
             is_active=True,
             product__is_active=True,
             product__category__is_active=True).select_related()
 
-    def get(self, request, *args, **kwargs):
         category_filter = []
         request_get = self.request.GET
 
-        self.object_list = self.get_queryset()
-        context = self.get_context_data()
-        categories = context['categories']
-
+        categories = ProductCategory.get_categories()
         for category in categories:
             if request_get.get(category.name) is not None:
                 category_filter.append(category)
@@ -76,22 +73,30 @@ class ProductListView(ListView):
         max_term = request_get.get('max_term')
         min_rate = request_get.get('min_rate')
         max_rate = request_get.get('max_rate')
+        search = request_get.get('search')
 
         if category_filter:
-            self.object_list = self.object_list.filter(
+            object_list = object_list.filter(
                 product__category__in=category_filter)
         if min_price:
-            self.object_list = self.object_list.filter(price__gte=min_price)
+            object_list = object_list.filter(price__gte=min_price)
         if max_price:
-            self.object_list = self.object_list.filter(price__lte=max_price)
+            object_list = object_list.filter(price__lte=max_price)
         if min_term:
-            self.object_list = self.object_list.filter(term__gte=min_term)
+            object_list = object_list.filter(term__gte=min_term)
         if max_term:
-            self.object_list = self.object_list.filter(term__lte=max_term)
+            object_list = object_list.filter(term__lte=max_term)
         if min_rate:
-            self.object_list = self.object_list.filter(rate__gte=min_rate)
+            object_list = object_list.filter(rate__gte=min_rate)
         if max_rate:
-            self.object_list = self.object_list.filter(rate__lte=max_rate)
+            object_list = object_list.filter(rate__lte=max_rate)
+        if search:
+            # object_list = object_list.annotate(
+            # search=SearchVector('...'),).filter(search=search)
 
-        context = self.get_context_data()
-        return self.render_to_response(context)
+            query_string = self.request.GET['search']
+            entry_query = get_query(query_string,
+                                    ['product__name'])
+            object_list = object_list.filter(entry_query)
+
+        return object_list

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-    <h1 class="categories">{{ title }}</h1>
+    <h1 class="categories">{{ title|title }}</h1>
     {% include 'main_app/includes/inc_sort.html' %}
 
     {% include 'main_app/includes/inc_products.html' %}

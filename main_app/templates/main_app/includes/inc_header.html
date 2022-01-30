@@ -42,18 +42,7 @@
     </div>
 </div>
 
-<form class="form__search" action="#">
-    <div>
-        <label>
-            <input class="header__input" type="text" required
-                   oninvalid="this.setCustomValidity('Введите то, что хотите найти...')"
-                   oninput="setCustomValidity('')"
-                   placeholder="поиск...">
-        </label>
-        <button class="header__button" type="submit">🔎
-        </button>
-    </div>
-</form>
+{% include 'main_app/includes/inc_search.html' %}
 
 <a class="header__login" href="#">
     <img class="header__img" src="/media/img/user.svg"
