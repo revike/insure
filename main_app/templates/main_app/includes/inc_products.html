@@ -11,7 +11,8 @@
             <div class="product__info">
                 <p class="product__category">Категория:
                     <span>{{ product.product.category }}</span></p>
-                <a class="product__name" href="#">
+                <a class="product__name"
+                   href="{% url 'main_app:product' pk=product.id %}">
                     <p>{{ product.product.name }}</p></a>
                 <p class="product__description">{{ product.product.short_desc }}</p>
             </div>
@@ -28,7 +29,7 @@
                 {% endif %}
             </div>
             <div class="product__button">
-                <a href="#">
+                <a href="{% url 'main_app:product' pk=product.id %}">
                     Посмотреть
                 </a>
             </div>

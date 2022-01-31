@@ -238,7 +238,8 @@ body {
 .filter__clear a:hover {
     color: blue;
 }
-/*=================*/
+
+/*sort*/
 
 .sort {
     display: flex;
@@ -257,7 +258,7 @@ body {
     margin: 80px 60px 0 60px;
 }
 
-/*=================*/
+/*products*/
 .all_products {
     display: flex;
     justify-content: center;
@@ -301,7 +302,7 @@ body {
     color: orangered;
 }
 
-.product__company p{
+.product__company p {
     transition: 0.5s;
 }
 
@@ -313,7 +314,7 @@ body {
 .product__info {
 }
 
-.product__info a:hover{
+.product__info a:hover {
     color: grey;
 }
 
@@ -332,7 +333,7 @@ body {
     text-decoration: none;
 }
 
-.product__name :hover{
+.product__name :hover {
     color: darkred;
     transform: scale(1.05);
 }
@@ -386,7 +387,120 @@ body {
     color: grey;
 }
 
-/*=================*/
+/*a_product*/
+
+.a_product__title {
+    display: flex;
+    justify-content: center;
+    color: red;
+}
+
+.a_product__content{
+}
+
+.a_product__desc{
+    display: flex;
+}
+
+.a_product__description{
+    width: 100%;
+    text-align: center;
+    margin: auto;
+}
+
+.a_product__options {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.a_product__option{
+}
+
+.a_product__option a{
+    text-decoration: none;
+    color: black;
+}
+
+.a_product__option a:hover{
+    color: grey;
+}
+
+.a_product_button{
+    text-align: center;
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 5px;
+    box-shadow: 0 0 7px #666;
+    background-color: #5897fb;
+    background-image: linear-gradient(to right, #9EEFE1 0%, cornflowerblue 51%, #9EEFE1 100%);
+}
+
+.a_product_button button{
+    width: 100%;
+    border: none;
+    background-image: linear-gradient(to right, #9EEFE1 0%, cornflowerblue 51%, #9EEFE1 100%);
+    font-weight: bold;
+}
+
+.a_product_button :hover{
+    color: grey;
+}
+
+#btn{
+ z-index:1;
+}
+
+#content_window{
+ z-index:10;
+ display:none;
+}
+
+.a_product__form {
+    width: 100%;
+    text-align: center;
+}
+
+.a_product_button_form button {
+    text-align: center;
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 5px;
+    box-shadow: 0 0 7px #666;
+    background-color: #5897fb;
+    background-image: linear-gradient(to right, #9EEFE1 0%, cornflowerblue 51%, #9EEFE1 100%);
+    font-weight: bold;
+}
+
+.a_product_button_form :hover{
+    color: grey;
+}
+
+.thank_you {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    color: green;
+    font-weight: bold;
+}
+
+.back {
+    display: flex;
+    justify-content: space-evenly;
+    font-weight: bold;
+}
+
+.back a{
+    text-decoration: none;
+    color: black;
+}
+
+.back :hover{
+    color: grey;
+}
+/*footer*/
 
 .footer {
     color: slategrey;
