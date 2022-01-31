@@ -1,0 +1,46 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1 class="a_product__title">{{ title|title }}</h1>
+
+    <div class="a_product__content">
+        <div class="a_product__desc">
+            <div class="product__label">
+                <a class="product__company" href="#">
+                    <img class="product__img"
+                         src="/media/{{ object.product.company.label }}"
+                         alt="{{ object.product.company }}">
+                </a>
+            </div>
+            <div class="a_product__description">
+                {{ object.product.description }}
+            </div>
+        </div>
+        <div>
+            <h3 class="a_product__title">Характеристики:</h3>
+        </div>
+        <div class="a_product__options">
+            <div class="a_product__option"></div>
+            <div class="a_product__option">
+                <p>Компания: <a href="#">{{ object.product.company }}</a></p>
+                <p>Категория: <a
+                        href="{% url 'main_app:category' pk=object.product.category.id %}">{{ object.product.category }}</a>
+                </p>
+                <p>Срок: на {{ object.term }} мес.</p>
+                {% if object.rate != 0 %}
+                    <p>Ставка: {{ object.rate }} %</p>
+                {% endif %}
+                <p>Цена: {{ object.price }} &#8381;</p>
+
+            </div>
+            <div class="a_product__option"></div>
+        </div>
+        <p class="thank_you">Спасибо за заявку! Мы свяжемся с вами в ближайшее
+            время!</p>
+    <div class="back">
+        <a href="{% url 'main_app:index' %}">На главную</a>
+        <a href="{% url 'main_app:products' %}">В продукты</a>
+    </div>
+    </div>
+{% endblock %}

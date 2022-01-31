@@ -1,0 +1,61 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+
+{% block js %}
+    <script src="{% static 'js/btn_answer.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <h1 class="a_product__title">{{ title|title }}</h1>
+
+    <div class="a_product__content">
+        <div class="a_product__desc">
+            <div class="product__label">
+                <a class="product__company" href="#">
+                    <img class="product__img"
+                         src="/media/{{ object.product.company.label }}"
+                         alt="{{ object.product.company }}">
+                </a>
+            </div>
+            <div class="a_product__description">
+                {{ object.product.description }}
+            </div>
+        </div>
+        <div>
+            <h3 class="a_product__title">Характеристики:</h3>
+        </div>
+        <div class="a_product__options">
+            <div class="a_product__option"></div>
+            <div class="a_product__option">
+                <p>Компания: <a href="#">{{ object.product.company }}</a></p>
+                <p>Категория: <a
+                        href="{% url 'main_app:category' pk=object.product.category.id %}">{{ object.product.category }}</a>
+                </p>
+                <p>Срок: на {{ object.term }} мес.</p>
+                {% if object.rate != 0 %}
+                    <p>Ставка: {{ object.rate }} %</p>
+                {% endif %}
+                <p>Цена: {{ object.price }} &#8381;</p>
+                <div id="btn" class="a_product_button">
+                    <button onclick="showWindow()">Откликнуться</button>
+                </div>
+            </div>
+            <div class="a_product__option"></div>
+        </div>
+        <form action="{% url 'main_app:product' pk=object.id %}" method="post">
+            {% csrf_token %}
+            <div class="a_product__form" id="content_window">
+                <h2>Пожалуйста, заполните форму</h2>
+                <p>Фамилия: {{ form.last_name }}</p>
+                <p>Имя: {{ form.first_name }}</p>
+                <p>Отчество: {{ form.patronymic }}</p>
+                <p>E-mail: {{ form.email }}</p>
+                <p>Телефон: {{ form.phone_number }}</p>
+                <div class="a_product_button_form">
+                    <button type="submit">Откликнуться</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

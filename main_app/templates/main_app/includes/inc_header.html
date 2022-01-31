@@ -9,9 +9,9 @@
     <h3>Главная</h3>
 </a>
 
-<a {% if request.resolver_match.url_name.split.0 == 'product' %}class="header__menu active"
+<a {% if request.resolver_match.url_name.split.0 == 'product' or request.resolver_match.url_name.split.0 == 'products' %}class="header__menu active"
    {% else %}class="header__menu"{% endif %}
-   href="{% url 'main_app:product' %}">
+   href="{% url 'main_app:products' %}">
     <h3>Продукты</h3>
 </a>
 

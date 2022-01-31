@@ -1,9 +1,12 @@
 from django.contrib.postgres.search import SearchVector, SearchQuery, \
     SearchRank
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-from django.views.generic import TemplateView, ListView
+from django.urls import reverse
+from django.views.generic import TemplateView, ListView, DetailView
 
 from insure.settings import DATABASES
+from main_app.forms import ProductResponseCreateForm
 from main_app.models import ProductCategory, ProductOption
 from main_app.search import get_query
 
@@ -13,7 +16,7 @@ class IndexView(TemplateView):
     template_name = 'main_app/index.html'
 
     def get_context_data(self, **kwargs):
-        """Получить контекст для этого представления"""
+        """Возвращает контекст для этого представления"""
         context = super().get_context_data(**kwargs)
         context['title'] = 'главная'
         context['categories'] = ProductCategory.get_categories()
@@ -27,7 +30,7 @@ class ProductForCategoryDetailView(ListView):
     paginate_by = 10
 
     def get_context_data(self, *, object_list=None, **kwargs):
-        """Получить контекст для этого представления"""
+        """Возвращает контекст для этого представления"""
         queryset = ProductOption.get_product_for_category(
             category=self.kwargs['pk']).select_related()
         context = super().get_context_data(**kwargs, object_list=queryset)
@@ -49,7 +52,7 @@ class ProductListView(ListView):
     paginate_by = 10
 
     def get_context_data(self, *, object_list=None, **kwargs):
-        """Получить контекст для этого представления"""
+        """Возвращает контекст для этого представления"""
         context = super().get_context_data(**kwargs)
         context['title'] = 'продукты'
         context['categories'] = ProductCategory.get_categories()
@@ -95,7 +98,9 @@ class ProductListView(ListView):
             object_list = object_list.filter(rate__lte=max_rate)
         if search:
             if DATABASES['default']['NAME'] == 'insure':
-                vector = SearchVector('product__name')
+                vector = SearchVector('product__name',
+                                      'product__category__name',
+                                      'product__company__name')
                 query = SearchQuery(search)
                 object_list = object_list.annotate(
                     rank=SearchRank(vector, query)).order_by('-rank')
@@ -106,3 +111,44 @@ class ProductListView(ListView):
                 object_list = object_list.filter(entry_query)
 
         return object_list
+
+
+class ProductDetailView(DetailView):
+    """Контроллер продукта"""
+    template_name = 'main_app/product.html'
+    model = ProductOption
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        """Возвращает контекст для этого представления"""
+        form = ProductResponseCreateForm()
+        context = super().get_context_data(**kwargs)
+        context['form'] = form
+        context['title'] = self.object.product.name
+        context['categories'] = ProductCategory.get_categories()
+        return context
+
+    def post(self, request, *args, **kwargs):
+        """Добавление заявки в базу"""
+        form = ProductResponseCreateForm(data=self.request.POST)
+        if form.is_valid():
+            create_response = form.save(commit=False)
+            create_response.product = self.model.objects.get(
+                id=self.kwargs['pk'])
+            form.save(commit=True)
+            return HttpResponseRedirect(
+                reverse('main_app:valid', args=[kwargs['pk']]))
+        return HttpResponseRedirect(
+            reverse('main_app:product', args=[kwargs['pk']]))
+
+
+class ResponseValidView(DetailView):
+    """Контроллер удачной заявки"""
+    template_name = 'main_app/response_valid.html'
+    model = ProductOption
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        """Возвращает контекст для этого представления"""
+        context = super().get_context_data(**kwargs)
+        context['title'] = self.object.product.name
+        context['categories'] = ProductCategory.get_categories()
+        return context
