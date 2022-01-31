@@ -1,4 +1,5 @@
-from django.contrib.postgres.search import SearchVector
+from django.contrib.postgres.search import SearchVector, SearchQuery, \
+    SearchRank
 from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView, ListView
 
@@ -94,9 +95,10 @@ class ProductListView(ListView):
             object_list = object_list.filter(rate__lte=max_rate)
         if search:
             if DATABASES['default']['NAME'] == 'insure':
+                vector = SearchVector('product__name')
+                query = SearchQuery(search)
                 object_list = object_list.annotate(
-                    search=SearchVector('product__name'), ).filter(
-                    search=search)
+                    rank=SearchRank(vector, query)).order_by('-rank')
             else:
                 query_string = self.request.GET['search']
                 entry_query = get_query(query_string,
