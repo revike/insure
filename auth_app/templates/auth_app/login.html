@@ -1,2 +1,10 @@
 {% extends 'main_app/base.html' %}
 {% load static %}
+
+{% block content %}
+    <form action="{% url 'auth_app:login' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="form-control" type="submit">Войти</button>
+    </form>
+{% endblock %}

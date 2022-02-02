@@ -96,8 +96,8 @@ if POSTGRES_PASSWORD != "":
             'ENGINE': 'django.db.backends.postgresql',
             'USER': POSTGRES_USER,
             'PASSWORD': POSTGRES_PASSWORD,
-            'HOST': 'db',
-            # 'HOST': 'localhost',
+            # 'HOST': 'db',
+            'HOST': 'localhost',
             'PORT': '5432'
         }
     }
@@ -177,6 +177,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 LOGIN_URL = '/auth/login/'
 LOGIN_ERROR_URL = '/'
+# LOGIN_REDIRECT_URL = '/'
 
 DOMAIN_NAME = 'http://localhost:8000'
 

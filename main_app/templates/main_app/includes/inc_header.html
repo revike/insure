@@ -44,7 +44,7 @@
 
 {% include 'main_app/includes/inc_search.html' %}
 
-<a class="header__login" href="#">
+<a class="header__login" href="{% url 'auth_app:login' %}">
     <img class="header__img" src="/media/img/user.svg"
          alt="icon">
 </a>
