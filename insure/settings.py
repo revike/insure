@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'django_cleanup',
     'main_app',
     'auth_app',
+    'cabinet_app',
 ]
 
 MIDDLEWARE = [

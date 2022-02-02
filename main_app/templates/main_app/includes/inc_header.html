@@ -1,5 +1,6 @@
+{% load static %}
 <a class="header__icon" href="{% url 'main_app:index' %}">
-    <img class="header__img" src="/media/img/icon.svg"
+    <img class="header__img" src="{% static 'img/icon.svg' %}"
          alt="icon">
 </a>
 
@@ -45,6 +46,6 @@
 {% include 'main_app/includes/inc_search.html' %}
 
 <a class="header__login" href="{% url 'auth_app:login' %}">
-    <img class="header__img" src="/media/img/user.svg"
+    <img class="header__img" src="{% static 'img/user.svg' %}"
          alt="icon">
 </a>

@@ -24,6 +24,11 @@ class RegisterView(CreateView):
         context['categories'] = ProductCategory.get_categories()
         return context
 
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return HttpResponseRedirect(reverse('cab_app:index'))
+        return super().get(self.request, **kwargs)
+
     def form_valid(self, form):
         if form.is_valid():
             user = form.save()
@@ -71,15 +76,17 @@ class LoginUserView(LoginView):
         context['categories'] = ProductCategory.get_categories()
         return context
 
-    def post(self, request, *args, **kwargs):
-        return super().post(self.request, **kwargs)
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return HttpResponseRedirect(reverse('cab_app:index'))
+        return super().get(self.request, **kwargs)
 
     def form_valid(self, form):
         next_url = self.request.session['next_url']
         login(self.request, form.get_user())
         if next_url is not None:
             return HttpResponseRedirect(self.request.session['next_url'])
-        return HttpResponseRedirect(reverse('main_app:index'))
+        return HttpResponseRedirect(reverse('cab_app:index'))
 
 
 class LogoutUserView(LogoutView):
