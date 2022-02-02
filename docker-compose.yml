@@ -1,34 +1,38 @@
-#version: "3.8"
-#
-#services:
-#  web:
-#    build: .
-#    command: python manage.py runserver 0.0.0.0:8000
-#    ports:
-#      - "8000:8000"
-
 version: "3.8"
 
 services:
   db:
-    image: postgres:14
+    image: postgres
+    container_name: insure_db
+    volumes:
+      - insurance_pgdata:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: insure
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: ...
-    ports:
-      - 5432:5432
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      POSTGRES_PASSWORD: 2nrm4dcw
+      POSTGRES_HOST: db
+      POSTGRES_PORT: 5432
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    restart: unless-stopped
   web:
-    build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: insure
     volumes:
       - .:/code
+    command: ./docker_commands.sh
+    environment:
+      POSTGRES_NAME: insure
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 2nrm4dcw
+      POSTGRES_HOST: db
+      POSTGRES_PORT: 5433
+    restart: unless-stopped
     ports:
       - 8000:8000
     depends_on:
       - db
 
 volumes:
-  postgres_data:
+  insurance_pgdata:

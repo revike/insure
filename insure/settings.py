@@ -96,7 +96,9 @@ if POSTGRES_PASSWORD != "":
             'ENGINE': 'django.db.backends.postgresql',
             'USER': POSTGRES_USER,
             'PASSWORD': POSTGRES_PASSWORD,
-            'HOST': 'localhost',
+            'HOST': 'db',
+            # 'HOST': 'localhost',
+            'PORT': '5432'
         }
     }
 else:
