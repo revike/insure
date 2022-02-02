@@ -74,6 +74,11 @@ body {
     margin-top: 0.5em;
     text-decoration: none;
     align-items: center;
+    transition: 0.5s;
+}
+
+.header__login :hover{
+    transform: scale(1.2);
 }
 
 .header_img {
