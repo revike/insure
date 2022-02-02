@@ -44,13 +44,16 @@ class VerifyView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         user = CompanyUser.objects.get(email=self.kwargs['email'])
-        if user.activation_key == self.kwargs['activation_key'] \
-                and not user.is_activation_key_expired():
-            user.activation_key = ''
-            user.is_active = True
-            user.save()
-            auth.login(request, user)
-        return super().get(self.request)
+        if user.activation_key == self.kwargs['activation_key']:
+            if not user.is_activation_key_expired():
+                user.activation_key = ''
+                user.is_active = True
+                user.save()
+                auth.login(request, user)
+                return super().get(self.request)
+            else:
+                user.delete()
+                return HttpResponseRedirect(reverse('main_app:index'))
 
 
 class LoginUserView(LoginView):
