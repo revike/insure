@@ -2,9 +2,20 @@
 {% load static %}
 
 {% block content %}
-    <form action="{% url 'auth_app:register' %}" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-    <button class="form-control" type="submit">Зарегистрироваться</button>
-    </form>
+    <h1 class="login_title">{{ title|title }}</h1>
+    <div class="auth_form">
+        <form action="{% url 'auth_app:register' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="control__button">
+                <button class="form-control__button" type="submit">
+                    Зарегистрироваться
+                </button>
+                <p>
+                    <a href="{% url 'auth_app:login' %}">Уже есть учетная
+                        запись? Войти!</a>
+                </p>
+            </div>
+        </form>
+    </div>
 {% endblock %}

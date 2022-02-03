@@ -190,7 +190,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Captcha
 
 CAPTCHA_FONT_SIZE = 50
-CAPTCHA_LENGTH = 5
+CAPTCHA_LENGTH = 6
 
 # Email
 

@@ -23,3 +23,8 @@ class ProductResponseCreateForm(forms.ModelForm):
             'placeholder'] = '+79999999999'
         self.fields['phone_number'].widget.attrs[
             'pattern'] = r'^\+7\d{10,10}$'
+        self.fields['phone_number'].widget.attrs[
+            'oninvalid'] = "this.setCustomValidity('Неверный номер " \
+                           "телефона...')"
+        self.fields['phone_number'].widget.attrs[
+            'oninput'] = "setCustomValidity('')"

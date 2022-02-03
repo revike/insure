@@ -519,3 +519,70 @@ body {
     text-align: center;
     margin: 25px 0 25px 0;
 }
+
+/*Auth*/
+
+.login_title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.auth_form {
+    display: flex;
+    justify-content: center;
+}
+
+.auth_form p {
+    font-style: oblique;
+    font-weight: bold;
+}
+
+.form-control {
+    display: flex;
+    text-decoration: none;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 6px;
+    margin: 5px;
+    box-shadow: 0 0 7px #666;
+    background-color: #B0E0E6;
+    color: black;
+    font-size: large;
+}
+
+.control__button {
+    width: 100%;
+    text-align: center;
+}
+
+.control__button a {
+    text-decoration: none;
+    font-size: inherit;
+}
+
+.control__button :hover {
+    color: grey;
+}
+
+/*#id_Captcha_2 {*/
+    /*display: none;*/
+/*}*/
+
+.form-control__button {
+    margin: 5px;
+    padding: 3px;
+    border: 1px solid black;
+    border-radius: 15px;
+    box-shadow: 0 0 7px #666;
+    background-color: #B0E0E6;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    background-image: linear-gradient(to right, #9EEFE1 0%, cornflowerblue 51%, #9EEFE1 100%);
+}
+
+.register_valid {
+    display: flex;
+    justify-content: center;
+}
