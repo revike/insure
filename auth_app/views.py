@@ -26,14 +26,35 @@ class RegisterView(CreateView):
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            return HttpResponseRedirect(reverse('cab_app:index'))
+            return HttpResponseRedirect(reverse('cab_app:index_cab'))
         return super().get(self.request, **kwargs)
 
     def form_valid(self, form):
         if form.is_valid():
             user = form.save()
             send_verify_email(user)
-            return HttpResponseRedirect(reverse('main_app:products'))
+            self.request.session['register'] = True
+            return HttpResponseRedirect(reverse('auth_app:register_valid'))
+
+
+class RegisterValidView(TemplateView):
+    """Контроллер удачной регистрации"""
+    template_name = 'auth_app/register_valid.html'
+
+    def get_context_data(self, **kwargs):
+        """Возвращает контекст для этого представления"""
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'регистрация'
+        context['categories'] = ProductCategory.get_categories()
+        return context
+
+    def get(self, request, *args, **kwargs):
+        try:
+            if self.request.session['register']:
+                self.request.session['register'] = False
+                return super().get(self.request, **kwargs)
+        except KeyError:
+            return HttpResponseRedirect(reverse('main_app:index'))
 
 
 class VerifyView(TemplateView):
@@ -48,16 +69,19 @@ class VerifyView(TemplateView):
         return context
 
     def get(self, request, *args, **kwargs):
-        user = CompanyUser.objects.get(email=self.kwargs['email'])
-        if user.activation_key == self.kwargs['activation_key']:
-            if not user.is_activation_key_expired():
-                user.activation_key = ''
-                user.is_active = True
-                user.save()
-                auth.login(request, user)
-                return super().get(self.request)
-            else:
-                user.delete()
+        user = CompanyUser.objects.filter(email=self.kwargs['email']).first()
+        try:
+            if user.activation_key == self.kwargs['activation_key']:
+                if not user.is_activation_key_expired():
+                    user.activation_key = ''
+                    user.is_active = True
+                    user.save()
+                    auth.login(request, user)
+                    return super().get(self.request)
+                else:
+                    user.delete()
+        except AttributeError:
+            ...
         return HttpResponseRedirect(reverse('main_app:index'))
 
 
@@ -78,15 +102,15 @@ class LoginUserView(LoginView):
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            return HttpResponseRedirect(reverse('cab_app:index'))
+            return HttpResponseRedirect(reverse('cab_app:index_cab'))
         return super().get(self.request, **kwargs)
 
     def form_valid(self, form):
         next_url = self.request.session['next_url']
         login(self.request, form.get_user())
-        if next_url is not None:
+        if next_url:
             return HttpResponseRedirect(self.request.session['next_url'])
-        return HttpResponseRedirect(reverse('cab_app:index'))
+        return HttpResponseRedirect(reverse('cab_app:index_cab'))
 
 
 class LogoutUserView(LogoutView):

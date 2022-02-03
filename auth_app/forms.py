@@ -10,7 +10,7 @@ from auth_app.models import CompanyUser
 
 class CompanyUserRegisterForm(UserCreationForm):
     """Форма регистрации"""
-    Captcha = CaptchaField(label='Подтвердите что вы не робот!')
+    Captcha = CaptchaField(label='')
 
     class Meta:
         model = CompanyUser
@@ -21,6 +21,7 @@ class CompanyUserRegisterForm(UserCreationForm):
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
             field.help_text = ''
+        self.fields['Captcha'].widget.attrs['placeholder'] = 'abcdef'
 
     def clean_email(self):
         email_user = self.cleaned_data['email']
