@@ -50,10 +50,12 @@ INSTALLED_APPS = [
     'captcha',
     'debug_toolbar',
     'template_profiler_panel',
+    'django_elasticsearch_dsl',
     'django_cleanup',
     'main_app',
     'auth_app',
     'cabinet_app',
+    'search_app',
 ]
 
 MIDDLEWARE = [
@@ -84,6 +86,12 @@ TEMPLATES = [
         },
     },
 ]
+
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': 'localhost:9200',
+    }
+}
 
 WSGI_APPLICATION = 'insure.wsgi.application'
 

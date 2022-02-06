@@ -24,6 +24,7 @@ urlpatterns = [
     path('', include('main_app.urls', namespace='main_app')),
     path('auth/', include('auth_app.urls', namespace='auth_app')),
     path('cabinet/', include('cabinet_app.urls', namespace='cab_app')),
+    path('search/', include('search_app.urls', namespace='search_app')),
     path('captcha/', include('captcha.urls')),
 ]
 

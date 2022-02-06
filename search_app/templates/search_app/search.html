@@ -1,0 +1,18 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+
+{% block content %}
+    {% for result in search %}
+        <div>id - {{ result.id }}</div>
+        <div>name - {{ result.product.name }}</div>
+        <div>category - {{ result.product.category.name }}</div>
+        <div>short_desc - {{ result.product.short_desc }}</div>
+        <div>company - {{ result.product.company.name }}</div>
+        <div>term - {{ result.term }}</div>
+        <div>rate - {{ result.rate }}</div>
+        <div>price - {{ result.price }}</div>
+        <div>label - {{ result.product.company.label }}</div>
+        <div>active - {{ result.is_active }}</div>
+        <hr>
+    {% endfor %}
+{% endblock %}
