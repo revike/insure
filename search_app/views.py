@@ -15,9 +15,21 @@ class SearchView(TemplateView):
         context['title'] = 'продукты'
         context['categories'] = ProductCategory.get_categories()
 
+        def search_obj(query_search):
+            result = ProductOptionDocument.search().query(query_search)
+            res = result.filter('match_phrase', is_active=True).filter(
+                'match_phrase', product__is_active=True).filter(
+                'match_phrase', product__category__is_active=True).filter(
+                'match_phrase', product__company__is_active=True).filter(
+                'match_phrase', product__company__company__is_active=True
+            ).sort('price', '-rate', '-term')
+            return res
+
+        query = self.request.GET.get('search')
+
         q = Q(
             'multi_match',
-            query='english',
+            query=query,
             fields=[
                 'product.name', 'product.category.name',
                 'product.company.name', 'product.short_desc',
@@ -25,9 +37,25 @@ class SearchView(TemplateView):
             ],
             fuzziness='auto',
         )
+        search = search_obj(q)
 
-        search = ProductOptionDocument.search().query(q)
+        if search.count() == 0:
+            try:
+                query = int(query)
+                q = Q(
+                    'multi_match',
+                    query=query,
+                    fields=[
+                        'price', 'rate', 'term'
+                    ]
+                )
+                search = search_obj(q)
+            except ValueError:
+                pass
 
         context['search'] = search
 
         return context
+
+    def get(self, request, *args, **kwargs):
+        return super().get(self.request, **kwargs)

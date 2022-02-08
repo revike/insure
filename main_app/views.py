@@ -41,8 +41,7 @@ class ProductForCategoryDetailView(ListView):
 
     def get_queryset(self):
         """Возвращает список элементов для этого представления"""
-        return get_object_or_404(self.model, pk=self.kwargs['pk'],
-                                 is_active=True)
+        return get_object_or_404(self.model, pk=self.kwargs['pk'])
 
 
 class ProductListView(ListView):
@@ -63,7 +62,9 @@ class ProductListView(ListView):
         object_list = ProductOption.objects.filter(
             is_active=True,
             product__is_active=True,
-            product__category__is_active=True).select_related()
+            product__category__is_active=True,
+            product__company__is_active=True,
+            product__company__company__is_active=True).select_related()
 
         category_filter = []
         request_get = self.request.GET
@@ -139,6 +140,13 @@ class ProductDetailView(DetailView):
                 reverse('main_app:valid', args=[kwargs['pk']]))
         return HttpResponseRedirect(
             reverse('main_app:product', args=[kwargs['pk']]))
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(is_active=True, product__is_active=True,
+                               product__category__is_active=True,
+                               product__company__is_active=True,
+                               product__company__company__is_active=True)
 
 
 class ResponseValidView(DetailView):

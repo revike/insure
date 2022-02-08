@@ -17,6 +17,9 @@ class ProductOptionDocument(Document):
         }),
         'company': fields.ObjectField(properties={
             'id': fields.IntegerField(),
+            'company': fields.ObjectField(properties={
+                'is_active': fields.BooleanField()
+            }),
             'name': fields.TextField(),
             'about_company': fields.TextField(),
             'label': fields.FileField(),
@@ -27,6 +30,7 @@ class ProductOptionDocument(Document):
         'description': fields.TextField(),
         'is_active': fields.BooleanField()
     })
+
 
     class Index:
         name = 'products'

@@ -2,17 +2,48 @@
 {% load static %}
 
 {% block content %}
-    {% for result in search %}
-        <div>id - {{ result.id }}</div>
-        <div>name - {{ result.product.name }}</div>
-        <div>category - {{ result.product.category.name }}</div>
-        <div>short_desc - {{ result.product.short_desc }}</div>
-        <div>company - {{ result.product.company.name }}</div>
-        <div>term - {{ result.term }}</div>
-        <div>rate - {{ result.rate }}</div>
-        <div>price - {{ result.price }}</div>
-        <div>label - {{ result.product.company.label }}</div>
-        <div>active - {{ result.is_active }}</div>
-        <hr>
-    {% endfor %}
+    {% include 'main_app/includes/inc_sort.html' %}
+    
+    <h1 class="all_products">Поиск по запросу: {{ request.GET.search }}</h1>
+    {% if search.count != 0 %}
+        {% for product in search %}
+            <div class="product">
+                <div class="product__label">
+                    <img class="product__img"
+                         src="{{ product.product.company.label }}"
+                         alt="{{ product.product.company.name }}">
+                    <a class="product__company" href="#">
+                        <p>{{ product.product.company.name }}</p></a>
+                </div>
+                <div class="product__info">
+                    <p class="product__category">Категория:
+                        <span>{{ product.product.category.name }}</span></p>
+                    <a class="product__name"
+                       href="{% url 'main_app:product' pk=product.id %}">
+                        <p>{{ product.product.name }}</p></a>
+                    <p class="product__description">{{ product.product.short_desc }}</p>
+                </div>
+                <div class="product__info_2">
+                    <p class="product__term">На <span>{{ product.term }}</span>
+                        мес.
+                    </p>
+                    <p class="product__price"><span>{{ product.price }}</span>
+                        &#8381;
+                    </p>
+                    {% if product.rate != 0 %}
+                        <p class="product__rate">Ставка:
+                            <span>{{ product.rate }} %</span></p>
+                    {% endif %}
+                </div>
+                <div class="product__button">
+                    <a href="{% url 'main_app:product' pk=product.id %}">
+                        Посмотреть
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h3>Ничего не найдено...</h3>
+    {% endif %}
+
 {% endblock %}

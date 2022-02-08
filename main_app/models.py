@@ -69,8 +69,11 @@ class ProductOption(models.Model):
     @classmethod
     def get_product_for_category(cls, category):
         """Возвращает продукты для определенной категории"""
-        return cls.objects.filter(product__is_active=True,
+        return cls.objects.filter(is_active=True,
+                                  product__is_active=True,
                                   product__category__is_active=True,
+                                  product__company__is_active=True,
+                                  product__company__company__is_active=True,
                                   product__category=category)
 
     def __str__(self):
