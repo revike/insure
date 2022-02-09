@@ -1,6 +1,5 @@
 from django.core.validators import RegexValidator
 from django.db import models
-
 from auth_app.models import CompanyUserProfile
 
 

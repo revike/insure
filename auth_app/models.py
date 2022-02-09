@@ -55,15 +55,15 @@ class CompanyUserProfile(models.Model):
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
         super().save()
-        img = Image.open(self.label.path)
+        try:
+            img = Image.open(self.label.path)
 
-        if img.height > 300 or img.width > 300:
-            output_size = (300, 300)
-            img.thumbnail(output_size)
-            try:
+            if img.height > 300 or img.width > 300:
+                output_size = (300, 300)
+                img.thumbnail(output_size)
                 img.save()
-            except TypeError:
-                pass
+        except (TypeError, ValueError):
+            pass
 
     def __str__(self):
         return f'{self.name}'

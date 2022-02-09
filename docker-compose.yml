@@ -5,24 +5,29 @@ services:
     image: postgres
     container_name: insure_db
     volumes:
-      - insurance_pgdata:/var/lib/postgresql/data
+      - pg_data:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: insure
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 2nrm4dcw
       POSTGRES_HOST: db
       POSTGRES_PORT: 5432
-      PGDATA: "/var/lib/postgresql/data/pgdata"
+      PGDATA: "/var/lib/postgresql/data/pg_data"
     restart: unless-stopped
-#  es:
-#    image: elasticsearch:7.17.0
-#    container_name: insure_elastic
-#    volumes:
-#      - esdata:/usr/share/elasticsearch/data
-#    ports:
-#      - "9200:9200"
-#    environment:
-#      - discovery.type=single-node
+  es:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.0
+    container_name: insure_elastic
+    volumes:
+      - es_data:/var/lib/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+    restart: unless-stopped
+    networks:
+      - elastic
   web:
     build:
       context: .
@@ -42,7 +47,13 @@ services:
       - 8000:8000
     depends_on:
       - db
-#      - es
+      - es
 
 volumes:
-  insurance_pgdata:
+  pg_data:
+  es_data:
+    driver: local
+
+networks:
+  elastic:
+#    driver: bridge
