@@ -31,7 +31,6 @@ class ProductOptionDocument(Document):
         'is_active': fields.BooleanField()
     })
 
-
     class Index:
         name = 'products'
         settings = {'number_of_shards': 1, 'number_of_replicas': 1}
