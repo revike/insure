@@ -3,7 +3,7 @@
         <button class="drop__btn">
             <p class="sort__text">Фильтровать по:</p>
         </button>
-        <form action="{% url 'main_app:products' %}">
+        <form action="{% url 'search_app:filter' %}">
             <div class="dropdown-content-filter">
                 <p>Категории</p>
                 {% for category in categories %}

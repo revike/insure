@@ -5,4 +5,5 @@ app_name = 'search_app'
 
 urlpatterns = [
     path('', search_app.SearchView.as_view(), name='search'),
+    path('filter/', search_app.FilterView.as_view(), name='filter'),
 ]

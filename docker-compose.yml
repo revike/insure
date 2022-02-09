@@ -26,8 +26,6 @@ services:
       - xpack.security.enabled=false
       - discovery.type=single-node
     restart: unless-stopped
-    networks:
-      - elastic
   web:
     build:
       context: .
@@ -52,8 +50,3 @@ services:
 volumes:
   pg_data:
   es_data:
-    driver: local
-
-networks:
-  elastic:
-#    driver: bridge

@@ -89,13 +89,14 @@ TEMPLATES = [
 
 ELASTICSEARCH_DSL = {
     'default': {
-        'hosts': 'localhost:9200'
+        # 'hosts': 'localhost:9200'
+        'hosts': 'es:9200'
     }
 }
 
 WSGI_APPLICATION = 'insure.wsgi.application'
 
-# Database #
+# Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 if POSTGRES_PASSWORD != "":
