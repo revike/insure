@@ -1,14 +1,10 @@
-from django.contrib.postgres.search import SearchVector, SearchQuery, \
-    SearchRank
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views.generic import TemplateView, ListView, DetailView
 
-from insure.settings import DATABASES
 from main_app.forms import ProductResponseCreateForm
 from main_app.models import ProductCategory, ProductOption
-from main_app.search import get_query
 
 
 class IndexView(TemplateView):
@@ -66,50 +62,50 @@ class ProductListView(ListView):
             product__company__is_active=True,
             product__company__company__is_active=True).select_related()
 
-        category_filter = []
-        request_get = self.request.GET
-
-        categories = ProductCategory.get_categories()
-        for category in categories:
-            if request_get.get(category.name) is not None:
-                category_filter.append(category)
-
-        min_price = request_get.get('min_price')
-        max_price = request_get.get('max_price')
-        min_term = request_get.get('min_term')
-        max_term = request_get.get('max_term')
-        min_rate = request_get.get('min_rate')
-        max_rate = request_get.get('max_rate')
-        search = request_get.get('search')
-
-        if category_filter:
-            object_list = object_list.filter(
-                product__category__in=category_filter)
-        if min_price:
-            object_list = object_list.filter(price__gte=min_price)
-        if max_price:
-            object_list = object_list.filter(price__lte=max_price)
-        if min_term:
-            object_list = object_list.filter(term__gte=min_term)
-        if max_term:
-            object_list = object_list.filter(term__lte=max_term)
-        if min_rate:
-            object_list = object_list.filter(rate__gte=min_rate)
-        if max_rate:
-            object_list = object_list.filter(rate__lte=max_rate)
-        if search:
-            if DATABASES['default']['NAME'] == 'insure':
-                vector = SearchVector('product__name',
-                                      'product__category__name',
-                                      'product__company__name')
-                query = SearchQuery(search)
-                object_list = object_list.annotate(
-                    rank=SearchRank(vector, query)).order_by('-rank')
-            else:
-                query_string = self.request.GET['search']
-                entry_query = get_query(query_string,
-                                        ['product__name'])
-                object_list = object_list.filter(entry_query)
+        # category_filter = []
+        # request_get = self.request.GET
+        #
+        # categories = ProductCategory.get_categories()
+        # for category in categories:
+        #     if request_get.get(category.name) is not None:
+        #         category_filter.append(category)
+        #
+        # min_price = request_get.get('min_price')
+        # max_price = request_get.get('max_price')
+        # min_term = request_get.get('min_term')
+        # max_term = request_get.get('max_term')
+        # min_rate = request_get.get('min_rate')
+        # max_rate = request_get.get('max_rate')
+        # # search = request_get.get('search')
+        #
+        # if category_filter:
+        #     object_list = object_list.filter(
+        #         product__category__in=category_filter)
+        # if min_price:
+        #     object_list = object_list.filter(price__gte=min_price)
+        # if max_price:
+        #     object_list = object_list.filter(price__lte=max_price)
+        # if min_term:
+        #     object_list = object_list.filter(term__gte=min_term)
+        # if max_term:
+        #     object_list = object_list.filter(term__lte=max_term)
+        # if min_rate:
+        #     object_list = object_list.filter(rate__gte=min_rate)
+        # if max_rate:
+        #     object_list = object_list.filter(rate__lte=max_rate)
+        # # if search:
+        # #     if DATABASES['default']['NAME'] == 'insure':
+        # #         vector = SearchVector('product__name',
+        # #                               'product__category__name',
+        # #                               'product__company__name')
+        # #         query = SearchQuery(search)
+        # #         object_list = object_list.annotate(
+        # #             rank=SearchRank(vector, query)).order_by('-rank')
+        # #     else:
+        # #         query_string = self.request.GET['search']
+        # #         entry_query = get_query(query_string,
+        # #                                 ['product__name'])
+        # #         object_list = object_list.filter(entry_query)
 
         return object_list
 

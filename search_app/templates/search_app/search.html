@@ -4,7 +4,7 @@
 {% block content %}
     {% include 'main_app/includes/inc_sort.html' %}
     
-    <h1 class="all_products">Поиск по запросу: {{ request.GET.search }}</h1>
+    <h1 class="all_products">{{ title }} {{ request.GET.search }}</h1>
     {% if search.count != 0 %}
         {% for product in search %}
             <div class="product">
