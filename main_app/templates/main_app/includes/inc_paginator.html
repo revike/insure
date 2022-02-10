@@ -1,6 +1,6 @@
 {% load url_replace %}
 
-{% if page_obj %}
+{% if page_obj != None %}
     <div class="pagination">
     <span class="step-links">
         {% if page_obj.has_previous %}

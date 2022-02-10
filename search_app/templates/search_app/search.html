@@ -6,7 +6,7 @@
     
     <h1 class="all_products">{{ title }} {{ request.GET.search }}</h1>
     {% if search.count != 0 %}
-        {% for product in search %}
+        {% for product in object_list %}
             <div class="product">
                 <div class="product__label">
                     <img class="product__img"

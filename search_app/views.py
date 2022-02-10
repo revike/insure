@@ -1,63 +1,83 @@
-from django.views.generic import TemplateView
+from django.core.paginator import Paginator, Page
+from django.views.generic import ListView
+from elasticsearch import RequestError
 from elasticsearch_dsl import Q
 
 from main_app.models import ProductCategory
 from search_app.documents import ProductOptionDocument
-from search_app.search import search_obj
+from search_app.search import search_obj, elastic_filter
 
 
-class SearchView(TemplateView):
+class DSEPaginator(Paginator):
+
+    def __init__(self, *args, **kwargs):
+        super(DSEPaginator, self).__init__(*args, **kwargs)
+        self._count = self.object_list.hits.total
+
+    def page(self, number):
+        number = self.validate_number(number)
+        return Page(self.object_list, number, self)
+
+
+class SearchView(ListView):
     """Elastic поиск"""
     template_name = 'search_app/search.html'
+    paginate_by = 10
 
     def get_context_data(self, **kwargs):
         """Возвращает контекст для этого представления"""
         context = super().get_context_data(**kwargs)
         context['title'] = 'Поиск по запросу:'
         context['categories'] = ProductCategory.get_categories()
-
-        query = self.request.GET.get('search')
-
-        q = Q(
-            'multi_match',
-            query=query,
-            fields=[
-                'product.name', 'product.category.name',
-                'product.company.name', 'product.short_desc',
-                'product.description',
-            ],
-            fuzziness='auto',
-        )
-        search = search_obj(q)
-
-        if search.count() == 0:
-            try:
-                query = int(query)
-                q = Q(
-                    'multi_match',
-                    query=query,
-                    fields=[
-                        'price', 'rate', 'term'
-                    ]
-                )
-                search = search_obj(q)
-            except ValueError:
-                pass
-
-        context['search'] = search
-
         return context
 
-    def get(self, request, *args, **kwargs):
-        return super().get(self.request, **kwargs)
+    def get_queryset(self):
+        query = self.request.GET.get('search')
+        try:
+            q = Q(
+                'multi_match',
+                query=query,
+                fields=[
+                    'product.name', 'product.category.name',
+                    'product.company.name', 'product.short_desc',
+                    'product.description',
+                ],
+                fuzziness='auto',
+            )
+            object_list = search_obj(q)
+
+            if object_list.count() == 0:
+                try:
+                    query = int(query)
+                    q = Q(
+                        'multi_match',
+                        query=query,
+                        fields=[
+                            'price', 'rate', 'term'
+                        ]
+                    )
+                    object_list = search_obj(q)
+                except ValueError:
+                    pass
+        except RequestError:
+            object_list = []
+        object_list = elastic_filter(object_list)
+        return object_list
 
 
-class FilterView(TemplateView):
+class FilterView(ListView):
     """Elastic filter"""
     template_name = 'search_app/search.html'
+    paginate_by = 10
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        categories = ProductCategory.get_categories()
+        context['title'] = 'Фильтр'
+        context['categories'] = categories
+        return context
+
+    def get_queryset(self):
         categories = ProductCategory.get_categories()
         request_get = self.request.GET
 
@@ -73,7 +93,8 @@ class FilterView(TemplateView):
         min_rate = request_get.get('min_rate')
         max_rate = request_get.get('max_rate')
 
-        search = ProductOptionDocument.search()
+        object_list = ProductOptionDocument.search()
+
         if category_filter:
             i = 0
             q = Q(
@@ -92,21 +113,19 @@ class FilterView(TemplateView):
                     ]
                 )
                 i += 1
-            search = search.query(q)
+            object_list = object_list.query(q)
         if min_price:
-            search = search.filter('range', price={'gte': min_price})
+            object_list = object_list.filter('range', price={'gte': min_price})
         if max_price:
-            search = search.filter('range', price={'lte': max_price})
+            object_list = object_list.filter('range', price={'lte': max_price})
         if min_term:
-            search = search.filter('range', term={'gte': min_term})
+            object_list = object_list.filter('range', term={'gte': min_term})
         if max_term:
-            search = search.filter('range', term={'lte': max_term})
+            object_list = object_list.filter('range', term={'lte': max_term})
         if min_rate:
-            search = search.filter('range', rate={'gte': min_rate})
+            object_list = object_list.filter('range', rate={'gte': min_rate})
         if max_rate:
-            search = search.filter('range', rate={'lte': max_rate})
+            object_list = object_list.filter('range', rate={'lte': max_rate})
 
-        context['search'] = search
-        context['title'] = 'Фильтр'
-        context['categories'] = categories
-        return context
+        object_list = elastic_filter(object_list)
+        return object_list
