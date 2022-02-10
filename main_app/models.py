@@ -1,6 +1,9 @@
+from subprocess import Popen, PIPE
+
 from django.core.validators import RegexValidator
 from django.db import models
-from auth_app.models import CompanyUserProfile
+
+from auth_app.models import CompanyUserProfile, CompanyUser
 
 
 class ProductCategory(models.Model):
@@ -102,3 +105,9 @@ class ProductResponse(models.Model):
 
     def __str__(self):
         return f'{self.first_name} {self.last_name} {self.product}'
+
+
+def update_index():
+    Popen("python manage.py search_index --rebuild -f",
+          shell=True, stdout=PIPE).communicate()[
+        0].decode('utf-8').strip()
