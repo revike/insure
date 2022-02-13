@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     'template_profiler_panel',
     'django_elasticsearch_dsl',
     'django_cleanup',
-    'celery',
 
     'main_app',
     'auth_app',
@@ -92,8 +91,8 @@ TEMPLATES = [
 
 ELASTICSEARCH_DSL = {
     'default': {
-        'hosts': 'localhost:9200'
-        # 'hosts': 'es:9200'
+        # 'hosts': 'localhost:9200'
+        'hosts': 'es:9200'
     }
 }
 
@@ -109,8 +108,8 @@ if POSTGRES_PASSWORD != "":
             'ENGINE': 'django.db.backends.postgresql',
             'USER': POSTGRES_USER,
             'PASSWORD': POSTGRES_PASSWORD,
-            # 'HOST': 'db',
-            'HOST': 'localhost',
+            'HOST': 'db',
+            # 'HOST': 'localhost',
             'PORT': '5432'
         }
     }
@@ -206,20 +205,18 @@ CAPTCHA_LENGTH = 6
 
 # Email
 
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 25
-EMAIL_HOST_USER = None
-EMAIL_HOST_PASSWORD = None
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_PORT = 465
+EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'insure_test@mail.ru'
+EMAIL_HOST_PASSWORD = EMAIL_PASSWORD
 
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH = 'tmp/emails/'
+# EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_FILE_PATH = 'tmp/emails/'
 
 # Celery
 
 CELERY_BROKER_URL = 'amqp://localhost'
-# CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
-# CELERY_RESULT_BACKEND = 'amqp://quest:quest@localhost:15672/vhost'
-# CELERY_ACCEPT_CONTENT = ['application/json']
-# CELERY_TASK_SERIALIZER = 'json'
-# CELERY_RESULT_SERIALIZER = 'json'
+# CELERY_RESULT_BACKEND = 'amqp://'

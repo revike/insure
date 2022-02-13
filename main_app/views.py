@@ -5,6 +5,7 @@ from django.views.generic import TemplateView, ListView, DetailView
 
 from main_app.forms import ProductResponseCreateForm
 from main_app.models import ProductCategory, ProductOption
+from main_app.tasks import send_email_company
 
 
 class IndexView(TemplateView):
@@ -132,6 +133,13 @@ class ProductDetailView(DetailView):
             create_response.product = self.model.objects.get(
                 id=self.kwargs['pk'])
             form.save(commit=True)
+            instance = form.instance
+            send_email_company.delay(
+                phone=instance.phone_number, email=instance.email,
+                first_name=instance.first_name, last_name=instance.last_name,
+                product_name=instance.product.product.name,
+                company_email=instance.product.product.company.company.email
+            )
             return HttpResponseRedirect(
                 reverse('main_app:valid', args=[kwargs['pk']]))
         return HttpResponseRedirect(
