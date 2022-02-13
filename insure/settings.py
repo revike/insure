@@ -47,11 +47,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'captcha',
     'debug_toolbar',
     'template_profiler_panel',
     'django_elasticsearch_dsl',
     'django_cleanup',
+    'celery',
+
     'main_app',
     'auth_app',
     'cabinet_app',
@@ -89,8 +92,8 @@ TEMPLATES = [
 
 ELASTICSEARCH_DSL = {
     'default': {
-        # 'hosts': 'localhost:9200'
-        'hosts': 'es:9200'
+        'hosts': 'localhost:9200'
+        # 'hosts': 'es:9200'
     }
 }
 
@@ -106,8 +109,8 @@ if POSTGRES_PASSWORD != "":
             'ENGINE': 'django.db.backends.postgresql',
             'USER': POSTGRES_USER,
             'PASSWORD': POSTGRES_PASSWORD,
-            'HOST': 'db',
-            # 'HOST': 'localhost',
+            # 'HOST': 'db',
+            'HOST': 'localhost',
             'PORT': '5432'
         }
     }
@@ -119,10 +122,10 @@ else:
         }
     }
 
-
 if DEBUG:
     def show_toolbar(request):
         return True
+
 
     DEBUG_TOOLBAR_CONFIG = {
         'SHOW_TOOLBAR_CALLBACK': show_toolbar,
@@ -211,3 +214,12 @@ EMAIL_USE_SSL = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = 'tmp/emails/'
+
+# Celery
+
+CELERY_BROKER_URL = 'amqp://localhost'
+# CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
+# CELERY_RESULT_BACKEND = 'amqp://quest:quest@localhost:15672/vhost'
+# CELERY_ACCEPT_CONTENT = ['application/json']
+# CELERY_TASK_SERIALIZER = 'json'
+# CELERY_RESULT_SERIALIZER = 'json'
