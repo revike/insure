@@ -4,15 +4,19 @@ services:
   celery:
     restart: always
     container_name: celery
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     command: ["celery", "-A", "insure", "worker", "-l", "info"]
     volumes:
       - celery_data:/var/lib/cellery/data
   celery_beat:
     restart: always
     container_name: celery_beat
-    build: .
-    command: ["celery", "-A", "insure", "events", "-l", "info"]
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["celery", "-A", "insure", "beat", "-l", "info"]
     volumes:
       - celery_data:/var/lib/cellery_beat/data
   rabbitmq:
