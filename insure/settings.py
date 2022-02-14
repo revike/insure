@@ -218,5 +218,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Celery
 
-CELERY_BROKER_URL = 'amqp://localhost'
-# CELERY_RESULT_BACKEND = 'amqp://'
+CELERY_BROKER_URL = 'amqp://rabbitmq:5672'
+# CELERY_BROKER_URL = 'amqp://localhost:5672'
+# CELERY_RESULT_BACKEND = 'rpc://'

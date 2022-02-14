@@ -5,7 +5,7 @@ from django.conf import settings
 from django.core.mail import send_mail
 
 
-@shared_task
+@shared_task()
 def send_email_company(**kwargs):
     subject = f'Отклик на заявку "{kwargs["product_name"].capitalize()}"'
     message = f'На заявку откликнулся ' \
@@ -14,7 +14,7 @@ def send_email_company(**kwargs):
               f'E-mail: {kwargs["email"]}\n' \
               f'Tel: {kwargs["phone"]}\n\n' \
               f'Продукт: \n{kwargs["product_name"]}'
-    time.sleep(5)
+    time.sleep(2)
     return send_mail(subject, message, settings.EMAIL_HOST_USER,
                      [kwargs["company_email"], ],
                      fail_silently=False)

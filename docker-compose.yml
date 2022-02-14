@@ -1,6 +1,30 @@
 version: "3.8"
 
 services:
+  celery:
+    restart: always
+    container_name: celery
+    build: .
+    command: ["celery", "-A", "insure", "worker", "-l", "info"]
+    volumes:
+      - celery_data:/var/lib/cellery/data
+  celery_beat:
+    restart: always
+    container_name: celery_beat
+    build: .
+    command: ["celery", "-A", "insure", "events", "-l", "info"]
+    volumes:
+      - celery_data:/var/lib/cellery_beat/data
+  rabbitmq:
+    restart: always
+    container_name: rabbitmq
+    image: rabbitmq:3.9.9-management-alpine
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - rebbitmq_data:/var/lib/rabbitmq/data
+      - rebbitmq_log:/var/lig/rabbitmq/log
   db:
     image: postgres
     container_name: insure_db
@@ -50,3 +74,7 @@ services:
 volumes:
   pg_data:
   es_data:
+  celery_data:
+  celery_beat:
+  rebbitmq_data:
+  rebbitmq_log:
