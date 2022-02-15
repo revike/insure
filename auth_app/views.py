@@ -26,7 +26,7 @@ class RegisterView(CreateView):
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            return HttpResponseRedirect(reverse('cab_app:index_cab'))
+            return HttpResponseRedirect(reverse('cab_app:profile'))
         return super().get(self.request, **kwargs)
 
     def form_valid(self, form):
@@ -102,7 +102,7 @@ class LoginUserView(LoginView):
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            return HttpResponseRedirect(reverse('cab_app:index_cab'))
+            return HttpResponseRedirect(reverse('cab_app:profile'))
         return super().get(self.request, **kwargs)
 
     def form_valid(self, form):
@@ -110,7 +110,7 @@ class LoginUserView(LoginView):
         login(self.request, form.get_user())
         if next_url:
             return HttpResponseRedirect(self.request.session['next_url'])
-        return HttpResponseRedirect(reverse('cab_app:index_cab'))
+        return HttpResponseRedirect(reverse('cab_app:profile'))
 
 
 class LogoutUserView(LogoutView):

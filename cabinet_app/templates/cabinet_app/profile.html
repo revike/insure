@@ -1,0 +1,31 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1 class="a_product__title">{{ title|capfirst }}, {{ user }}</h1>
+    <div class="cabinet">
+        {% include 'cabinet_app/includes/inc_menu.html' %}
+        <div class="cabinet_content">
+            {% if company %}
+                <p>{{ company.name }}</p>
+                <p>{{ company.company.email }}</p>
+                <p>{{ company.about_company }}</p>
+                <p>{{ company.tax_id }}</p>
+            {% elif company_not_active %}
+                <p>Данные вашей компании проходят проверку...</p>
+            {% else %}
+                <form class="profile_form" action="{% url 'cab_app:profile' %}"
+                      method="post" enctype="multipart/form-data">
+                    <h3>Заполните данные компании и отправьте на
+                        подтверждение</h3>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="profile_send">
+                        <button type="submit">Отправить</button>
+                    </div>
+                </form>
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}
