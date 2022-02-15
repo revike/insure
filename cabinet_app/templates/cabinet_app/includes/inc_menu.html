@@ -1,0 +1,24 @@
+<div class="cabinet_menu">
+    <h3>Меню</h3>
+    <ul>
+        <li {% if request.resolver_match.url_name.split.0 == 'profile' %}class="active_menu"
+            {% else %}class=""{% endif %}>
+            <a href="{% url 'cab_app:profile' %}">Профиль</a>
+        </li>
+        <li>
+            <a href="#">Отклики</a>
+        </li>
+        <li>
+            <a href="#">Продукты</a>
+        </li>
+        {% if user.is_staff %}
+            <li>
+                <a href="{% url 'admin:index' %}">Админка</a>
+            </li>
+        {% endif %}
+        <li>
+            <a href="{% url 'auth_app:logout' %}"><span>Выйти</span>
+            </a>
+        </li>
+    </ul>
+</div>
