@@ -108,9 +108,11 @@ class LoginUserView(LoginView):
     def form_valid(self, form):
         next_url = self.request.session['next_url']
         login(self.request, form.get_user())
-        if next_url:
-            return HttpResponseRedirect(self.request.session['next_url'])
-        return HttpResponseRedirect(reverse('cab_app:profile'))
+        try:
+            if next_url:
+                return HttpResponseRedirect(self.request.session['next_url'])
+        except KeyError:
+            return HttpResponseRedirect(reverse('cab_app:profile'))
 
 
 class LogoutUserView(LogoutView):
