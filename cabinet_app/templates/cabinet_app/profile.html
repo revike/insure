@@ -7,12 +7,45 @@
         {% include 'cabinet_app/includes/inc_menu.html' %}
         <div class="cabinet_content">
             {% if company %}
-                <p>{{ company.name }}</p>
-                <p>{{ company.company.email }}</p>
-                <p>{{ company.about_company }}</p>
-                <p>{{ company.tax_id }}</p>
+                <div class="product__label">
+                    <img class="product__img" src="/media/{{ company.0.label }}"
+                         alt="{{ company.0.name }}">
+                </div>
+                <div class="profile_company">
+                    <p>Компания: <span>{{ company.0.name }}</span></p>
+                    <p>Директор:
+                        <span>
+                                {{ company.0.company.last_name|title }}
+                                {{ company.0.company.first_name|title }}
+                                {{ company.0.company.patronymic|title }}
+                            </span>
+                    </p>
+                    <p>ИНН: <span>{{ company.0.tax_id }}</span></p>
+                    <p>E-mail: <span>{{ company.0.company.email }}</span></p>
+                    <p>Описание: <span>{{ company.0.about_company }}</span></p>
+                </div>
+                <div class="profile_edit_link">
+                    <a href="{% url 'cab_app:profile_update' company.0.id %}">Изменить</a>
+                </div>
             {% elif company_not_active %}
-                <p>Данные вашей компании проходят проверку...</p>
+                <div>
+                    <div>
+                        <h4>Данные вашей компании проходят проверку...</h4>
+                    </div>
+                    <div class="profile_company">
+                        <p>Компания: <span>{{ company_not_active.0.name }}</span>
+                        </p>
+                        <p>Директор:
+                            <span>
+                                {{ company_not_active.0.company.last_name|title }}
+                                {{ company_not_active.0.company.first_name|title }}
+                                {{ company_not_active.0.company.patronymic|title }}
+                            </span>
+                        </p>
+                        <p>ИНН: <span>{{ company_not_active.0.tax_id }}</span>
+                        </p>
+                    </div>
+                </div>
             {% else %}
                 <form class="profile_form" action="{% url 'cab_app:profile' %}"
                       method="post" enctype="multipart/form-data">

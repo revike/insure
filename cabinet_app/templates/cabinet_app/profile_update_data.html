@@ -1,0 +1,30 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1 class="a_product__title">{{ title|capfirst }}, {{ user }}</h1>
+    <div class="cabinet">
+        {% include 'cabinet_app/includes/inc_menu.html' %}
+        <div class="cabinet_content">
+            <form class="profile_form"
+                  action="{% url 'cab_app:profile_update_data' object.id %}"
+                  method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="profile_send">
+                    <button type="submit">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {% if request.resolver_match.url_name.split.0 == 'profile_update_data' %}
+        <div>
+            <h3 class="update_attention">Внимание! После изменения, данные
+                отправятся на
+                рассмотрение... <a
+                        href="{% url 'cab_app:profile' %}">Отмена</a></h3>
+        </div>
+    {% endif %}
+
+{% endblock %}
