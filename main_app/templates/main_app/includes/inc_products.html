@@ -11,9 +11,15 @@
             <div class="product__info">
                 <p class="product__category">Категория:
                     <span>{{ product.product.category }}</span></p>
+                {% if request.resolver_match.url_name != 'my_products' %}
                 <a class="product__name"
                    href="{% url 'main_app:product' pk=product.id %}">
                     <p>{{ product.product.name }}</p></a>
+                {% else %}
+                    <a class="product__name"
+                   href="{% url 'cab_app:product_update' pk=product.id %}">
+                    <p>{{ product.product.name }}</p></a>
+                {% endif %}
                 <p class="product__description">{{ product.product.short_desc }}</p>
             </div>
             <div class="product__info_2">
@@ -29,9 +35,15 @@
                 {% endif %}
             </div>
             <div class="product__button">
-                <a href="{% url 'main_app:product' pk=product.id %}">
-                    Посмотреть
-                </a>
+                {% if request.resolver_match.url_name != 'my_products' %}
+                    <a href="{% url 'main_app:product' pk=product.id %}">
+                        Посмотреть
+                    </a>
+                {% else %}
+                    <a href="{% url 'cab_app:product_update' pk=product.id %}">
+                        Редактировать
+                    </a>
+                {% endif %}
             </div>
         </div>
     {% endfor %}

@@ -1,0 +1,50 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1 class="a_product__title">{{ title|capfirst }}</h1>
+    <br>
+    <div class="cabinet_delete">
+        <div class="cabinet_delete">
+            <div class="a_product__content">
+                <h3>Вы уверены, что хотите
+                    удалить {{ object.product.name }}?</h3>
+                <br>
+                <hr>
+                <div>
+                    <h3 class="a_product__title">Характеристики:</h3>
+                </div>
+                <div class="a_product__options">
+                    <div class="a_product__option"></div>
+                    <div class="a_product__option">
+                        <p>Компания: <a
+                                href="#">{{ object.product.company }}</a></p>
+                        <p>Категория: <a
+                                href="{% url 'main_app:category' pk=object.product.category.id %}">{{ object.product.category }}</a>
+                        </p>
+                        <p>Срок: на {{ object.term }} мес.</p>
+                        {% if object.rate != 0 %}
+                            <p>Ставка: {{ object.rate }} %</p>
+                        {% endif %}
+                        <p>Цена: {{ object.price }} &#8381;</p>
+                    </div>
+                    <div class="a_product__option"></div>
+                </div>
+                <br>
+                <form action="{% url 'cab_app:product_option_delete' pk=object.id %}"
+                      method="post">
+                    {% csrf_token %}
+                    <div class="button_delete">
+                        <div class="a_product_button_form">
+                            <button type="button"><a href="{% url 'cab_app:product_update' object.id %}">Отмена</a>
+                            </button>
+                        </div>
+                        <div class="a_product_button_form">
+                            <button type="submit">Удалить</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -20,9 +20,12 @@
 
     {% if request.resolver_match.url_name.split.0 == 'profile_update_data' %}
         <div>
-            <h3 class="update_attention">Внимание! После изменения, данные
+            <h3 class="update_attention">
+                {% if not user.is_staff %}
+
+                Внимание! После изменения, данные
                 отправятся на
-                рассмотрение... <a
+                рассмотрение... {% endif %}<a
                         href="{% url 'cab_app:profile' %}">Отмена</a></h3>
         </div>
     {% endif %}

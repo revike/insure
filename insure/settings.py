@@ -91,8 +91,8 @@ TEMPLATES = [
 
 ELASTICSEARCH_DSL = {
     'default': {
-        # 'hosts': 'localhost:9200'
-        'hosts': 'es:9200'
+        'hosts': 'localhost:9200'
+        # 'hosts': 'es:9200'
     }
 }
 
@@ -101,25 +101,32 @@ WSGI_APPLICATION = 'insure.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-if POSTGRES_PASSWORD != "":
-    DATABASES = {
-        'default': {
-            'NAME': POSTGRES_DB,
-            'ENGINE': 'django.db.backends.postgresql',
-            'USER': POSTGRES_USER,
-            'PASSWORD': POSTGRES_PASSWORD,
-            'HOST': 'db',
-            # 'HOST': 'localhost',
-            'PORT': '5432'
+DATABASES = {
+    'default': {
+        'NAME': POSTGRES_DB,
+        'ENGINE': 'django.db.backends.postgresql',
+        'USER': POSTGRES_USER,
+        'PASSWORD': POSTGRES_PASSWORD,
+        # 'HOST': 'db',
+        'HOST': 'localhost',
+        'PORT': '5432'
+    },
+    'mongodb': {
+        'NAME': 'mongodb',
+        'ENGINE': 'djongo',
+        'ENFORCE_SCHEMA': False,
+        'CLIENT': {
+            # 'host': 'mongodb://mongodb:27017',
+            'host': 'mongodb://127.0.0.1:27017',
+            # 'username': 'root',
+            # 'password': 'mongo_admin',
         }
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
+}
+
+DATABASE_ROUTERS = (
+    'insure.db_routers.PageHitRouter',
+)
 
 if DEBUG:
     def show_toolbar(request):
