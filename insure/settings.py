@@ -91,8 +91,8 @@ TEMPLATES = [
 
 ELASTICSEARCH_DSL = {
     'default': {
-        'hosts': 'localhost:9200'
-        # 'hosts': 'es:9200'
+        # 'hosts': 'localhost:9200'
+        'hosts': 'es:9200'
     }
 }
 
@@ -107,8 +107,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'USER': POSTGRES_USER,
         'PASSWORD': POSTGRES_PASSWORD,
-        # 'HOST': 'db',
-        'HOST': 'localhost',
+        'HOST': 'db',
+        # 'HOST': 'localhost',
         'PORT': '5432'
     },
     'mongodb': {
@@ -116,10 +116,10 @@ DATABASES = {
         'ENGINE': 'djongo',
         'ENFORCE_SCHEMA': False,
         'CLIENT': {
-            # 'host': 'mongodb://mongodb:27017',
-            'host': 'mongodb://127.0.0.1:27017',
-            # 'username': 'root',
-            # 'password': 'mongo_admin',
+            'host': 'mongodb://mongodb:27017',
+            # 'host': 'mongodb://127.0.0.1:27017',
+            'username': 'root',
+            'password': 'mongo_admin',
         }
     }
 }
