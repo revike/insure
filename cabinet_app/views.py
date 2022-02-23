@@ -2,12 +2,12 @@ from django.contrib.auth.decorators import user_passes_test
 from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, ListView, DeleteView
 
 from auth_app.models import CompanyUserProfile, CompanyUser
 from cabinet_app.forms import ProfileCreateForm, ProfileUpdateForm, \
-    ProfileUpdateDataForm
-from main_app.models import ProductCategory
+    ProfileUpdateDataForm, ProductOptionUpdateForm, ProductUpdateForm
+from main_app.models import ProductCategory, ProductOption, PageHit, Product
 
 
 class CabinetIndexView(CreateView):
@@ -69,11 +69,144 @@ class ProfileUpdateView(UpdateView):
     def get_queryset(self):
         if self.request.resolver_match.url_name == 'profile_update':
             queryset = CompanyUserProfile.objects.filter(
-                is_active=True, company__is_active=True)
+                is_active=True, company__is_active=True,
+                company_id=self.request.user.id)
         else:
             queryset = CompanyUser.objects.filter(
-                is_active=True)
+                is_active=True, id=self.request.user.id)
         return queryset
+
+    def form_valid(self, form):
+        if self.request.resolver_match.url_name == 'profile_update_data' \
+                and not self.request.user.is_staff:
+            CompanyUserProfile.objects.filter(
+                company_id=self.request.user.id).update(is_active=False)
+            form.save()
+            return HttpResponseRedirect(reverse('cab_app:profile'))
+        return super().form_valid(form)
+
+    @method_decorator(user_passes_test(lambda u: u.is_authenticated))
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
+
+class MyProductListView(ListView):
+    """Контроллер списка продуктов компании"""
+    model = ProductOption
+    template_name = 'cabinet_app/my_products.html'
+    paginate_by = 10
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        """Возвращает контекст для этого представления"""
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'мои продукты'
+        context['categories'] = ProductCategory.get_categories()
+        return context
+
+    def get_queryset(self):
+        return ProductOption.objects.filter(
+            is_active=True, product__is_active=True,
+            product__category__is_active=True,
+            product__company__is_active=True,
+            product__company__company__is_active=True,
+            product__company__company_id=self.request.user.id
+        ).select_related()
+
+    @method_decorator(user_passes_test(lambda u: u.is_authenticated))
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
+
+class MyProductUpdateView(UpdateView):
+    """Контроллер редактирования продукта"""
+    success_url = reverse_lazy('cab_app:my_products')
+
+    def get_context_data(self, **kwargs):
+        """Возвращает контекст для этого представления"""
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'редактирование продукта'
+        context['categories'] = ProductCategory.get_categories()
+        try:
+            context['page_hit'] = PageHit.objects.filter(
+                url=f'/product/{self.object.id}/').first().count
+        except AttributeError:
+            context['page_hit'] = 0
+        return context
+
+    def get_template_names(self):
+        if self.request.resolver_match.url_name == 'product_update':
+            template_name = 'cabinet_app/product_update.html'
+        else:
+            template_name = 'cabinet_app/product_update_title.html'
+        return template_name
+
+    def get_form_class(self):
+        if self.request.resolver_match.url_name == 'product_update':
+            form_class = ProductOptionUpdateForm
+        else:
+            form_class = ProductUpdateForm
+        return form_class
+
+    def get_queryset(self):
+        if self.request.resolver_match.url_name == 'product_update':
+            queryset = ProductOption.objects.filter(
+                is_active=True, product__is_active=True,
+                product__category__is_active=True,
+                product__company__is_active=True,
+                product__company__company__is_active=True,
+                product__company__company_id=self.request.user.id
+            )
+        else:
+            queryset = Product.objects.filter(
+                is_active=True, category__is_active=True,
+                company__is_active=True, company__company__is_active=True,
+                company__company_id=self.request.user.id)
+        return queryset
+
+    @method_decorator(user_passes_test(lambda u: u.is_authenticated))
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
+
+class MyProductDeleteView(DeleteView):
+    """Контроллер удаления продукта"""
+    success_url = reverse_lazy('cab_app:my_products')
+
+    def get_context_data(self, **kwargs):
+        """Возвращает контекст для этого представления"""
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'удаление продукта'
+        context['categories'] = ProductCategory.get_categories()
+        return context
+
+    def get_template_names(self):
+        if self.request.resolver_match.url_name == 'product_option_delete':
+            template_name = 'cabinet_app/product_option_delete.html'
+        else:
+            template_name = 'cabinet_app/product_delete.html'
+        return template_name
+
+    def get_queryset(self):
+        if self.request.resolver_match.url_name == 'product_option_delete':
+            queryset = ProductOption.objects.filter(
+                is_active=True, product__is_active=True,
+                product__category__is_active=True,
+                product__company__is_active=True,
+                product__company__company__is_active=True,
+                product__company__company_id=self.request.user.id
+            )
+        else:
+            queryset = Product.objects.filter(
+                is_active=True, category__is_active=True,
+                company__is_active=True, company__company__is_active=True,
+                company__company_id=self.request.user.id)
+        return queryset
+
+    def form_valid(self, form):
+        product = self.get_object()
+        product.is_active = False
+        product.save()
+        return HttpResponseRedirect(self.get_success_url())
 
     @method_decorator(user_passes_test(lambda u: u.is_authenticated))
     def dispatch(self, *args, **kwargs):

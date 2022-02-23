@@ -421,6 +421,16 @@ body {
 .a_product__option {
 }
 
+.button_delete {
+    display: flex;
+    justify-content: space-around;
+}
+
+.button_delete a {
+    color: red;
+    text-decoration: none;
+}
+
 .a_product__option a {
     text-decoration: none;
     color: black;
@@ -592,6 +602,11 @@ body {
     justify-content: flex-start;
 }
 
+.cabinet_delete {
+    display: flex;
+    justify-content: center;
+}
+
 .cabinet_content{
     display: flex;
     width: 100%;
@@ -744,5 +759,30 @@ body {
 }
 
 .update_attention a:hover {
+    color: green;
+}
+
+.cabinet__my_products {
+    width: 100%;
+    padding-left: 50px;
+}
+
+.update_delete_product {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.product_add_new {
+    display: flex;
+        justify-content: end;
+}
+
+.product_add_new a {
+    text-decoration: none;
+    color: grey;
+    font-weight: bold;
+}
+
+.product_add_new a:hover{
     color: green;
 }

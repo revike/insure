@@ -1,6 +1,7 @@
 from django.core.validators import RegexValidator
 from django.db import models
 from auth_app.models import CompanyUserProfile, CompanyUser
+from djongo import models as mongo_models
 
 
 class ProductCategory(models.Model):
@@ -102,3 +103,18 @@ class ProductResponse(models.Model):
 
     def __str__(self):
         return f'{self.first_name} {self.last_name} {self.product}'
+
+
+class PageHit(mongo_models.Model):
+    """Модель счетчика просмотра страниц"""
+    _id = mongo_models.BigAutoField(primary_key=True)
+    url = mongo_models.CharField(unique=True, max_length=256,
+                                 verbose_name='url')
+    count = mongo_models.PositiveBigIntegerField(
+        default=1, verbose_name='количество просмотров')
+
+    class Meta:
+        db_table = 'mongodb'
+
+    def __str__(self):
+        return f'{self.url} => {self.count}'

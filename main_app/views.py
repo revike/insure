@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views.generic import TemplateView, ListView, DetailView
 
+from main_app.decorators import counted
 from main_app.forms import ProductResponseCreateForm
 from main_app.models import ProductCategory, ProductOption
 from main_app.tasks import send_email_company
@@ -116,6 +117,7 @@ class ProductDetailView(DetailView):
     template_name = 'main_app/product.html'
     model = ProductOption
 
+    @counted
     def get_context_data(self, *, object_list=None, **kwargs):
         """Возвращает контекст для этого представления"""
         form = ProductResponseCreateForm()
