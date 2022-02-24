@@ -8,7 +8,8 @@ from auth_app.models import CompanyUserProfile, CompanyUser
 from cabinet_app.forms import ProfileCreateForm, ProfileUpdateForm, \
     ProfileUpdateDataForm, ProductOptionUpdateForm, ProductUpdateForm, \
     ProductCreateForm, ProductOptionCreateForm
-from main_app.models import ProductCategory, ProductOption, PageHit, Product
+from main_app.models import ProductCategory, ProductOption, PageHit, Product, \
+    ProductResponse
 
 
 class CabinetIndexView(CreateView):
@@ -156,7 +157,6 @@ class MyProductUpdateView(UpdateView):
             return HttpResponseRedirect(self.get_success_url())
         return super().form_valid(form)
 
-
     def get_queryset(self):
         if self.request.resolver_match.url_name == 'product_update':
             queryset = ProductOption.objects.filter(
@@ -251,6 +251,29 @@ class ProductCreateView(CreateView):
                 form_product.instance.rate = 0
             form_product.save()
         return HttpResponseRedirect(reverse('cab_app:my_products'))
+
+    @method_decorator(user_passes_test(lambda u: u.is_authenticated))
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
+
+class ProductResponseView(ListView):
+    """Контроллер отклика на продукт"""
+    model = ProductResponse
+    template_name = 'cabinet_app/response.html'
+    paginate_by = 10
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        """Возвращает контекст для этого представления"""
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'отклики на продукты'
+        context['categories'] = ProductCategory.get_categories()
+        return context
+
+    def get_queryset(self):
+        user_id = self.request.user.id
+        return self.model.objects.filter(
+            product__product__company__company__id=user_id).select_related()
 
     @method_decorator(user_passes_test(lambda u: u.is_authenticated))
     def dispatch(self, *args, **kwargs):

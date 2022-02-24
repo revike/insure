@@ -21,4 +21,5 @@ urlpatterns = [
          name='product_delete'),
     path('product_create/', cab_app.ProductCreateView.as_view(),
          name='product_create'),
+    path('response/', cab_app.ProductResponseView.as_view(), name='response'),
 ]
