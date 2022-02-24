@@ -1,4 +1,5 @@
 from django import forms
+
 from auth_app.models import CompanyUserProfile, CompanyUser
 from main_app.models import Product, ProductOption
 
@@ -65,6 +66,35 @@ class ProductUpdateForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = ('category', 'name', 'short_desc', 'description')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
+            field.help_text = ''
+
+
+class ProductOptionCreateForm(forms.ModelForm):
+    """Форма создания опции продукта"""
+
+    class Meta:
+        model = ProductOption
+        fields = ('price', 'rate', 'term',)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
+            field.help_text = ''
+
+
+class ProductCreateForm(forms.ModelForm):
+    """Форма создания продукта"""
+
+    class Meta:
+        model = Product
+        fields = ('category', 'name', 'short_desc', 'description' )
+        # fields = '__all__'
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

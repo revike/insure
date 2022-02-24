@@ -1,0 +1,19 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1 class="a_product__title">{{ title|capfirst }}</h1>
+    <div class="cabinet">
+        {% include 'cabinet_app/includes/inc_menu.html' %}
+        <div class="cabinet_content">
+            <form action="{% url 'cab_app:product_create' %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                {{ form_product.as_p }}
+                <div class="profile_send">
+                    <button type="submit">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

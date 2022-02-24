@@ -19,4 +19,6 @@ urlpatterns = [
          cab_app.MyProductDeleteView.as_view(), name='product_option_delete'),
     path('product_delete/<int:pk>/', cab_app.MyProductDeleteView.as_view(),
          name='product_delete'),
+    path('product_create/', cab_app.ProductCreateView.as_view(),
+         name='product_create'),
 ]
