@@ -7,8 +7,9 @@
             {% else %}class=""{% endif %}>
             <a href="{% url 'cab_app:profile' %}">Профиль</a>
         </li>
-        <li>
-            <a href="#">Отклики</a>
+        <li {% if request.resolver_match.url_name.split.0 == 'response' %}class="active_menu"
+            {% else %}class=""{% endif %}>
+            <a href="{% url 'cab_app:response' %}">Отклики</a>
         </li>
         <li {% if request.resolver_match.url_name.split.0 == 'my_products' %}class="active_menu"
             {% elif request.resolver_match.url_name.split.0 == 'product_update' %}class="active_menu"

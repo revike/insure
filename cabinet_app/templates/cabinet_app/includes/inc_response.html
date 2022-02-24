@@ -1,0 +1,41 @@
+{% if object_list %}
+    {% for response in object_list %}
+        <div class="product_response">
+            <div class="product__info">
+                <p class="product__category">Категория:
+                    <span>{{ response.product.product.category }}</span></p>
+                <a class="product__name">
+                    <p>{{ response.product.product.name }}</p></a>
+                <p class="product__description">{{ response.product.product.short_desc }}</p>
+            </div>
+            <div class="product__info_2">
+                <p class="product__term">На
+                    <span>{{ response.product.term }}</span>
+                    мес.
+                </p>
+                <p class="product__price">
+                    <span>{{ response.product.price }}</span>
+                    &#8381;
+                </p>
+                {% if response.product.rate != 0 %}
+                    <p class="product__rate">Ставка:
+                        <span>{{ response.product.rate }} %</span></p>
+                {% endif %}
+            </div>
+            <div class="client_response">
+                Откликнулся:
+                <p>{{ response.last_name }}</p>
+                <p>{{ response.first_name }}</p>
+                <p>{{ response.patronymic }}</p>
+                <p>
+                    <a href="mailto:{{ response.email }}">{{ response.email }}</a>
+                </p>
+                <p>
+                    <a href="tel:{{ response.phone_number }}">{{ response.phone_number }}</a>
+                </p>
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <h3>Ничего не найдено...</h3>
+{% endif %}

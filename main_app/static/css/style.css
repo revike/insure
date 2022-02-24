@@ -288,6 +288,19 @@ body {
     justify-content: space-between;
 }
 
+.product_response {
+    width: 80%;
+    height: 150px;
+    border: 1px solid black;
+    border-radius: 15px;
+    box-shadow: 0 0 7px #666;
+    display: flex;
+    margin-top: 30px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px 0 15px;
+}
+
 .product__label {
     margin-left: 30px;
 }
