@@ -8,7 +8,7 @@
         <div class="cabinet__my_products">
             {% include 'main_app/includes/inc_products.html' %}
             <div class="product_add_new">
-                <a href="#">Добавить новый продукт</a>
+                <a href="{% url 'cab_app:product_create' %}">Добавить новый продукт</a>
             </div>
         </div>
     </div>

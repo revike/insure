@@ -6,7 +6,8 @@ from django.views.generic import CreateView, UpdateView, ListView, DeleteView
 
 from auth_app.models import CompanyUserProfile, CompanyUser
 from cabinet_app.forms import ProfileCreateForm, ProfileUpdateForm, \
-    ProfileUpdateDataForm, ProductOptionUpdateForm, ProductUpdateForm
+    ProfileUpdateDataForm, ProductOptionUpdateForm, ProductUpdateForm, \
+    ProductCreateForm, ProductOptionCreateForm
 from main_app.models import ProductCategory, ProductOption, PageHit, Product
 
 
@@ -147,6 +148,15 @@ class MyProductUpdateView(UpdateView):
             form_class = ProductUpdateForm
         return form_class
 
+    def form_valid(self, form):
+        if self.request.resolver_match.url_name == 'product_update':
+            if not form.instance.rate:
+                form.instance.rate = 0
+            form.save()
+            return HttpResponseRedirect(self.get_success_url())
+        return super().form_valid(form)
+
+
     def get_queryset(self):
         if self.request.resolver_match.url_name == 'product_update':
             queryset = ProductOption.objects.filter(
@@ -207,6 +217,40 @@ class MyProductDeleteView(DeleteView):
         product.is_active = False
         product.save()
         return HttpResponseRedirect(self.get_success_url())
+
+    @method_decorator(user_passes_test(lambda u: u.is_authenticated))
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
+
+class ProductCreateView(CreateView):
+    """Контроллер создания продукта"""
+    template_name = 'cabinet_app/product_create.html'
+    form_class = ProductCreateForm
+    success_url = reverse_lazy('cab_app:my_products')
+    model = Product
+
+    def get_context_data(self, **kwargs):
+        """Возвращает контекст для этого представления"""
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'создание продукта'
+        context['categories'] = ProductCategory.get_categories()
+        context['form_product'] = ProductOptionCreateForm
+        return context
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(data=request.POST)
+        form_product = ProductOptionCreateForm(data=request.POST)
+        if form.is_valid() and form_product.is_valid():
+            company = CompanyUserProfile.objects.filter(
+                company_id=self.request.user.id).first()
+            form.instance.company_id = company.id
+            form.save()
+            form_product.instance.product = form.instance
+            if not form_product.instance.rate:
+                form_product.instance.rate = 0
+            form_product.save()
+        return HttpResponseRedirect(reverse('cab_app:my_products'))
 
     @method_decorator(user_passes_test(lambda u: u.is_authenticated))
     def dispatch(self, *args, **kwargs):

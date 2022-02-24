@@ -20,7 +20,7 @@
 
     <div class="update_delete_product">
         <div class="profile_edit_link_">
-            <a href="{% url 'cab_app:product_delete' object.id %}">Удалить все продукты {{ object.name }}</a>
+            <a href="{% url 'cab_app:product_delete' object.id %}">Удалить {{ object.name }}</a>
         </div>
         <div class="profile_edit_link_">
             <a href="{% url 'cab_app:my_products' %}">Отмена</a>
