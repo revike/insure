@@ -10,6 +10,6 @@ urlpatterns = [
     path('product/', main_app.ProductListView.as_view(), name='products'),
     path('product/<int:pk>/', main_app.ProductDetailView.as_view(),
          name='product'),
-    path('response-valid/<int:pk>', main_app.ResponseValidView.as_view(),
+    path('response-valid/<int:pk>/', main_app.ResponseValidView.as_view(),
          name='valid'),
 ]
