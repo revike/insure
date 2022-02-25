@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'template_profiler_panel',
     'django_elasticsearch_dsl',
     'django_cleanup',
+    'django_extensions',
 
     'main_app',
     'auth_app',
