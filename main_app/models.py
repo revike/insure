@@ -55,6 +55,7 @@ class ProductOption(models.Model):
     class Meta:
         verbose_name_plural = 'опции продукта'
         verbose_name = 'опции продукта'
+        ordering = ['-id']
 
     product = models.ForeignKey(to=Product, on_delete=models.CASCADE,
                                 db_index=True, verbose_name='продукт')
