@@ -33,10 +33,7 @@ with open(BASE_DIR / 'insure/env.json', 'r') as f:
     POSTGRES_PASSWORD = ENV['POSTGRES_PASSWORD']
     EMAIL_PASSWORD = ENV['EMAIL_PASSWORD']
 
-if DEBUG_MODE == "True":
-    DEBUG = True
-else:
-    DEBUG = False
+DEBUG = DEBUG_MODE
 
 # Application definition
 

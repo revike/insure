@@ -16,7 +16,7 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         """Возвращает контекст для этого представления"""
         context = super().get_context_data(**kwargs)
-        context['title'] = 'главная'
+        context['title'] = 'Главная'
         context['categories'] = ProductCategory.get_categories()
         return context
 

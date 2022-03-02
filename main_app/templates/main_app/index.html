@@ -2,5 +2,8 @@
 {% load static %}
 
 {% block content %}
-    {{ title|title }}
+    <h1 class="categories">Добро пожаловать!</h1>
+
+    {% include 'main_app/includes/inc_sort.html' %}
+
 {% endblock %}
