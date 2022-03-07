@@ -5,7 +5,7 @@ from django.views.generic import TemplateView, ListView, DetailView
 
 from main_app.decorators import counted
 from main_app.forms import ProductResponseCreateForm
-from main_app.models import ProductCategory, ProductOption
+from main_app.models import ProductCategory, ProductOption, ProductResponse
 from main_app.tasks import send_email_company
 
 
@@ -18,6 +18,8 @@ class IndexView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Главная'
         context['categories'] = ProductCategory.get_categories()
+        context['response_length'] = ProductResponse.get_response_length(
+            self.request.user.id)
         return context
 
 
@@ -35,6 +37,8 @@ class ProductForCategoryDetailView(ListView):
         categories = ProductCategory.get_categories()
         context['title'] = categories.filter(id=self.kwargs['pk']).first()
         context['categories'] = categories
+        context['response_length'] = ProductResponse.get_response_length(
+            self.request.user.id)
         return context
 
     def get_queryset(self):
@@ -53,6 +57,8 @@ class ProductListView(ListView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'продукты'
         context['categories'] = ProductCategory.get_categories()
+        context['response_length'] = ProductResponse.get_response_length(
+            self.request.user.id)
         return context
 
     def get_queryset(self):
@@ -125,6 +131,8 @@ class ProductDetailView(DetailView):
         context['form'] = form
         context['title'] = self.object.product.name
         context['categories'] = ProductCategory.get_categories()
+        context['response_length'] = ProductResponse.get_response_length(
+            self.request.user.id)
         return context
 
     def post(self, request, *args, **kwargs):
@@ -165,4 +173,6 @@ class ResponseValidView(DetailView):
         context = super().get_context_data(**kwargs)
         context['title'] = self.object.product.name
         context['categories'] = ProductCategory.get_categories()
+        context['response_length'] = ProductResponse.get_response_length(
+            self.request.user.id)
         return context

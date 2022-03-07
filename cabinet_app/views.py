@@ -28,6 +28,8 @@ class CabinetIndexView(CreateView):
         context['company'] = company.filter(is_active=True).select_related()
         context['company_not_active'] = company.filter(
             is_active=False).select_related()
+        context['response_length'] = ProductResponse.get_response_length(
+            self.request.user.id)
         return context
 
     def post(self, request, *args, **kwargs):
@@ -52,6 +54,8 @@ class ProfileUpdateView(UpdateView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'редактирование профиля'
         context['categories'] = ProductCategory.get_categories()
+        context['response_length'] = ProductResponse.get_response_length(
+            self.request.user.id)
         return context
 
     def get_template_names(self):
@@ -103,6 +107,8 @@ class MyProductListView(ListView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'мои продукты'
         context['categories'] = ProductCategory.get_categories()
+        context['response_length'] = ProductResponse.get_response_length(
+            self.request.user.id)
         return context
 
     def get_queryset(self):
@@ -128,6 +134,8 @@ class MyProductUpdateView(UpdateView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'редактирование продукта'
         context['categories'] = ProductCategory.get_categories()
+        context['response_length'] = ProductResponse.get_response_length(
+            self.request.user.id)
         try:
             context['page_hit'] = PageHit.objects.filter(
                 url=f'/product/{self.object.id}/').first().count
@@ -187,6 +195,8 @@ class MyProductDeleteView(DeleteView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'удаление продукта'
         context['categories'] = ProductCategory.get_categories()
+        context['response_length'] = ProductResponse.get_response_length(
+            self.request.user.id)
         return context
 
     def get_template_names(self):
@@ -235,6 +245,8 @@ class ProductCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'создание продукта'
         context['categories'] = ProductCategory.get_categories()
+        context['response_length'] = ProductResponse.get_response_length(
+            self.request.user.id)
         context['form_product'] = ProductOptionCreateForm
         return context
 
@@ -268,12 +280,33 @@ class ProductResponseView(ListView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'отклики на продукты'
         context['categories'] = ProductCategory.get_categories()
+        context['response_length'] = self.model.get_response_length(
+            self.request.user.id)
         return context
 
     def get_queryset(self):
         user_id = self.request.user.id
         return self.model.objects.filter(
             product__product__company__company__id=user_id).select_related()
+
+    @method_decorator(user_passes_test(lambda u: u.is_authenticated))
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
+
+class ProductResponseRead(UpdateView):
+    """Контроллер прочтения отклика"""
+    model = ProductResponse
+    form_class = ProductUpdateForm
+    template_name = 'cabinet_app/response.html'
+
+    def get(self, request, *args, **kwargs):
+        response = self.model.objects.filter(id=self.get_object().id).first()
+        user_id = response.product.product.company.company.id
+        if response and user_id == request.user.id:
+            response.is_active = False
+            response.save()
+        return HttpResponseRedirect(reverse('cabinet_app:response'))
 
     @method_decorator(user_passes_test(lambda u: u.is_authenticated))
     def dispatch(self, *args, **kwargs):

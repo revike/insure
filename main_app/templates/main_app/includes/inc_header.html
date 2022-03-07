@@ -44,8 +44,14 @@
 </div>
 
 {% include 'main_app/includes/inc_search.html' %}
-
-<a class="header__login" href="{% url 'auth_app:login' %}">
-    <img class="header__img" src="{% static 'img/user.svg' %}"
-         alt="icon">
+<p id="response_length" class="response_length">{{ response_length }}</p>
+<a id="header_images" class="header__login" href="{% url 'auth_app:login' %}">
+    {% if response_length %}
+        <img id="header_img" class="header_img"
+             src="{% static 'img/bell.gif' %}" alt="icon">
+    {% else %}
+        <img id="header_img" class="header__img"
+             src="{% static 'img/user.svg' %}"
+             alt="icon">
+    {% endif %}
 </a>

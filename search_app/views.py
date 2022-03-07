@@ -3,7 +3,7 @@ from django.views.generic import ListView
 from elasticsearch import RequestError
 from elasticsearch_dsl import Q
 
-from main_app.models import ProductCategory
+from main_app.models import ProductCategory, ProductResponse
 from search_app.documents import ProductOptionDocument
 from search_app.search import search_obj, elastic_filter
 
@@ -29,6 +29,8 @@ class SearchView(ListView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Поиск по запросу:'
         context['categories'] = ProductCategory.get_categories()
+        context['response_length'] = ProductResponse.get_response_length(
+            self.request.user.id)
         return context
 
     def get_queryset(self):
@@ -75,6 +77,8 @@ class FilterView(ListView):
         categories = ProductCategory.get_categories()
         context['title'] = 'Фильтр'
         context['categories'] = categories
+        context['response_length'] = ProductResponse.get_response_length(
+            self.request.user.id)
         return context
 
     def get_queryset(self):
