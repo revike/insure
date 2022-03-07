@@ -1,6 +1,8 @@
 {% if object_list %}
     {% for response in object_list %}
-        <div class="product_response">
+        <div {% if response.is_active %} class="product_response" {% else %}
+                                         class="product_response_read" {% endif %}
+                                         id="res_{{ response.id }}">
             <div class="product__info">
                 <p class="product__category">Категория:
                     <span>{{ response.product.product.category }}</span></p>
@@ -34,6 +36,13 @@
                     <a href="tel:{{ response.phone_number }}">{{ response.phone_number }}</a>
                 </p>
             </div>
+            {% if response.is_active %}
+                <div class="read_button product__button">
+                    <input class="read_buttons" id="{{ response.id }}"
+                           type="submit" value="Пометить как прочитано"
+                           data-pk="{{ response.id }}">
+                </div>
+            {% endif %}
         </div>
     {% endfor %}
 {% else %}

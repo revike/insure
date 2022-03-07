@@ -87,6 +87,7 @@ class ProductResponse(models.Model):
     class Meta:
         verbose_name_plural = 'отклики'
         verbose_name = 'отклики'
+        ordering = ['-is_active', '-created']
 
     product = models.ForeignKey(to=ProductOption, on_delete=models.CASCADE,
                                 db_index=True, verbose_name='продукт')
@@ -101,6 +102,15 @@ class ProductResponse(models.Model):
                                  message="Format: +79876543210")
     phone_number = models.CharField(validators=[phone_regex], max_length=12,
                                     blank=False, verbose_name='телефон')
+    is_active = models.BooleanField(default=True, verbose_name='активна',
+                                    db_index=True)
+    created = models.DateTimeField(auto_now_add=True, verbose_name='создан')
+
+    @classmethod
+    def get_response_length(cls, user_id):
+        return cls.objects.filter(
+            is_active=True,
+            product__product__company__company__id=user_id).count()
 
     def __str__(self):
         return f'{self.first_name} {self.last_name} {self.product}'

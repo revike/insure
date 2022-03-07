@@ -4,7 +4,7 @@
 }
 
 body {
-    background-image: url("/media/img/fon.jpg");
+    background-image: url("./../img/fon.jpg");
     background-repeat: no-repeat;
     background-position: top center;
     background-attachment: fixed;
@@ -82,6 +82,10 @@ body {
 }
 
 .header_img {
+}
+
+.response_length {
+    display: none;
 }
 
 /*=================*/
@@ -288,10 +292,23 @@ body {
     justify-content: space-between;
 }
 
-.product_response {
+.product_response_read {
     width: 80%;
     height: 150px;
     border: 1px solid black;
+    border-radius: 15px;
+    box-shadow: 0 0 7px #666;
+    display: flex;
+    margin-top: 30px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px 0 15px;
+}
+
+.product_response {
+    width: 80%;
+    height: 150px;
+    border: 2px solid red;
     border-radius: 15px;
     box-shadow: 0 0 7px #666;
     display: flex;
@@ -388,6 +405,20 @@ body {
 }
 
 .product__button a {
+    margin-right: 30px;
+    text-decoration: none;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 5px;
+    box-shadow: 0 0 7px #666;
+    background-color: #5897fb;
+    color: black;
+    font-size: large;
+    font-weight: bolder;
+    background-image: linear-gradient(to right, #9EEFE1 0%, cornflowerblue 51%, #9EEFE1 100%);
+}
+
+.product__button input {
     margin-right: 30px;
     text-decoration: none;
     border: 1px solid black;
