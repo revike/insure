@@ -9,31 +9,25 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-import json
+import environ
 import os
 from pathlib import Path
 
+env = environ.Env()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = env('DEBUG')
 
-with open(BASE_DIR / 'insure/env.json', 'r') as f:
-    ENV = json.load(f)
-    SECRET_KEY = ENV['SECRET_KEY']
-    DEBUG_MODE = ENV['DEBUG_MODE']
-    ALLOWED_HOSTS = ENV['ALLOWED_HOSTS']
-    POSTGRES_DB = ENV['POSTGRES_DB']
-    POSTGRES_USER = ENV['POSTGRES_USER']
-    POSTGRES_PASSWORD = ENV['POSTGRES_PASSWORD']
-    EMAIL_PASSWORD = ENV['EMAIL_PASSWORD']
-
-DEBUG = DEBUG_MODE
+ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(' ')
 
 # Application definition
 
@@ -101,23 +95,23 @@ WSGI_APPLICATION = 'insure.wsgi.application'
 
 DATABASES = {
     'default': {
-        'NAME': POSTGRES_DB,
+        'NAME': env('POSTGRES_DB'),
         'ENGINE': 'django.db.backends.postgresql',
-        'USER': POSTGRES_USER,
-        'PASSWORD': POSTGRES_PASSWORD,
+        'USER': env('POSTGRES_USER'),
+        'PASSWORD': env('POSTGRES_PASSWORD'),
         'HOST': 'db',
         # 'HOST': 'localhost',
         'PORT': '5432'
     },
     'mongodb': {
-        'NAME': 'mongodb',
+        'NAME': env('MONGO_DB'),
         'ENGINE': 'djongo',
         'ENFORCE_SCHEMA': False,
         'CLIENT': {
             'host': 'mongodb://mongodb:27017',
             # 'host': 'mongodb://127.0.0.1:27017',
-            'username': 'root',
-            'password': 'mongo_admin',
+            'username': env('MONGO_USER'),
+            'password': env('MONGO_PASSWORD'),
         }
     }
 }
@@ -203,7 +197,7 @@ LOGIN_URL = '/auth/login/'
 LOGIN_ERROR_URL = '/'
 # LOGIN_REDIRECT_URL = '/'
 
-DOMAIN_NAME = 'http://localhost:8000'
+DOMAIN_NAME = env('DOMAIN_NAME')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -221,8 +215,8 @@ EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_PORT = 465
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
-EMAIL_HOST_USER = 'insure_test@mail.ru'
-EMAIL_HOST_PASSWORD = EMAIL_PASSWORD
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_PASSWORD')
 
 # EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

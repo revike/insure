@@ -8,6 +8,7 @@ from auth_app.models import CompanyUserProfile, CompanyUser
 from cabinet_app.forms import ProfileCreateForm, ProfileUpdateForm, \
     ProfileUpdateDataForm, ProductOptionUpdateForm, ProductUpdateForm, \
     ProductCreateForm, ProductOptionCreateForm
+from cabinet_app.tasks import send_email_confirm
 from main_app.models import ProductCategory, ProductOption, PageHit, Product, \
     ProductResponse
 
@@ -35,9 +36,11 @@ class CabinetIndexView(CreateView):
     def post(self, request, *args, **kwargs):
         form = self.form_class(self.request.POST, self.request.FILES)
         if form.is_valid():
+            user = self.request.user
             profile = form.save(commit=False)
-            profile.company = self.request.user
+            profile.company = user
             form.save()
+            send_email_confirm.delay(user.id, user.username)
         return HttpResponseRedirect(reverse('cab_app:profile'))
 
     @method_decorator(user_passes_test(lambda u: u.is_authenticated))
@@ -254,14 +257,17 @@ class ProductCreateView(CreateView):
         form = self.form_class(data=request.POST)
         form_product = ProductOptionCreateForm(data=request.POST)
         if form.is_valid() and form_product.is_valid():
-            company = CompanyUserProfile.objects.filter(
-                company_id=self.request.user.id).first()
-            form.instance.company_id = company.id
-            form.save()
-            form_product.instance.product = form.instance
-            if not form_product.instance.rate:
-                form_product.instance.rate = 0
-            form_product.save()
+            try:
+                company = CompanyUserProfile.objects.filter(
+                    company_id=self.request.user.id).first()
+                form.instance.company_id = company.id
+                form.save()
+                form_product.instance.product = form.instance
+                if not form_product.instance.rate:
+                    form_product.instance.rate = 0
+                form_product.save()
+            except AttributeError:
+                return HttpResponseRedirect(reverse('cab_app:my_products'))
         return HttpResponseRedirect(reverse('cab_app:my_products'))
 
     @method_decorator(user_passes_test(lambda u: u.is_authenticated))

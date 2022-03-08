@@ -7,7 +7,7 @@ from django.views.generic import CreateView, TemplateView
 
 from auth_app.forms import CompanyUserRegisterForm, CompanyUserLoginForm
 from auth_app.models import CompanyUser
-from auth_app.service import send_verify_email
+from auth_app.tasks import send_verify_email
 from main_app.models import ProductCategory
 
 
@@ -32,7 +32,9 @@ class RegisterView(CreateView):
     def form_valid(self, form):
         if form.is_valid():
             user = form.save()
-            send_verify_email(user)
+            send_verify_email.delay(email=user.email,
+                                    activation_key=user.activation_key,
+                                    username=user.username)
             self.request.session['register'] = True
             return HttpResponseRedirect(reverse('auth_app:register_valid'))
 
