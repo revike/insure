@@ -1,6 +1,6 @@
 from django.core.management import BaseCommand
 
-from auth_app.models import CompanyUser
+from auth_app.models import CompanyUser, CompanyUserProfile
 
 
 class Command(BaseCommand):
@@ -8,5 +8,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         if not CompanyUser.objects.filter(is_staff=True, is_superuser=True):
-            CompanyUser.objects.create_superuser('admin', 'admin@admin.local',
-                                                 'admin')
+            admin = CompanyUser.objects.create_superuser(
+                'admin', 'admin@admin.local', 'admin')
+            CompanyUserProfile.objects.create(
+                company=admin, name='admin', tax_id=123, is_active=True)
