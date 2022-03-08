@@ -13,7 +13,9 @@ import environ
 import os
 from pathlib import Path
 
-env = environ.Env()
+env = environ.Env(
+    DEBUG=(bool, True)
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -104,14 +106,14 @@ DATABASES = {
         'PORT': '5432'
     },
     'mongodb': {
-        'NAME': env('MONGO_DB'),
+        'NAME': env('MONGO_INITDB_DATABASE'),
         'ENGINE': 'djongo',
         'ENFORCE_SCHEMA': False,
         'CLIENT': {
             'host': 'mongodb://mongodb:27017',
             # 'host': 'mongodb://127.0.0.1:27017',
-            'username': env('MONGO_USER'),
-            'password': env('MONGO_PASSWORD'),
+            'username': env('MONGO_INITDB_ROOT_USERNAME'),
+            'password': env('MONGO_INITDB_ROOT_PASSWORD'),
         }
     }
 }
