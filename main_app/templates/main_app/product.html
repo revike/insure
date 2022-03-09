@@ -12,7 +12,7 @@
     <div class="a_product__content">
         <div class="a_product__desc">
             <div class="product__label">
-                <a class="product__company" href="#">
+                <a class="product__company" href="{% url 'main_app:company' object.product.company.id %}">
                     <img class="product__img"
                          src="/media/{{ object.product.company.label }}"
                          alt="{{ object.product.company }}">
@@ -28,7 +28,7 @@
         <div class="a_product__options">
             <div class="a_product__option"></div>
             <div class="a_product__option">
-                <p>Компания: <a href="#">{{ object.product.company }}</a></p>
+                <p>Компания: <a href="{% url 'main_app:company' object.product.company.id %}">{{ object.product.company }}</a></p>
                 <p>Категория: <a
                         href="{% url 'main_app:category' pk=object.product.category.id %}">{{ object.product.category }}</a>
                 </p>
