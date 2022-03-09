@@ -123,9 +123,10 @@ class PageHit(mongo_models.Model):
                                  verbose_name='url')
     count = mongo_models.PositiveBigIntegerField(
         default=1, verbose_name='количество просмотров')
+    updated = mongo_models.DateTimeField(auto_now=True, verbose_name='изменен')
 
     class Meta:
         db_table = 'mongodb'
 
     def __str__(self):
-        return f'{self.url} => {self.count}'
+        return f'{self.url} => {self.count} => {self.updated}'
