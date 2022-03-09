@@ -5,14 +5,16 @@ from django.views.generic import TemplateView, ListView, DetailView
 
 from main_app.decorators import counted
 from main_app.forms import ProductResponseCreateForm
-from main_app.models import ProductCategory, ProductOption, ProductResponse
+from main_app.models import ProductCategory, ProductOption, ProductResponse, \
+    PageHit
 from main_app.tasks import send_email_company
-from  auth_app.models import CompanyUserProfile
+from auth_app.models import CompanyUserProfile
 
 
-class IndexView(TemplateView):
+class IndexView(ListView):
     """Контроллер главной страницы"""
     template_name = 'main_app/index.html'
+    model = ProductOption
 
     def get_context_data(self, **kwargs):
         """Возвращает контекст для этого представления"""
@@ -22,6 +24,15 @@ class IndexView(TemplateView):
         context['response_length'] = ProductResponse.get_response_length(
             self.request.user.id)
         return context
+
+    def get_queryset(self):
+        populate_objects = PageHit.objects.all().order_by('-count')
+        populate_products = [i.url.split('/')[-2] for i in populate_objects]
+        return self.model.objects.filter(
+            product_id__in=populate_products, is_active=True,
+            product__is_active=True, product__category__is_active=True,
+            product__company__is_active=True,
+            product__company__company__is_active=True).select_related()[:3]
 
 
 class ProductForCategoryDetailView(ListView):
