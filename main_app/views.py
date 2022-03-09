@@ -26,13 +26,14 @@ class IndexView(ListView):
         return context
 
     def get_queryset(self):
-        populate_objects = PageHit.objects.all().order_by('-count')
+        populate_objects = PageHit.objects.all().order_by('-updated')[:3]
         populate_products = [i.url.split('/')[-2] for i in populate_objects]
-        return self.model.objects.filter(
+        queryset = self.model.objects.filter(
             product_id__in=populate_products, is_active=True,
             product__is_active=True, product__category__is_active=True,
             product__company__is_active=True,
-            product__company__company__is_active=True).select_related()[:3]
+            product__company__company__is_active=True).select_related()
+        return queryset
 
 
 class ProductForCategoryDetailView(ListView):

@@ -36,10 +36,10 @@
         </div>
     </div>
 
-    <div class="footer">
+    <div class="footer a_product__option">
         {% block footer %}
             {% include 'main_app/includes/inc_paginator.html' %}
-            <p>Застрахуй братуху Corporation &copy; {% now 'Y' %}</p>
+            <p><a href="{% url 'main_app:index' %}">Застрахуй братуху Corporation &copy; {% now 'Y' %}</a></p>
         {% endblock %}
     </div>
 </div>
