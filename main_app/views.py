@@ -7,6 +7,7 @@ from main_app.decorators import counted
 from main_app.forms import ProductResponseCreateForm
 from main_app.models import ProductCategory, ProductOption, ProductResponse
 from main_app.tasks import send_email_company
+from  auth_app.models import CompanyUserProfile
 
 
 class IndexView(TemplateView):
@@ -172,6 +173,21 @@ class ResponseValidView(DetailView):
         """Возвращает контекст для этого представления"""
         context = super().get_context_data(**kwargs)
         context['title'] = self.object.product.name
+        context['categories'] = ProductCategory.get_categories()
+        context['response_length'] = ProductResponse.get_response_length(
+            self.request.user.id)
+        return context
+
+
+class CompanyDetailView(DetailView):
+    """Контроллер компании"""
+    template_name = 'main_app/company.html'
+    model = CompanyUserProfile
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        """Возвращает контекст для этого представления"""
+        context = super().get_context_data(**kwargs)
+        context['title'] = self.object.name
         context['categories'] = ProductCategory.get_categories()
         context['response_length'] = ProductResponse.get_response_length(
             self.request.user.id)

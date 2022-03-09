@@ -1,0 +1,38 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+
+{% block js %}
+    {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <h1 class="a_product__title">О компании:</h1>
+
+    <div class="a_product__content">
+        <div class="a_product__desc">
+            <div class="product__label">
+                <img class="product__img"
+                     src="/media/{{ object.label }}"
+                     alt="{{ object.name }}">
+            </div>
+            <div class="a_product__description">
+                {{ object.about_company }}
+            </div>
+        </div>
+        <div class="a_product__options">
+            <div class="a_product__option"></div>
+            <div class="a_product__option">
+                <p>Название: {{ object.name }} </p>
+                <p>ИНН: {{ object.tax_id }} </p>
+                <p>Email: <a
+                        href="mailto:{{ object.company.email }}">{{ object.company.email }}</a>
+                </p>
+                <br>
+                <p>Директор:</p>
+                <p>{{ object.company.last_name|title }} {{ object.company.first_name|title }} {{ object.company.patronymic|title }}</p>
+
+            </div>
+            <div class="a_product__option"></div>
+        </div>
+    </div>
+{% endblock %}

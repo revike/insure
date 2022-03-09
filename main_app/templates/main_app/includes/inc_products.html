@@ -5,7 +5,7 @@
                 <img class="product__img"
                      src="/media/{{ product.product.company.label }}"
                      alt="{{ product.product.company }}">
-                <a class="product__company" href="#">
+                <a class="product__company" href="{% url 'main_app:company' product.product.company.id %}">
                     <p>{{ product.product.company }}</p></a>
             </div>
             <div class="product__info">
