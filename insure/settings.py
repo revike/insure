@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'auth_app',
     'cabinet_app',
     'search_app',
+    'about_app',
 ]
 
 MIDDLEWARE = [

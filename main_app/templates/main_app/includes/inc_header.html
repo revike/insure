@@ -30,16 +30,17 @@
 </div>
 
 <div class="dropdown header__menu">
-    <button {% if request.resolver_match.url_name.split.0 == 'about' %}class="drop__btn active"
-            {% else %}class="drop__btn"{% endif %}>
+    <button {% if request.resolver_match.url_name.split.0 == 'contacts' or request.resolver_match.url_name.split.0 == 'feedback' or request.resolver_match.url_name.split.0 == 'information' or request.resolver_match.url_name.split.0 == 'cookie' or request.resolver_match.url_name.split.0 == 'politics' %}
+        class="drop__btn active"
+        {% else %}class="drop__btn"{% endif %}>
         <h3>О нас</h3>
     </button>
     <div class="dropdown-content">
-        <a href="#">Контакты</a>
-        <a href="#">Правовая информация</a>
-        <a href="#">Политика конфиденциальности</a>
-        <a href="#">Cookies</a>
-        <a href="#">Обратная связь</a>
+        <a href="{% url 'about_app:contacts' %}">Контакты</a>
+        <a href="{% url 'about_app:information' %}">Правовая информация</a>
+        <a href="{% url 'about_app:politics' %}">Политика конфиденциальности</a>
+        <a href="{% url 'about_app:cookie' %}">Cookies</a>
+        <a href="{% url 'about_app:feedback' %}">Обратная связь</a>
     </div>
 </div>
 

@@ -25,6 +25,7 @@ urlpatterns = [
     path('auth/', include('auth_app.urls', namespace='auth_app')),
     path('cabinet/', include('cabinet_app.urls', namespace='cab_app')),
     path('search/', include('search_app.urls', namespace='search_app')),
+    path('about/', include('about_app.urls', namespace='about_app')),
     path('captcha/', include('captcha.urls')),
 ]
 
