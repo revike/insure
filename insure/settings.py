@@ -9,17 +9,19 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-import environ
 import os
+from environ import Env
 from pathlib import Path
 
-env = environ.Env(
+env = Env(
     DEBUG=(bool, True)
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
+
+Env.read_env(os.path.join(BASE_DIR, ".env"))
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -42,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'captcha',
-    'debug_toolbar',
+    # 'debug_toolbar',
     'template_profiler_panel',
     'django_elasticsearch_dsl',
     'django_cleanup',
@@ -63,7 +65,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'insure.urls'
@@ -115,7 +117,8 @@ DATABASES = {
             # 'host': 'mongodb://127.0.0.1:27017',
             'username': env('MONGO_INITDB_ROOT_USERNAME'),
             'password': env('MONGO_INITDB_ROOT_PASSWORD'),
-        }
+        },
+        'TEST': {'MIRROR': 'default'},
     }
 }
 

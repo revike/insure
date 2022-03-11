@@ -1,10 +1,12 @@
 from django.core.management import call_command
 from django.test import TestCase, Client
 
-from auth_app.models import CompanyUser, CompanyUserProfile
+from auth_app.models import CompanyUser
+from insure.settings import DATABASES
 
 
 class TestAuthApp(TestCase):
+    databases = DATABASES
 
     def setUp(self):
         call_command('flush', '--noinput')
@@ -23,6 +25,5 @@ class TestAuthApp(TestCase):
 
         self.client.login(username='admin', password='pass')
 
-        # self.assertFalse(response.context['user'].is_anonymous)
-        # self.assertTrue(response.context['user'].is_superuser)
-        # self.assertEqual(response.context['user'], self.superuser)
+        self.assertFalse(response.context['user'].is_anonymous)
+        self.assertTrue(response.context['user'].is_superuser)

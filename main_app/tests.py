@@ -2,10 +2,12 @@ from django.core.management import call_command
 from django.test import TestCase, Client
 
 from auth_app.models import CompanyUserProfile, CompanyUser
+from insure.settings import DATABASES
 from main_app.models import ProductCategory, ProductOption, Product
 
 
 class TestMainApp(TestCase):
+    databases = DATABASES
 
     def setUp(self):
         call_command('flush', '--noinput')
