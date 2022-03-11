@@ -88,8 +88,10 @@ class ProfileUpdateView(UpdateView):
     def form_valid(self, form):
         if self.request.resolver_match.url_name == 'profile_update_data' \
                 and not self.request.user.is_staff:
+            user = self.request.user
             CompanyUserProfile.objects.filter(
-                company_id=self.request.user.id).update(is_active=False)
+                company_id=user.id).update(is_active=False)
+            send_email_confirm.delay(user.id, user.username)
             form.save()
             return HttpResponseRedirect(reverse('cab_app:profile'))
         return super().form_valid(form)

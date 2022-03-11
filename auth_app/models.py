@@ -19,7 +19,7 @@ class CompanyUser(AbstractUser):
                                   verbose_name='имя директора')
     patronymic = models.CharField(max_length=150, blank=True,
                                   verbose_name='отчество директора')
-    email = models.EmailField(blank=False, verbose_name='email')
+    email = models.EmailField(blank=False, unique=True, verbose_name='email')
 
     activation_key = models.CharField(max_length=128, blank=True)
     activation_key_expires = models.DateTimeField(
