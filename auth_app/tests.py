@@ -1,9 +1,10 @@
 from django.core.management import call_command
 from django.test import TestCase, Client
-from django.urls import reverse
+from django.urls import reverse, resolve
 
 from auth_app.forms import CompanyUserLoginForm, CompanyUserRegisterForm
 from auth_app.models import CompanyUser
+from auth_app.views import LoginUserView, RegisterView
 from insure.settings import DATABASES, DOMAIN_NAME
 from captcha.conf import settings as captcha
 
@@ -20,10 +21,17 @@ class TestAuthApp(TestCase):
         self.client = Client()
 
     def test_not_login(self):
-        response = self.client.get(reverse('main_app:index'))
+        url = reverse('main_app:index')
+        response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context['title'], 'главная')
         self.assertTrue(response.context['user'].is_anonymous)
+
+        url = reverse('auth_app:login')
+        response = self.client.get(url)
+        self.assertTemplateUsed(response, 'auth_app/login.html')
+        self.assertEquals(resolve(url).func.view_class,
+                          LoginUserView)
 
     def test_login(self):
         response = self.client.get(reverse('auth_app:login'))
@@ -52,9 +60,13 @@ class TestAuthApp(TestCase):
 
     def test_register(self):
         captcha.CAPTCHA_TEST_MODE = True
-        response = self.client.get(reverse('auth_app:register'))
+
+        url = reverse('auth_app:register')
+        response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertTrue(response.context['user'].is_anonymous)
+        self.assertTemplateUsed(response, 'auth_app/register.html')
+        self.assertEquals(resolve(url).func.view_class, RegisterView)
 
         data = {
             'username': 'test_1',
@@ -81,7 +93,8 @@ class TestAuthApp(TestCase):
         response = self.client.get(reverse('main_app:index'))
         self.assertTrue(response.context['user'].is_anonymous)
 
-        activation_url = f'{DOMAIN_NAME}/auth/verify/{user.email}/{user.activation_key}/'
+        activation_url = f'{DOMAIN_NAME}/auth/verify/' \
+                         f'{user.email}/{user.activation_key}/'
         response = self.client.get(activation_url)
         self.assertEqual(response.status_code, 200)
 
