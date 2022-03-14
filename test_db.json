@@ -1,0 +1,859 @@
+[
+  {
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+      "action_time": "2022-03-11T16:18:52.802Z",
+      "user": 1,
+      "content_type": 12,
+      "object_id": "2",
+      "object_repr": "revike",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"name\": \"\\u043f\\u0440\\u043e\\u0444\\u0438\\u043b\\u044c \\u043a\\u043e\\u043c\\u043f\\u0430\\u043d\\u0438\\u0438\", \"object\": \"revike_company\", \"fields\": [\"\\u0410\\u043a\\u0442\\u0438\\u0432\\u0435\\u043d\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+      "action_time": "2022-03-13T15:52:27.491Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "3",
+      "object_repr": "Недвижимость",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0410\\u043a\\u0442\\u0438\\u0432\\u043d\\u0430\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+      "action_time": "2022-03-13T15:53:12.159Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "3",
+      "object_repr": "Недвижимость",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+      "action_time": "2022-03-13T15:53:32.032Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "2",
+      "object_repr": "Жизнь",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0410\\u043a\\u0442\\u0438\\u0432\\u043d\\u0430\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+      "action_time": "2022-03-13T15:53:35.314Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "1",
+      "object_repr": "Автострахование",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0410\\u043a\\u0442\\u0438\\u0432\\u043d\\u0430\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+      "action_time": "2022-03-13T15:54:17.009Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "1",
+      "object_repr": "Автострахование",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0410\\u043a\\u0442\\u0438\\u0432\\u043d\\u0430\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+      "action_time": "2022-03-13T15:54:19.921Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "2",
+      "object_repr": "Жизнь",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0410\\u043a\\u0442\\u0438\\u0432\\u043d\\u0430\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+      "action_time": "2022-03-13T15:54:23.271Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "3",
+      "object_repr": "Недвижимость",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0410\\u043a\\u0442\\u0438\\u0432\\u043d\\u0430\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+      "action_time": "2022-03-13T15:56:23.668Z",
+      "user": 1,
+      "content_type": 12,
+      "object_id": "1",
+      "object_repr": "admin",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0424\\u0430\\u043c\\u0438\\u043b\\u0438\\u044f \\u0434\\u0438\\u0440\\u0435\\u043a\\u0442\\u043e\\u0440\\u0430\", \"\\u0418\\u043c\\u044f \\u0434\\u0438\\u0440\\u0435\\u043a\\u0442\\u043e\\u0440\\u0430\", \"Email\"]}}, {\"changed\": {\"name\": \"\\u043f\\u0440\\u043e\\u0444\\u0438\\u043b\\u044c \\u043a\\u043e\\u043c\\u043f\\u0430\\u043d\\u0438\\u0438\", \"object\": \"admin\", \"fields\": [\"\\u0410\\u043a\\u0442\\u0438\\u0432\\u0435\\u043d\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+      "action_time": "2022-03-13T16:01:23.722Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "1",
+      "object_repr": "Автострахование",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0410\\u043a\\u0442\\u0438\\u0432\\u043d\\u0430\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+      "action_time": "2022-03-13T16:07:01.113Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "1",
+      "object_repr": "111111 Категория: Автострахование",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"name\": \"\\u043e\\u043f\\u0446\\u0438\\u0438 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"object\": \"111111 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: \\u0410\\u0432\\u0442\\u043e\\u0441\\u0442\\u0440\\u0430\\u0445\\u043e\\u0432\\u0430\\u043d\\u0438\\u0435, 1.00 \\u043d\\u0430 3 \\u043c\\u0435\\u0441.\", \"fields\": [\"\\u0410\\u043a\\u0442\\u0438\\u0432\\u043d\\u0430\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+      "action_time": "2022-03-13T16:18:26.851Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "1",
+      "object_repr": "Автострахование",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u0410\\u043a\\u0442\\u0438\\u0432\\u043d\\u0430\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+      "action_time": "2022-03-13T16:19:03.847Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "1",
+      "object_repr": "111111 Категория: Автострахование",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"name\": \"\\u043e\\u043f\\u0446\\u0438\\u0438 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"object\": \"111111 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: \\u0410\\u0432\\u0442\\u043e\\u0441\\u0442\\u0440\\u0430\\u0445\\u043e\\u0432\\u0430\\u043d\\u0438\\u0435, 1.00 \\u043d\\u0430 3 \\u043c\\u0435\\u0441.\", \"fields\": [\"\\u0410\\u043a\\u0442\\u0438\\u0432\\u043d\\u0430\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+      "action_time": "2022-03-13T16:19:52.421Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "1",
+      "object_repr": "111111 Категория: Автострахование",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"name\": \"\\u043e\\u043f\\u0446\\u0438\\u0438 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"object\": \"111111 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: \\u0410\\u0432\\u0442\\u043e\\u0441\\u0442\\u0440\\u0430\\u0445\\u043e\\u0432\\u0430\\u043d\\u0438\\u0435, 1.00 \\u043d\\u0430 3 \\u043c\\u0435\\u0441.\", \"fields\": [\"\\u0410\\u043a\\u0442\\u0438\\u0432\\u043d\\u0430\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+      "action_time": "2022-03-13T16:33:55.057Z",
+      "user": 1,
+      "content_type": 12,
+      "object_id": "3",
+      "object_repr": "dev",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u043f\\u0440\\u043e\\u0444\\u0438\\u043b\\u044c \\u043a\\u043e\\u043c\\u043f\\u0430\\u043d\\u0438\\u0438\", \"object\": \"dev\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+      "action_time": "2022-03-13T16:34:55.301Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "4",
+      "object_repr": "del_cat",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u044b\", \"object\": \"del_1 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: del_cat\"}}, {\"added\": {\"name\": \"\\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u044b\", \"object\": \"del_2 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: del_cat\"}}, {\"added\": {\"name\": \"\\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u044b\", \"object\": \"del_3 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: del_cat\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+      "action_time": "2022-03-13T16:35:40.688Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "1",
+      "object_repr": "продукт Категория: Автострахование",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"\\u041d\\u0430\\u0437\\u0432\\u0430\\u043d\\u0438\\u0435 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"\\u041a\\u0440\\u0430\\u0442\\u043a\\u043e\\u0435 \\u043e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\", \"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435\"]}}, {\"added\": {\"name\": \"\\u043e\\u043f\\u0446\\u0438\\u0438 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"object\": \"\\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: \\u0410\\u0432\\u0442\\u043e\\u0441\\u0442\\u0440\\u0430\\u0445\\u043e\\u0432\\u0430\\u043d\\u0438\\u0435, 2 \\u043d\\u0430 2 \\u043c\\u0435\\u0441.\"}}, {\"added\": {\"name\": \"\\u043e\\u043f\\u0446\\u0438\\u0438 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"object\": \"\\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: \\u0410\\u0432\\u0442\\u043e\\u0441\\u0442\\u0440\\u0430\\u0445\\u043e\\u0432\\u0430\\u043d\\u0438\\u0435, 3 \\u043d\\u0430 3 \\u043c\\u0435\\u0441.\"}}, {\"added\": {\"name\": \"\\u043e\\u043f\\u0446\\u0438\\u0438 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"object\": \"\\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: \\u0410\\u0432\\u0442\\u043e\\u0441\\u0442\\u0440\\u0430\\u0445\\u043e\\u0432\\u0430\\u043d\\u0438\\u0435, 4 \\u043d\\u0430 4 \\u043c\\u0435\\u0441.\"}}, {\"changed\": {\"name\": \"\\u043e\\u043f\\u0446\\u0438\\u0438 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"object\": \"\\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: \\u0410\\u0432\\u0442\\u043e\\u0441\\u0442\\u0440\\u0430\\u0445\\u043e\\u0432\\u0430\\u043d\\u0438\\u0435, 1.00 \\u043d\\u0430 1 \\u043c\\u0435\\u0441.\", \"fields\": [\"\\u0421\\u0440\\u043e\\u043a \\u0432 \\u043c\\u0435\\u0441\\u044f\\u0446\\u0430\\u0445\", \"\\u041f\\u0440\\u043e\\u0446\\u0435\\u043d\\u0442\\u043d\\u0430\\u044f \\u0441\\u0442\\u0430\\u0432\\u043a\\u0430\", \"\\u0410\\u043a\\u0442\\u0438\\u0432\\u043d\\u0430\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+      "action_time": "2022-03-13T16:36:03.915Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "2",
+      "object_repr": "del_1 Категория: del_cat",
+      "action_flag": 2,
+      "change_message": "[{\"added\": {\"name\": \"\\u043e\\u043f\\u0446\\u0438\\u0438 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"object\": \"del_1 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: del_cat, 1 \\u043d\\u0430 1 \\u043c\\u0435\\u0441.\"}}, {\"added\": {\"name\": \"\\u043e\\u043f\\u0446\\u0438\\u0438 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"object\": \"del_1 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: del_cat, 2 \\u043d\\u0430 2 \\u043c\\u0435\\u0441.\"}}, {\"added\": {\"name\": \"\\u043e\\u043f\\u0446\\u0438\\u0438 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"object\": \"del_1 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: del_cat, 3 \\u043d\\u0430 3 \\u043c\\u0435\\u0441.\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+      "action_time": "2022-03-13T16:36:25.461Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "3",
+      "object_repr": "del_2 Категория: del_cat",
+      "action_flag": 2,
+      "change_message": "[{\"added\": {\"name\": \"\\u043e\\u043f\\u0446\\u0438\\u0438 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"object\": \"del_2 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: del_cat, 1 \\u043d\\u0430 1 \\u043c\\u0435\\u0441.\"}}, {\"added\": {\"name\": \"\\u043e\\u043f\\u0446\\u0438\\u0438 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"object\": \"del_2 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: del_cat, 2 \\u043d\\u0430 2 \\u043c\\u0435\\u0441.\"}}, {\"added\": {\"name\": \"\\u043e\\u043f\\u0446\\u0438\\u0438 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"object\": \"del_2 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: del_cat, 3 \\u043d\\u0430 3 \\u043c\\u0435\\u0441.\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+      "action_time": "2022-03-13T16:36:38.191Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "4",
+      "object_repr": "del_3 Категория: del_cat",
+      "action_flag": 2,
+      "change_message": "[{\"added\": {\"name\": \"\\u043e\\u043f\\u0446\\u0438\\u0438 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"object\": \"del_3 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: del_cat, 1 \\u043d\\u0430 1 \\u043c\\u0435\\u0441.\"}}, {\"added\": {\"name\": \"\\u043e\\u043f\\u0446\\u0438\\u0438 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"object\": \"del_3 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: del_cat, 2 \\u043d\\u0430 2 \\u043c\\u0435\\u0441.\"}}, {\"added\": {\"name\": \"\\u043e\\u043f\\u0446\\u0438\\u0438 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"object\": \"del_3 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: del_cat, 3 \\u043d\\u0430 3 \\u043c\\u0435\\u0441.\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+      "action_time": "2022-03-13T16:37:11.492Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "5",
+      "object_repr": "продукт 2 Категория: Недвижимость",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u043e\\u043f\\u0446\\u0438\\u0438 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"object\": \"\\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442 2 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: \\u041d\\u0435\\u0434\\u0432\\u0438\\u0436\\u0438\\u043c\\u043e\\u0441\\u0442\\u044c, 1 \\u043d\\u0430 1 \\u043c\\u0435\\u0441.\"}}, {\"added\": {\"name\": \"\\u043e\\u043f\\u0446\\u0438\\u0438 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"object\": \"\\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442 2 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: \\u041d\\u0435\\u0434\\u0432\\u0438\\u0436\\u0438\\u043c\\u043e\\u0441\\u0442\\u044c, 2 \\u043d\\u0430 2 \\u043c\\u0435\\u0441.\"}}, {\"added\": {\"name\": \"\\u043e\\u043f\\u0446\\u0438\\u0438 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"object\": \"\\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442 2 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: \\u041d\\u0435\\u0434\\u0432\\u0438\\u0436\\u0438\\u043c\\u043e\\u0441\\u0442\\u044c, 3 \\u043d\\u0430 3 \\u043c\\u0435\\u0441.\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+      "action_time": "2022-03-13T16:37:59.309Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "6",
+      "object_repr": "продукт 3 Категория: Недвижимость",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u043e\\u043f\\u0446\\u0438\\u0438 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"object\": \"\\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442 3 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: \\u041d\\u0435\\u0434\\u0432\\u0438\\u0436\\u0438\\u043c\\u043e\\u0441\\u0442\\u044c, 1 \\u043d\\u0430 2 \\u043c\\u0435\\u0441.\"}}, {\"added\": {\"name\": \"\\u043e\\u043f\\u0446\\u0438\\u0438 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"object\": \"\\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442 3 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: \\u041d\\u0435\\u0434\\u0432\\u0438\\u0436\\u0438\\u043c\\u043e\\u0441\\u0442\\u044c, 2 \\u043d\\u0430 2 \\u043c\\u0435\\u0441.\"}}, {\"added\": {\"name\": \"\\u043e\\u043f\\u0446\\u0438\\u0438 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"object\": \"\\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442 3 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: \\u041d\\u0435\\u0434\\u0432\\u0438\\u0436\\u0438\\u043c\\u043e\\u0441\\u0442\\u044c, 3 \\u043d\\u0430 3 \\u043c\\u0435\\u0441.\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+      "action_time": "2022-03-13T16:38:39.496Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "7",
+      "object_repr": "продукт 4 Категория: Автострахование",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u043e\\u043f\\u0446\\u0438\\u0438 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"object\": \"\\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442 4 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: \\u0410\\u0432\\u0442\\u043e\\u0441\\u0442\\u0440\\u0430\\u0445\\u043e\\u0432\\u0430\\u043d\\u0438\\u0435, 1 \\u043d\\u0430 1 \\u043c\\u0435\\u0441.\"}}, {\"added\": {\"name\": \"\\u043e\\u043f\\u0446\\u0438\\u0438 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"object\": \"\\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442 4 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: \\u0410\\u0432\\u0442\\u043e\\u0441\\u0442\\u0440\\u0430\\u0445\\u043e\\u0432\\u0430\\u043d\\u0438\\u0435, 2 \\u043d\\u0430 2 \\u043c\\u0435\\u0441.\"}}, {\"added\": {\"name\": \"\\u043e\\u043f\\u0446\\u0438\\u0438 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"object\": \"\\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442 4 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: \\u0410\\u0432\\u0442\\u043e\\u0441\\u0442\\u0440\\u0430\\u0445\\u043e\\u0432\\u0430\\u043d\\u0438\\u0435, 3 \\u043d\\u0430 3 \\u043c\\u0435\\u0441.\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+      "action_time": "2022-03-13T16:43:16.327Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "8",
+      "object_repr": "продукт 5 Категория: Жизнь",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u043e\\u043f\\u0446\\u0438\\u0438 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"object\": \"\\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442 5 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: \\u0416\\u0438\\u0437\\u043d\\u044c, 1 \\u043d\\u0430 1 \\u043c\\u0435\\u0441.\"}}, {\"added\": {\"name\": \"\\u043e\\u043f\\u0446\\u0438\\u0438 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"object\": \"\\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442 5 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: \\u0416\\u0438\\u0437\\u043d\\u044c, 2 \\u043d\\u0430 2 \\u043c\\u0435\\u0441.\"}}, {\"added\": {\"name\": \"\\u043e\\u043f\\u0446\\u0438\\u0438 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"object\": \"\\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442 5 \\u041a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f: \\u0416\\u0438\\u0437\\u043d\\u044c, 3 \\u043d\\u0430 3 \\u043c\\u0435\\u0441.\"}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+      "action_time": "2022-03-13T16:43:37.778Z",
+      "user": 1,
+      "content_type": 12,
+      "object_id": "1",
+      "object_repr": "admin",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"name\": \"\\u043f\\u0440\\u043e\\u0444\\u0438\\u043b\\u044c \\u043a\\u043e\\u043c\\u043f\\u0430\\u043d\\u0438\\u0438\", \"object\": \"admin\", \"fields\": [\"\\u0410\\u043a\\u0442\\u0438\\u0432\\u0435\\u043d\"]}}]"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "gmqyjfe3ogyw7v31ls4ndpk4ibpk3tc7",
+    "fields": {
+      "session_data": ".eJxVjMsKgzAURP8l65J3THTZfb8h5HFtrJIUE6FQ-u9VcCOzmzlnvijDp9ltXdCAUmvvgRDGNaZ72GAopcT5sjUSSpknqATdkHVbS3arsNop7hq_dt6FGfIxxJfLz4JDyW2dPD4QfK4VP0qE5X6yl4PkatptD8I7FlSUSprIJZVMgXDamFEEED2EGHwXlBG0016MXEbQnCkzKqW86dHvD4SwRuE:1nT5vZ:DaFs2MKStfLrYMdfUDEq1g0-zlcrJ9aqtpHIgde3zlU",
+      "expire_date": "2022-03-26T17:53:17.463Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "xw8jy9eczzu938rns3rzkabkjlc2i7dl",
+    "fields": {
+      "session_data": "eyJuZXh0X3VybCI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jYWJpbmV0LyJ9:1nTUL2:RiHSLgo4Ec-5bYVV0CBD9qLM5fyLGCGBPTp4ZUYH6fA",
+      "expire_date": "2022-03-27T19:57:12.779Z"
+    }
+  },
+  {
+    "model": "captcha.captchastore",
+    "pk": 2,
+    "fields": {
+      "challenge": "IDXQEF",
+      "response": "idxqef",
+      "hashkey": "f4d70c228cff1d05ead3207be8ea24b755f8693c",
+      "expiration": "2022-03-13T20:02:13.863Z"
+    }
+  },
+  {
+    "model": "main_app.productcategory",
+    "pk": 1,
+    "fields": {
+      "name": "Автострахование",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main_app.productcategory",
+    "pk": 2,
+    "fields": {
+      "name": "Жизнь",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main_app.productcategory",
+    "pk": 3,
+    "fields": {
+      "name": "Недвижимость",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main_app.productcategory",
+    "pk": 4,
+    "fields": {
+      "name": "del_cat",
+      "description": "del_cat",
+      "is_active": false
+    }
+  },
+  {
+    "model": "main_app.product",
+    "pk": 1,
+    "fields": {
+      "category": 1,
+      "company": 1,
+      "name": "продукт",
+      "short_desc": "продукт",
+      "description": "продукт",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main_app.product",
+    "pk": 2,
+    "fields": {
+      "category": 4,
+      "company": 2,
+      "name": "del_1",
+      "short_desc": "del_1",
+      "description": "del_1",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main_app.product",
+    "pk": 3,
+    "fields": {
+      "category": 4,
+      "company": 1,
+      "name": "del_2",
+      "short_desc": "del_2",
+      "description": "del_2",
+      "is_active": false
+    }
+  },
+  {
+    "model": "main_app.product",
+    "pk": 4,
+    "fields": {
+      "category": 4,
+      "company": 3,
+      "name": "del_3",
+      "short_desc": "del_3",
+      "description": "del_3",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main_app.product",
+    "pk": 5,
+    "fields": {
+      "category": 3,
+      "company": 2,
+      "name": "продукт 2",
+      "short_desc": "продукт 2",
+      "description": "продукт 2",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main_app.product",
+    "pk": 6,
+    "fields": {
+      "category": 3,
+      "company": 1,
+      "name": "продукт 3",
+      "short_desc": "продукт 3",
+      "description": "продукт 3",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main_app.product",
+    "pk": 7,
+    "fields": {
+      "category": 1,
+      "company": 2,
+      "name": "продукт 4",
+      "short_desc": "продукт 4",
+      "description": "продукт 4",
+      "is_active": false
+    }
+  },
+  {
+    "model": "main_app.product",
+    "pk": 8,
+    "fields": {
+      "category": 2,
+      "company": 1,
+      "name": "продукт 5",
+      "short_desc": "продукт 5",
+      "description": "продукт 5",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main_app.productoption",
+    "pk": 1,
+    "fields": {
+      "product": 1,
+      "price": "1.00",
+      "term": 1,
+      "rate": "1.00",
+      "is_active": false
+    }
+  },
+  {
+    "model": "main_app.productoption",
+    "pk": 2,
+    "fields": {
+      "product": 1,
+      "price": "2.00",
+      "term": 2,
+      "rate": "2.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main_app.productoption",
+    "pk": 3,
+    "fields": {
+      "product": 1,
+      "price": "3.00",
+      "term": 3,
+      "rate": "3.00",
+      "is_active": false
+    }
+  },
+  {
+    "model": "main_app.productoption",
+    "pk": 4,
+    "fields": {
+      "product": 1,
+      "price": "4.00",
+      "term": 4,
+      "rate": "4.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main_app.productoption",
+    "pk": 5,
+    "fields": {
+      "product": 2,
+      "price": "1.00",
+      "term": 1,
+      "rate": "1.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main_app.productoption",
+    "pk": 6,
+    "fields": {
+      "product": 2,
+      "price": "2.00",
+      "term": 2,
+      "rate": "2.00",
+      "is_active": false
+    }
+  },
+  {
+    "model": "main_app.productoption",
+    "pk": 7,
+    "fields": {
+      "product": 2,
+      "price": "3.00",
+      "term": 3,
+      "rate": "3.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main_app.productoption",
+    "pk": 8,
+    "fields": {
+      "product": 3,
+      "price": "1.00",
+      "term": 1,
+      "rate": "1.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main_app.productoption",
+    "pk": 9,
+    "fields": {
+      "product": 3,
+      "price": "2.00",
+      "term": 2,
+      "rate": "2.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main_app.productoption",
+    "pk": 10,
+    "fields": {
+      "product": 3,
+      "price": "3.00",
+      "term": 3,
+      "rate": "3.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main_app.productoption",
+    "pk": 11,
+    "fields": {
+      "product": 4,
+      "price": "1.00",
+      "term": 1,
+      "rate": "1.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main_app.productoption",
+    "pk": 12,
+    "fields": {
+      "product": 4,
+      "price": "2.00",
+      "term": 2,
+      "rate": "2.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main_app.productoption",
+    "pk": 13,
+    "fields": {
+      "product": 4,
+      "price": "3.00",
+      "term": 3,
+      "rate": "3.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main_app.productoption",
+    "pk": 14,
+    "fields": {
+      "product": 5,
+      "price": "1.00",
+      "term": 1,
+      "rate": "1.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main_app.productoption",
+    "pk": 15,
+    "fields": {
+      "product": 5,
+      "price": "2.00",
+      "term": 2,
+      "rate": "2.00",
+      "is_active": false
+    }
+  },
+  {
+    "model": "main_app.productoption",
+    "pk": 16,
+    "fields": {
+      "product": 5,
+      "price": "3.00",
+      "term": 3,
+      "rate": "3.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main_app.productoption",
+    "pk": 17,
+    "fields": {
+      "product": 6,
+      "price": "1.00",
+      "term": 2,
+      "rate": "3.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main_app.productoption",
+    "pk": 18,
+    "fields": {
+      "product": 6,
+      "price": "2.00",
+      "term": 2,
+      "rate": "2.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main_app.productoption",
+    "pk": 19,
+    "fields": {
+      "product": 6,
+      "price": "3.00",
+      "term": 3,
+      "rate": "3.00",
+      "is_active": false
+    }
+  },
+  {
+    "model": "main_app.productoption",
+    "pk": 20,
+    "fields": {
+      "product": 7,
+      "price": "1.00",
+      "term": 1,
+      "rate": "1.00",
+      "is_active": false
+    }
+  },
+  {
+    "model": "main_app.productoption",
+    "pk": 21,
+    "fields": {
+      "product": 7,
+      "price": "2.00",
+      "term": 2,
+      "rate": "2.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main_app.productoption",
+    "pk": 22,
+    "fields": {
+      "product": 7,
+      "price": "3.00",
+      "term": 3,
+      "rate": "3.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main_app.productoption",
+    "pk": 23,
+    "fields": {
+      "product": 8,
+      "price": "1.00",
+      "term": 1,
+      "rate": "2.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main_app.productoption",
+    "pk": 24,
+    "fields": {
+      "product": 8,
+      "price": "2.00",
+      "term": 2,
+      "rate": "2.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main_app.productoption",
+    "pk": 25,
+    "fields": {
+      "product": 8,
+      "price": "3.00",
+      "term": 3,
+      "rate": "3.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "auth_app.companyuser",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$DFe5lAU9omdUKhqkpjZyvO$vrQhthriMED7tSBkdb8PLFU/qmLKp5vzvjaQaozDqNI=",
+      "last_login": "2022-03-13T15:45:57Z",
+      "is_superuser": true,
+      "username": "admin",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2022-03-11T16:14:02Z",
+      "last_name": "Fedorin",
+      "first_name": "Evgenii",
+      "patronymic": "",
+      "email": "admin@local.ru",
+      "activation_key": "",
+      "activation_key_expires": "2022-03-13T16:14:02Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth_app.companyuser",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$qzhkcPHw7FN0qkFNJmtSBG$kDCZCIfxpCVKj4oJmzz2SuUW+a/41MQJScBUpgan9nQ=",
+      "last_login": "2022-03-13T15:45:52.866Z",
+      "is_superuser": false,
+      "username": "revike",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-03-11T16:15:50Z",
+      "last_name": "Fedorin",
+      "first_name": "Evgenii",
+      "patronymic": "",
+      "email": "local@local.com",
+      "activation_key": "",
+      "activation_key_expires": "2022-03-13T16:14:14Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth_app.companyuser",
+    "pk": 3,
+    "fields": {
+      "password": "2nrm4dcw",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "dev",
+      "is_staff": false,
+      "is_active": false,
+      "date_joined": "2022-03-13T16:32:46Z",
+      "last_name": "dev",
+      "first_name": "dev",
+      "patronymic": "dev",
+      "email": "local_1@local.ru",
+      "activation_key": "",
+      "activation_key_expires": "2022-03-15T16:12:50Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth_app.companyuserprofile",
+    "pk": 1,
+    "fields": {
+      "company": 1,
+      "name": "admin",
+      "tax_id": 123,
+      "about_company": "",
+      "label": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "auth_app.companyuserprofile",
+    "pk": 2,
+    "fields": {
+      "company": 2,
+      "name": "revike_company",
+      "tax_id": 1234567890,
+      "about_company": "Desc my company",
+      "label": "company_labels/52648-audi_rs7_sinyaya_fara_bamper_OFOAhof.jpg",
+      "is_active": true
+    }
+  },
+  {
+    "model": "auth_app.companyuserprofile",
+    "pk": 3,
+    "fields": {
+      "company": 3,
+      "name": "dev",
+      "tax_id": 2115315135,
+      "about_company": "dev",
+      "label": "",
+      "is_active": false
+    }
+  }
+]

@@ -19,7 +19,7 @@ class IndexView(ListView):
     def get_context_data(self, **kwargs):
         """Возвращает контекст для этого представления"""
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Главная'
+        context['title'] = 'главная'
         context['categories'] = ProductCategory.get_categories()
         context['response_length'] = ProductResponse.get_response_length(
             self.request.user.id)
@@ -190,6 +190,13 @@ class ResponseValidView(DetailView):
         context['response_length'] = ProductResponse.get_response_length(
             self.request.user.id)
         return context
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(is_active=True, product__is_active=True,
+                               product__category__is_active=True,
+                               product__company__is_active=True,
+                               product__company__company__is_active=True)
 
 
 class CompanyDetailView(DetailView):

@@ -56,5 +56,21 @@ python manage.py runserver
 -------------------------------
 ---
 ~~~
-docker-compose up -d
+docker-compose up -d --build
+~~~
+
+Тесты с помощью docker-compose
+--------------------------------------
+---
+
+* Запуск тестов
+~~~
+ docker-compose exec web python manage.py test
+~~~
+
+* *При необходимости можно собрать тестовые данные из базы
+*тестовые данные уже есть в файле [test_db.json](./test_db.json)
+
+~~~
+docker-compose exec web python manage.py dumpdata -e=contenttypes -e=auth -o test_db.json
 ~~~
