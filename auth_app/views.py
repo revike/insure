@@ -55,6 +55,7 @@ class RegisterValidView(TemplateView):
             if self.request.session['register']:
                 self.request.session['register'] = False
                 return super().get(self.request, **kwargs)
+            return HttpResponseRedirect(reverse('main_app:index'))
         except KeyError:
             return HttpResponseRedirect(reverse('main_app:index'))
 
