@@ -10,37 +10,7 @@
     <div class="auth_form">
         <form action="#" method="post">
             {% csrf_token %}
-
-            <label>
-                <input class="form-control" name="name" type="text" required
-                        {% if user.is_authenticated and user.first_name and user.last_name %}
-                       value="{{ user.first_name }} {{ user.patronymic }} {{ user.last_name }}"
-                       readonly
-                        {% elif user.is_authenticated and user.first_name %}
-                       value="{{ user.first_name }}" readonly
-                        {% else %}
-                       placeholder="Ваше имя"
-                        {% endif %}/>
-            </label>
-            <label>
-                <input class="form-control" name="email" type="email" required
-                        {% if user.is_authenticated %}
-                       value="{{ user.email }}" readonly
-                        {% else %}
-                       placeholder="Ваша почта"
-                        {% endif %}/>
-            </label>
-            <label>
-                <input class="form-control" size="30" name="subject" required
-                       type="text"
-                       placeholder="Тема"/>
-            </label>
-            <label>
-            <textarea class="form-control" cols="32" required
-                      name="message"
-                      rows="5" placeholder="Текст сообщения"></textarea>
-            </label>
-            <br>
+            {{ form.as_p }}
             <div class="control__button">
                 <button class="form-control__button" type="submit">
                     Отправить
