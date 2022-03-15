@@ -10,6 +10,7 @@ from captcha.conf import settings as captcha
 
 
 class TestAboutApp(TestCase):
+    """Тест приложения about_app"""
     databases = DATABASES
 
     def setUp(self):
@@ -18,6 +19,7 @@ class TestAboutApp(TestCase):
         self.client = Client()
 
     def test_contacts(self):
+        """Тест страницы контакты"""
         url = reverse('about_app:contacts')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
@@ -25,6 +27,7 @@ class TestAboutApp(TestCase):
         self.assertEquals(resolve(url).func.view_class, ContactView)
 
     def test_information(self):
+        """Тест страницы информации"""
         url = reverse('about_app:information')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
@@ -32,6 +35,7 @@ class TestAboutApp(TestCase):
         self.assertEquals(resolve(url).func.view_class, InformationView)
 
     def test_politics(self):
+        """Тест страницы политики конфиденциальности"""
         url = reverse('about_app:politics')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
@@ -39,6 +43,7 @@ class TestAboutApp(TestCase):
         self.assertEquals(resolve(url).func.view_class, PoliticsView)
 
     def test_cookies(self):
+        """Тест страницы Cookie"""
         url = reverse('about_app:cookie')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
@@ -46,6 +51,7 @@ class TestAboutApp(TestCase):
         self.assertEquals(resolve(url).func.view_class, CookieView)
 
     def test_feedback(self):
+        """Тест обратной связи"""
         url = reverse('about_app:feedback')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
@@ -53,6 +59,7 @@ class TestAboutApp(TestCase):
         self.assertEquals(resolve(url).func.view_class, FeedbackView)
 
     def test_feedback_form(self):
+        """Тест формы обратной связи"""
         captcha.CAPTCHA_TEST_MODE = True
         url = reverse('about_app:feedback')
 

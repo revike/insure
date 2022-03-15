@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>AUTH_APP &#8212; документация insure 0.0.1</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="CABINET_APP" href="cabinet_app.html" />
+    <link rel="prev" title="ABOUT_APP" href="about_app.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="auth-app">
+<h1>AUTH_APP<a class="headerlink" href="#auth-app" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Приложение, которое отвечает за:</p>
+<ul class="simple">
+<li><p>Регистрацияю</p></li>
+<li><p>Авторизацию</p></li>
+<li><p>Подтверждение учетной записи</p></li>
+</ul>
+<section id="module-auth_app.views">
+<span id="id1"></span><h2>Контроллеры auth_app<a class="headerlink" href="#module-auth_app.views" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="auth_app.views.LoginUserView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">auth_app.views.</span></span><span class="sig-name descname"><span class="pre">LoginUserView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#auth_app.views.LoginUserView" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Login CompanyUser</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="auth_app.views.LoginUserView.form_class">
+<span class="sig-name descname"><span class="pre">form_class</span></span><a class="headerlink" href="#auth_app.views.LoginUserView.form_class" title="Ссылка на это определение">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#auth_app.forms.CompanyUserLoginForm" title="auth_app.forms.CompanyUserLoginForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">auth_app.forms.CompanyUserLoginForm</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="auth_app.views.LoginUserView.form_valid">
+<span class="sig-name descname"><span class="pre">form_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">form</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#auth_app.views.LoginUserView.form_valid" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Security check complete. Log the user in.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="auth_app.views.LoginUserView.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#auth_app.views.LoginUserView.get" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Handle GET requests: instantiate a blank version of the form.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="auth_app.views.LoginUserView.get_context_data">
+<span class="sig-name descname"><span class="pre">get_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#auth_app.views.LoginUserView.get_context_data" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Возвращает контекст для этого представления</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="auth_app.views.LogoutUserView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">auth_app.views.</span></span><span class="sig-name descname"><span class="pre">LogoutUserView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#auth_app.views.LogoutUserView" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Logout CompanyUser</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="auth_app.views.RegisterValidView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">auth_app.views.</span></span><span class="sig-name descname"><span class="pre">RegisterValidView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#auth_app.views.RegisterValidView" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Контроллер удачной регистрации</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="auth_app.views.RegisterValidView.get_context_data">
+<span class="sig-name descname"><span class="pre">get_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#auth_app.views.RegisterValidView.get_context_data" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Возвращает контекст для этого представления</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="auth_app.views.RegisterView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">auth_app.views.</span></span><span class="sig-name descname"><span class="pre">RegisterView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#auth_app.views.RegisterView" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Контроллер регистрации</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="auth_app.views.RegisterView.form_class">
+<span class="sig-name descname"><span class="pre">form_class</span></span><a class="headerlink" href="#auth_app.views.RegisterView.form_class" title="Ссылка на это определение">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#auth_app.forms.CompanyUserRegisterForm" title="auth_app.forms.CompanyUserRegisterForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">auth_app.forms.CompanyUserRegisterForm</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="auth_app.views.RegisterView.form_valid">
+<span class="sig-name descname"><span class="pre">form_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">form</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#auth_app.views.RegisterView.form_valid" title="Ссылка на это определение">¶</a></dt>
+<dd><p>If the form is valid, save the associated model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="auth_app.views.RegisterView.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#auth_app.views.RegisterView.get" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Handle GET requests: instantiate a blank version of the form.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="auth_app.views.RegisterView.get_context_data">
+<span class="sig-name descname"><span class="pre">get_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#auth_app.views.RegisterView.get_context_data" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Возвращает контекст для этого представления</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="auth_app.views.VerifyView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">auth_app.views.</span></span><span class="sig-name descname"><span class="pre">VerifyView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#auth_app.views.VerifyView" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Контроллер Верификации</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="auth_app.views.VerifyView.get_context_data">
+<span class="sig-name descname"><span class="pre">get_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#auth_app.views.VerifyView.get_context_data" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Возвращает контекст для этого представления</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-auth_app.forms">
+<span id="id2"></span><h2>Формы auth_app<a class="headerlink" href="#module-auth_app.forms" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="auth_app.forms.CompanyUserLoginForm">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">auth_app.forms.</span></span><span class="sig-name descname"><span class="pre">CompanyUserLoginForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#auth_app.forms.CompanyUserLoginForm" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Форма авторизации</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="auth_app.forms.CompanyUserLoginForm.media">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#auth_app.forms.CompanyUserLoginForm.media" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="auth_app.forms.CompanyUserRegisterForm">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">auth_app.forms.</span></span><span class="sig-name descname"><span class="pre">CompanyUserRegisterForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#auth_app.forms.CompanyUserRegisterForm" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Форма регистрации</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="auth_app.forms.CompanyUserRegisterForm.media">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#auth_app.forms.CompanyUserRegisterForm.media" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="auth_app.forms.CompanyUserRegisterForm.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#auth_app.forms.CompanyUserRegisterForm.save" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Save this form’s self.instance object if commit=True. Otherwise, add
+a save_m2m() method to the form which can be called after the instance
+is saved manually at a later time. Return the model instance.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">insure</a></h1>
+
+
+
+
+
+
+
+
+<h3>Навигация</h3>
+<p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="models.html">Модели проекта</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_app.html">MAIN_APP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about_app.html">ABOUT_APP</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">AUTH_APP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-auth_app.views">Контроллеры auth_app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-auth_app.forms">Формы auth_app</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cabinet_app.html">CABINET_APP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search_app.html">SEARCH_APP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">Тесты</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="about_app.html" title="предыдущая глава">ABOUT_APP</a></li>
+      <li>Next: <a href="cabinet_app.html" title="следующая глава">CABINET_APP</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Evgenii Fedorin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/auth_app.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

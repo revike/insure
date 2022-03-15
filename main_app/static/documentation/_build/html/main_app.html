@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>MAIN_APP &#8212; документация insure 0.0.1</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="ABOUT_APP" href="about_app.html" />
+    <link rel="prev" title="Модели проекта" href="models.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="main-app">
+<h1>MAIN_APP<a class="headerlink" href="#main-app" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Приложение, которое отвечает за:</p>
+<ul class="simple">
+<li><p>главную страницу</p></li>
+<li><p>продукты</p></li>
+<li><p>дутали продукта</p></li>
+</ul>
+<blockquote>
+<div><p>и др</p>
+</div></blockquote>
+<section id="module-main_app.views">
+<span id="id1"></span><h2>Контроллеры main_app<a class="headerlink" href="#module-main_app.views" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="main_app.views.CompanyDetailView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">main_app.views.</span></span><span class="sig-name descname"><span class="pre">CompanyDetailView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main_app.views.CompanyDetailView" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Контроллер компании</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="main_app.views.CompanyDetailView.get_context_data">
+<span class="sig-name descname"><span class="pre">get_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">object_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main_app.views.CompanyDetailView.get_context_data" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Возвращает контекст для этого представления</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="main_app.views.CompanyDetailView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#main_app.views.CompanyDetailView.model" title="Ссылка на это определение">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#auth_app.models.CompanyUserProfile" title="auth_app.models.CompanyUserProfile"><code class="xref py py-class docutils literal notranslate"><span class="pre">auth_app.models.CompanyUserProfile</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="main_app.views.IndexView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">main_app.views.</span></span><span class="sig-name descname"><span class="pre">IndexView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main_app.views.IndexView" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Контроллер главной страницы</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="main_app.views.IndexView.get_context_data">
+<span class="sig-name descname"><span class="pre">get_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main_app.views.IndexView.get_context_data" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Возвращает контекст для этого представления</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="main_app.views.IndexView.get_queryset">
+<span class="sig-name descname"><span class="pre">get_queryset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#main_app.views.IndexView.get_queryset" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return the list of items for this view.</p>
+<p>The return value must be an iterable and may be an instance of
+<cite>QuerySet</cite> in which case <cite>QuerySet</cite> specific behavior will be enabled.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="main_app.views.IndexView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#main_app.views.IndexView.model" title="Ссылка на это определение">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#main_app.models.ProductOption" title="main_app.models.ProductOption"><code class="xref py py-class docutils literal notranslate"><span class="pre">main_app.models.ProductOption</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="main_app.views.ProductDetailView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">main_app.views.</span></span><span class="sig-name descname"><span class="pre">ProductDetailView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main_app.views.ProductDetailView" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Контроллер продукта</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="main_app.views.ProductDetailView.get_context_data">
+<span class="sig-name descname"><span class="pre">get_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">object_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main_app.views.ProductDetailView.get_context_data" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Возвращает контекст для этого представления</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="main_app.views.ProductDetailView.get_queryset">
+<span class="sig-name descname"><span class="pre">get_queryset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#main_app.views.ProductDetailView.get_queryset" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return the <cite>QuerySet</cite> that will be used to look up the object.</p>
+<p>This method is called by the default implementation of get_object() and
+may not be called if get_object() is overridden.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="main_app.views.ProductDetailView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#main_app.views.ProductDetailView.model" title="Ссылка на это определение">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#main_app.models.ProductOption" title="main_app.models.ProductOption"><code class="xref py py-class docutils literal notranslate"><span class="pre">main_app.models.ProductOption</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="main_app.views.ProductDetailView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main_app.views.ProductDetailView.post" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Добавление заявки в базу</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="main_app.views.ProductForCategoryDetailView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">main_app.views.</span></span><span class="sig-name descname"><span class="pre">ProductForCategoryDetailView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main_app.views.ProductForCategoryDetailView" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Контроллер списка продуктов для категории</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="main_app.views.ProductForCategoryDetailView.get_context_data">
+<span class="sig-name descname"><span class="pre">get_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">object_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main_app.views.ProductForCategoryDetailView.get_context_data" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Возвращает контекст для этого представления</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="main_app.views.ProductForCategoryDetailView.get_queryset">
+<span class="sig-name descname"><span class="pre">get_queryset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#main_app.views.ProductForCategoryDetailView.get_queryset" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Возвращает список элементов для этого представления</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="main_app.views.ProductForCategoryDetailView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#main_app.views.ProductForCategoryDetailView.model" title="Ссылка на это определение">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#main_app.models.ProductCategory" title="main_app.models.ProductCategory"><code class="xref py py-class docutils literal notranslate"><span class="pre">main_app.models.ProductCategory</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="main_app.views.ProductListView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">main_app.views.</span></span><span class="sig-name descname"><span class="pre">ProductListView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main_app.views.ProductListView" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Контроллер списка продуктов</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="main_app.views.ProductListView.get_context_data">
+<span class="sig-name descname"><span class="pre">get_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">object_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main_app.views.ProductListView.get_context_data" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Возвращает контекст для этого представления</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="main_app.views.ProductListView.get_queryset">
+<span class="sig-name descname"><span class="pre">get_queryset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#main_app.views.ProductListView.get_queryset" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Возвращает список элементов для этого представления</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="main_app.views.ProductListView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#main_app.views.ProductListView.model" title="Ссылка на это определение">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#main_app.models.ProductOption" title="main_app.models.ProductOption"><code class="xref py py-class docutils literal notranslate"><span class="pre">main_app.models.ProductOption</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="main_app.views.ResponseValidView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">main_app.views.</span></span><span class="sig-name descname"><span class="pre">ResponseValidView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main_app.views.ResponseValidView" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Контроллер удачной заявки</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="main_app.views.ResponseValidView.get_context_data">
+<span class="sig-name descname"><span class="pre">get_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">object_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main_app.views.ResponseValidView.get_context_data" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Возвращает контекст для этого представления</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="main_app.views.ResponseValidView.get_queryset">
+<span class="sig-name descname"><span class="pre">get_queryset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#main_app.views.ResponseValidView.get_queryset" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return the <cite>QuerySet</cite> that will be used to look up the object.</p>
+<p>This method is called by the default implementation of get_object() and
+may not be called if get_object() is overridden.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="main_app.views.ResponseValidView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#main_app.views.ResponseValidView.model" title="Ссылка на это определение">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#main_app.models.ProductOption" title="main_app.models.ProductOption"><code class="xref py py-class docutils literal notranslate"><span class="pre">main_app.models.ProductOption</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-main_app.forms">
+<span id="id2"></span><h2>Формы main_app<a class="headerlink" href="#module-main_app.forms" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="main_app.forms.ProductResponseCreateForm">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">main_app.forms.</span></span><span class="sig-name descname"><span class="pre">ProductResponseCreateForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main_app.forms.ProductResponseCreateForm" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Форма отклика на продукт</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="main_app.forms.ProductResponseCreateForm.media">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#main_app.forms.ProductResponseCreateForm.media" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-main_app.decorators">
+<span id="id3"></span><h2>Декораторы main_app<a class="headerlink" href="#module-main_app.decorators" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="main_app.decorators.counted">
+<span class="sig-prename descclassname"><span class="pre">main_app.decorators.</span></span><span class="sig-name descname"><span class="pre">counted</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main_app.decorators.counted" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Декоратор для подсчета просмотра продукта</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">insure</a></h1>
+
+
+
+
+
+
+
+
+<h3>Навигация</h3>
+<p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="models.html">Модели проекта</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">MAIN_APP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-main_app.views">Контроллеры main_app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-main_app.forms">Формы main_app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-main_app.decorators">Декораторы main_app</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="about_app.html">ABOUT_APP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auth_app.html">AUTH_APP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cabinet_app.html">CABINET_APP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search_app.html">SEARCH_APP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">Тесты</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="models.html" title="предыдущая глава">Модели проекта</a></li>
+      <li>Next: <a href="about_app.html" title="следующая глава">ABOUT_APP</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Evgenii Fedorin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/main_app.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

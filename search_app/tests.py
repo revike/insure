@@ -7,6 +7,7 @@ from search_app.views import SearchView, FilterView
 
 
 class TestSearchApp(TestCase):
+    """Тесты поиска и фильтрации"""
     databases = DATABASES
 
     def setUp(self):
@@ -15,6 +16,7 @@ class TestSearchApp(TestCase):
         self.client = Client()
 
     def test_search(self):
+        """Тест поиска"""
         url = reverse('search_app:search')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
@@ -22,6 +24,7 @@ class TestSearchApp(TestCase):
         self.assertEquals(resolve(url).func.view_class, SearchView)
 
     def test_filter(self):
+        """Тест фильтрации"""
         url = reverse('search_app:filter')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)

@@ -14,6 +14,7 @@ from main_app.models import ProductCategory, ProductOption, Product
 
 
 class TestCabinetApp(TestCase):
+    """Тест личного кабинета"""
     databases = DATABASES
 
     def setUp(self):
@@ -22,6 +23,7 @@ class TestCabinetApp(TestCase):
         self.client = Client()
 
     def test_index(self):
+        """Тест профиля"""
         url = reverse('cabinet_app:profile')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 302)
@@ -35,6 +37,7 @@ class TestCabinetApp(TestCase):
         self.assertEquals(resolve(url).func.view_class, CabinetIndexView)
 
     def test_my_products(self):
+        """Тест личных продуктов"""
         url = reverse('cabinet_app:my_products')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 302)
@@ -48,7 +51,7 @@ class TestCabinetApp(TestCase):
         self.assertEquals(resolve(url).func.view_class, MyProductListView)
 
     def test_product_create(self):
-
+        """Тест создания продуктов"""
         url = reverse('cabinet_app:product_create')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 302)
@@ -115,6 +118,7 @@ class TestCabinetApp(TestCase):
         self.assertTrue(new_product.count(), 1)
 
     def test_response(self):
+        """Тест откликов на личные продукты"""
         url = reverse('cabinet_app:response')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 302)
@@ -128,6 +132,7 @@ class TestCabinetApp(TestCase):
         self.assertEquals(resolve(url).func.view_class, ProductResponseView)
 
     def test_profile_update(self):
+        """Тест редактирования профиля"""
         for user in CompanyUserProfile.objects.all():
             url = reverse('cabinet_app:profile_update', kwargs={'pk': user.id})
             response = self.client.get(url)
@@ -168,6 +173,7 @@ class TestCabinetApp(TestCase):
         self.assertTrue(form.is_valid())
 
     def test_profile_update_data(self):
+        """Тест редактирования компании"""
         data = {
             'last_name': 'name',
             'first_name': 'name',
@@ -223,6 +229,7 @@ class TestCabinetApp(TestCase):
         self.assertTrue(form.is_valid())
 
     def test_product_update(self):
+        """Тест редактирования опций продукта"""
         for product in ProductOption.objects.all():
             product_data = ProductOption.objects.filter(id=product.id).first()
             data = {
@@ -297,6 +304,7 @@ class TestCabinetApp(TestCase):
         self.assertTrue(form.is_valid())
 
     def test_product_update_title(self):
+        """Тест редактирования продукта"""
         for product in Product.objects.all():
             product_data = Product.objects.filter(id=product.id).first()
             data = {
@@ -376,6 +384,7 @@ class TestCabinetApp(TestCase):
         self.assertTrue(form.is_valid())
 
     def test_product_option_delete(self):
+        """Тест удаления опций продукта"""
         for product in ProductOption.objects.all():
             url = reverse('cabinet_app:product_option_delete',
                           kwargs={'pk': product.id})
@@ -429,6 +438,7 @@ class TestCabinetApp(TestCase):
                 self.assertEqual(response.status_code, 302)
 
     def test_product_delete(self):
+        """тест удаления продукта"""
         for product in Product.objects.all():
             url = reverse('cabinet_app:product_delete',
                           kwargs={'pk': product.id})
