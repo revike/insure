@@ -1,7 +1,7 @@
 from django import forms
 
 from auth_app.models import CompanyUserProfile, CompanyUser
-from main_app.models import Product, ProductOption
+from main_app.models import Product, ProductOption, ProductCategory
 
 
 class ProfileCreateForm(forms.ModelForm):
@@ -59,6 +59,19 @@ class ProductOptionUpdateForm(forms.ModelForm):
             field.widget.attrs['class'] = 'form-control'
             field.help_text = ''
 
+    def clean_price(self):
+        data = self.cleaned_data['price']
+        if data < 0:
+            raise forms.ValidationError('Цена не может быть отрицательной')
+        return data
+
+    def clean_rate(self):
+        data = self.cleaned_data['rate']
+        if data < 0:
+            raise forms.ValidationError(
+                'Процентная ставка не может быть отрицательной')
+        return data
+
 
 class ProductUpdateForm(forms.ModelForm):
     """Форма редактирования продукта"""
@@ -69,6 +82,8 @@ class ProductUpdateForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.fields['category'].queryset = ProductCategory.objects.filter(
+            is_active=True)
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
             field.help_text = ''
@@ -93,10 +108,12 @@ class ProductCreateForm(forms.ModelForm):
 
     class Meta:
         model = Product
-        fields = ('category', 'name', 'short_desc', 'description' )
+        fields = ('category', 'name', 'short_desc', 'description')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.fields['category'].queryset = ProductCategory.objects.filter(
+            is_active=True)
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
             field.help_text = ''

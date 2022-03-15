@@ -325,29 +325,147 @@
     }
   },
   {
-    "model": "sessions.session",
-    "pk": "gmqyjfe3ogyw7v31ls4ndpk4ibpk3tc7",
+    "model": "admin.logentry",
+    "pk": 26,
     "fields": {
-      "session_data": ".eJxVjMsKgzAURP8l65J3THTZfb8h5HFtrJIUE6FQ-u9VcCOzmzlnvijDp9ltXdCAUmvvgRDGNaZ72GAopcT5sjUSSpknqATdkHVbS3arsNop7hq_dt6FGfIxxJfLz4JDyW2dPD4QfK4VP0qE5X6yl4PkatptD8I7FlSUSprIJZVMgXDamFEEED2EGHwXlBG0016MXEbQnCkzKqW86dHvD4SwRuE:1nT5vZ:DaFs2MKStfLrYMdfUDEq1g0-zlcrJ9aqtpHIgde3zlU",
-      "expire_date": "2022-03-26T17:53:17.463Z"
+      "action_time": "2022-03-13T21:36:15.505Z",
+      "user": 1,
+      "content_type": 12,
+      "object_id": "4",
+      "object_repr": "test_1",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 27,
+    "fields": {
+      "action_time": "2022-03-13T23:13:09.978Z",
+      "user": 1,
+      "content_type": 12,
+      "object_id": "5",
+      "object_repr": "revikee",
+      "action_flag": 3,
+      "change_message": ""
     }
   },
   {
     "model": "sessions.session",
-    "pk": "xw8jy9eczzu938rns3rzkabkjlc2i7dl",
+    "pk": "cnlrdsawwc5ayuuduz2vpvw2ql9itpqy",
     "fields": {
-      "session_data": "eyJuZXh0X3VybCI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jYWJpbmV0LyJ9:1nTUL2:RiHSLgo4Ec-5bYVV0CBD9qLM5fyLGCGBPTp4ZUYH6fA",
-      "expire_date": "2022-03-27T19:57:12.779Z"
+      "session_data": ".eJxVjEuOgzAQRO_i9chfbNwss88ZUPszQAZMhI000ih3j0lYTNSrevW6_kiKv6Xft5l0ZCzl3jEmZEt5PdFZzjnDvYxsXocpMfJF8u5u0Zdq17DEnHGI77DnuPVxwWn-lxMuZ90fO_0LTqEi8ckc-p-YjiLcMA0r9Wsq2-ToodCzzfS6hjhfTvdjYMQ81m-ACEE3vgUhuDc6cKFVAAnCOKdcsBLAorFWNdxJyY1xjfrWrVYeAS2QxxMSulXU:1nToLq:lULYF_thnkMDfmVfi-kvhjdlV21EzqRmBA1iRJisJXE",
+      "expire_date": "2022-03-28T17:19:22.226Z"
     }
   },
   {
     "model": "captcha.captchastore",
-    "pk": 2,
+    "pk": 501,
     "fields": {
-      "challenge": "IDXQEF",
-      "response": "idxqef",
-      "hashkey": "f4d70c228cff1d05ead3207be8ea24b755f8693c",
-      "expiration": "2022-03-13T20:02:13.863Z"
+      "challenge": "XYDIZG",
+      "response": "xydizg",
+      "hashkey": "fe080ff7223788c51c39476602a79c1397e74054",
+      "expiration": "2022-03-14T17:19:33.701Z"
+    }
+  },
+  {
+    "model": "captcha.captchastore",
+    "pk": 502,
+    "fields": {
+      "challenge": "GAVZZB",
+      "response": "gavzzb",
+      "hashkey": "63f9fbb9b8a68aa0ba31ae6477c80b23d010c439",
+      "expiration": "2022-03-14T17:19:35.902Z"
+    }
+  },
+  {
+    "model": "captcha.captchastore",
+    "pk": 503,
+    "fields": {
+      "challenge": "OIGAQK",
+      "response": "oigaqk",
+      "hashkey": "f7580d45e377b1221450f3fa9ccac48cf66a18ad",
+      "expiration": "2022-03-14T17:20:39.116Z"
+    }
+  },
+  {
+    "model": "captcha.captchastore",
+    "pk": 504,
+    "fields": {
+      "challenge": "QUEXBI",
+      "response": "quexbi",
+      "hashkey": "ab22ee2e765ec271e4321944cf5b4089a9d2fd7c",
+      "expiration": "2022-03-14T17:20:48.069Z"
+    }
+  },
+  {
+    "model": "captcha.captchastore",
+    "pk": 505,
+    "fields": {
+      "challenge": "MGXBXG",
+      "response": "mgxbxg",
+      "hashkey": "342f43147fbfba9cc6848e58a9a905772fc6ceb3",
+      "expiration": "2022-03-14T17:20:54.071Z"
+    }
+  },
+  {
+    "model": "captcha.captchastore",
+    "pk": 506,
+    "fields": {
+      "challenge": "AQAIKW",
+      "response": "aqaikw",
+      "hashkey": "1417b87f7630e9ab473226ffdb566ec5b5249d8d",
+      "expiration": "2022-03-14T17:20:56.942Z"
+    }
+  },
+  {
+    "model": "captcha.captchastore",
+    "pk": 507,
+    "fields": {
+      "challenge": "OHMVAQ",
+      "response": "ohmvaq",
+      "hashkey": "f880a6f921a410568df4b82b6bf116da35d0022e",
+      "expiration": "2022-03-14T17:21:00.509Z"
+    }
+  },
+  {
+    "model": "captcha.captchastore",
+    "pk": 508,
+    "fields": {
+      "challenge": "KVQNYS",
+      "response": "kvqnys",
+      "hashkey": "bdb0a16e0593bd42eef118e530b8b1527869fced",
+      "expiration": "2022-03-14T17:21:12.332Z"
+    }
+  },
+  {
+    "model": "captcha.captchastore",
+    "pk": 510,
+    "fields": {
+      "challenge": "UCUBQF",
+      "response": "ucubqf",
+      "hashkey": "0fd1648340ff6f029ebd5a155f9476ab16dc7ff8",
+      "expiration": "2022-03-14T17:21:25.538Z"
+    }
+  },
+  {
+    "model": "captcha.captchastore",
+    "pk": 511,
+    "fields": {
+      "challenge": "KALAFR",
+      "response": "kalafr",
+      "hashkey": "a514138cb9c63b20b752e54f56896036d669f8b6",
+      "expiration": "2022-03-14T17:23:44.606Z"
+    }
+  },
+  {
+    "model": "captcha.captchastore",
+    "pk": 512,
+    "fields": {
+      "challenge": "FZEQMP",
+      "response": "fzeqmp",
+      "hashkey": "4b0a465ab5b077a35a38bd2734a42198877031bb",
+      "expiration": "2022-03-14T17:24:18.998Z"
     }
   },
   {
@@ -479,6 +597,18 @@
       "name": "продукт 5",
       "short_desc": "продукт 5",
       "description": "продукт 5",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main_app.product",
+    "pk": 9,
+    "fields": {
+      "category": 2,
+      "company": 1,
+      "name": "test",
+      "short_desc": "test",
+      "description": "test",
       "is_active": true
     }
   },
@@ -758,11 +888,36 @@
     }
   },
   {
+    "model": "main_app.productoption",
+    "pk": 26,
+    "fields": {
+      "product": 9,
+      "price": "1.00",
+      "term": 1,
+      "rate": "1.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main_app.productresponse",
+    "pk": 1,
+    "fields": {
+      "product": 25,
+      "last_name": "Fedorin",
+      "first_name": "Evgenii",
+      "patronymic": "",
+      "email": "local_1@local.com",
+      "phone_number": "+79290405222",
+      "is_active": false,
+      "created": "2022-03-14T19:11:07.207Z"
+    }
+  },
+  {
     "model": "auth_app.companyuser",
     "pk": 1,
     "fields": {
       "password": "pbkdf2_sha256$320000$DFe5lAU9omdUKhqkpjZyvO$vrQhthriMED7tSBkdb8PLFU/qmLKp5vzvjaQaozDqNI=",
-      "last_login": "2022-03-13T15:45:57Z",
+      "last_login": "2022-03-14T17:19:22.150Z",
       "is_superuser": true,
       "username": "admin",
       "is_staff": true,
@@ -770,8 +925,8 @@
       "date_joined": "2022-03-11T16:14:02Z",
       "last_name": "Fedorin",
       "first_name": "Evgenii",
-      "patronymic": "",
-      "email": "admin@local.ru",
+      "patronymic": "Иванович...",
+      "email": "local_1@local.ru",
       "activation_key": "",
       "activation_key_expires": "2022-03-13T16:14:02Z",
       "groups": [],
@@ -792,7 +947,7 @@
       "last_name": "Fedorin",
       "first_name": "Evgenii",
       "patronymic": "",
-      "email": "local@local.com",
+      "email": "local_2@local.com",
       "activation_key": "",
       "activation_key_expires": "2022-03-13T16:14:14Z",
       "groups": [],
@@ -813,7 +968,7 @@
       "last_name": "dev",
       "first_name": "dev",
       "patronymic": "dev",
-      "email": "local_1@local.ru",
+      "email": "local_3@local.ru",
       "activation_key": "",
       "activation_key_expires": "2022-03-15T16:12:50Z",
       "groups": [],

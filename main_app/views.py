@@ -30,7 +30,7 @@ class IndexView(ListView):
             '-updated').order_by('-count')[:3]
         populate_products = [i.url.split('/')[-2] for i in populate_objects]
         queryset = self.model.objects.filter(
-            product_id__in=populate_products, is_active=True,
+            id__in=populate_products, is_active=True,
             product__is_active=True, product__category__is_active=True,
             product__company__is_active=True,
             product__company__company__is_active=True).select_related()

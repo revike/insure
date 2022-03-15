@@ -61,7 +61,7 @@ class ProductOption(models.Model):
                                 db_index=True, verbose_name='продукт')
     price = models.DecimalField(max_digits=8, decimal_places=2, default=0,
                                 verbose_name='цена')
-    term = models.IntegerField(verbose_name='срок в месяцах')
+    term = models.PositiveIntegerField(verbose_name='срок в месяцах')
     rate = models.DecimalField(max_digits=4, decimal_places=2, default=0,
                                blank=True, verbose_name='процентная ставка')
     is_active = models.BooleanField(default=True, verbose_name='активна',
