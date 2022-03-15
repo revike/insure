@@ -6,6 +6,7 @@ from main_app.models import PageHit
 
 
 def counted(func):
+    """Декоратор для подсчета просмотра продукта"""
     @wraps(func)
     def wrapper(request, *args, **kwargs):
         page_hit = PageHit.objects.filter(url=request.request.path)

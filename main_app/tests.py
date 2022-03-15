@@ -10,6 +10,7 @@ from main_app.views import IndexView, ProductListView
 
 
 class TestMainApp(TestCase):
+    """Тесты главного приложения продуктов"""
     databases = DATABASES
 
     def setUp(self):
@@ -18,6 +19,7 @@ class TestMainApp(TestCase):
         self.client = Client()
 
     def test_index(self):
+        """Тест главной страницы"""
         url = reverse('main_app:index')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
@@ -25,6 +27,7 @@ class TestMainApp(TestCase):
         self.assertEquals(resolve(url).func.view_class, IndexView)
 
     def test_products(self):
+        """Тест списка продуктов"""
         url = reverse('main_app:products')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
@@ -32,6 +35,7 @@ class TestMainApp(TestCase):
         self.assertEquals(resolve(url).func.view_class, ProductListView)
 
     def test_category_pages(self):
+        """Тест категорий"""
         for category in ProductCategory.objects.all():
             url = reverse('main_app:category', kwargs={'pk': category.id})
             response = self.client.get(url)
@@ -43,6 +47,7 @@ class TestMainApp(TestCase):
                 self.assertTemplateUsed(response, 'main_app/category.html')
 
     def test_product_pages(self):
+        """Тест каждого продукта"""
         for product in ProductOption.objects.all():
             url = reverse('main_app:product', kwargs={'pk': product.id})
             response = self.client.get(url)
@@ -74,6 +79,7 @@ class TestMainApp(TestCase):
                 self.assertTemplateNotUsed(response, 'main_app/product.html')
 
     def test_response(self):
+        """Тест страницы успешного отклика на продукт"""
         for product in ProductOption.objects.all():
             url = reverse('main_app:valid', kwargs={'pk': product.id})
             response = self.client.get(url)
@@ -90,6 +96,7 @@ class TestMainApp(TestCase):
                                            'main_app/response_valid.html')
 
     def test_form(self):
+        """Тест форм main_app"""
         data_true = {
             'first_name': 'Ivan',
             'last_name': 'Ivanon',
@@ -110,6 +117,7 @@ class TestMainApp(TestCase):
         self.assertFalse(form.is_valid())
 
     def test_page_hit(self):
+        """Тест подсчета просмотра продукта"""
         i = 0
         for product in ProductOption.objects.all():
             url = reverse('main_app:product', kwargs={'pk': product.id})

@@ -10,6 +10,7 @@ from captcha.conf import settings as captcha
 
 
 class TestAuthApp(TestCase):
+    """Тест проложения авторизации"""
     databases = DATABASES
 
     def setUp(self):
@@ -21,6 +22,7 @@ class TestAuthApp(TestCase):
         self.client = Client()
 
     def test_not_login(self):
+        """Тест анонимного пользователя"""
         url = reverse('main_app:index')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
@@ -34,6 +36,7 @@ class TestAuthApp(TestCase):
                           LoginUserView)
 
     def test_login(self):
+        """Тест авторизации"""
         response = self.client.get(reverse('auth_app:login'))
         self.assertEqual(response.status_code, 200)
         self.client.login(username='user', password='pass')
@@ -47,6 +50,7 @@ class TestAuthApp(TestCase):
         self.assertEqual(response.status_code, 302)
 
     def test_logout(self):
+        """Тест выхода с сайта (logout)"""
         response = self.client.get(reverse('main_app:index'))
         self.assertTrue(response.context['user'].is_anonymous)
 
@@ -59,6 +63,7 @@ class TestAuthApp(TestCase):
         self.assertTrue(response.context['user'].is_anonymous)
 
     def test_register(self):
+        """Тест регистрации"""
         captcha.CAPTCHA_TEST_MODE = True
 
         url = reverse('auth_app:register')
@@ -104,6 +109,7 @@ class TestAuthApp(TestCase):
         self.assertFalse(response.context['user'].is_anonymous)
 
     def test_form_login(self):
+        """Тест формы логирования"""
         data_true = {'username': 'user', 'password': 'pass'}
         data_false = {'username': 'user', 'password': 'password'}
         form = CompanyUserLoginForm(data=data_true)
@@ -112,6 +118,7 @@ class TestAuthApp(TestCase):
         self.assertFalse(form.is_valid())
 
     def test_form_register(self):
+        """Тест формы регистрации"""
         captcha.CAPTCHA_TEST_MODE = True
         data_true = {
             'username': 'test_2',
