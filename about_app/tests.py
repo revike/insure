@@ -2,9 +2,11 @@ from django.core.management import call_command
 from django.test import TestCase, Client
 from django.urls import reverse, resolve
 
+from about_app.forms import FeedBackForm
 from about_app.views import ContactView, InformationView, PoliticsView, \
     CookieView, FeedbackView
 from insure.settings import DATABASES
+from captcha.conf import settings as captcha
 
 
 class TestAboutApp(TestCase):
@@ -51,15 +53,36 @@ class TestAboutApp(TestCase):
         self.assertEquals(resolve(url).func.view_class, FeedbackView)
 
     def test_feedback_form(self):
+        captcha.CAPTCHA_TEST_MODE = True
         url = reverse('about_app:feedback')
 
-        data = {
-            'name': 'test',
-            'email': 'test@local.ru',
+        data_true = {
+            'user_name': 'test',
+            'user_email': 'test@local.ru',
             'subject': 'test',
             'message': 'test',
+            'Captcha_0': 'passed',
+            'Captcha_1': 'passed',
         }
 
-        response = self.client.post(url, data=data)
+        data_false = {
+            'user_name': 'test',
+            'user_email': 'test@local',
+            'subject': 'test',
+            'message': 'test',
+            'Captcha_0': 'passed',
+            'Captcha_1': 'passed',
+        }
+
+        response = self.client.post(url, data=data_true)
         self.assertEqual(response.status_code, 302)
 
+        form = FeedBackForm(data=data_true)
+        self.assertTrue(form.is_valid())
+
+        form = FeedBackForm(data=data_false)
+        self.assertFalse(form.is_valid())
+
+    # def tearDown(self):
+    #     call_command('sqlsequencereset', 'main_app', 'auth_app', 'about_app',
+    #                  'cabinet_app', 'search_app')

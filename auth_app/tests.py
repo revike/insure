@@ -135,3 +135,7 @@ class TestAuthApp(TestCase):
         }
         form = CompanyUserRegisterForm(data=data_false)
         self.assertFalse(form.is_valid())
+
+    # def tearDown(self):
+    #     call_command('sqlsequencereset', 'main_app', 'auth_app', 'about_app',
+    #                  'cabinet_app', 'search_app')

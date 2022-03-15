@@ -4,7 +4,8 @@ from django.urls import reverse, resolve
 
 from insure.settings import DATABASES
 from main_app.forms import ProductResponseCreateForm
-from main_app.models import ProductCategory, ProductOption
+from main_app.models import ProductCategory, ProductOption, ProductResponse, \
+    PageHit
 from main_app.views import IndexView, ProductListView
 
 
@@ -51,6 +52,7 @@ class TestMainApp(TestCase):
                     product.product.company.company.is_active:
                 self.assertEqual(response.status_code, 200)
                 self.assertTemplateUsed(response, 'main_app/product.html')
+                resp_data = ProductResponse.objects.all().count()
                 data = {
                     'first_name': 'Ivan',
                     'last_name': 'Ivanon',
@@ -60,6 +62,13 @@ class TestMainApp(TestCase):
                 }
                 response = self.client.post(path=url, data=data)
                 self.assertEqual(response.status_code, 302)
+                resp_data_finish = ProductResponse.objects.all().count()
+                self.assertNotEquals(resp_data, resp_data_finish)
+                data['email'] = 'local'
+                resp_data = ProductResponse.objects.all().count()
+                self.client.post(path=url, data=data)
+                resp_data_finish = ProductResponse.objects.all().count()
+                self.assertEquals(resp_data, resp_data_finish)
             else:
                 self.assertEqual(response.status_code, 404)
                 self.assertTemplateNotUsed(response, 'main_app/product.html')
@@ -99,3 +108,23 @@ class TestMainApp(TestCase):
         self.assertTrue(form.is_valid())
         form = ProductResponseCreateForm(data=data_false)
         self.assertFalse(form.is_valid())
+
+    def test_page_hit(self):
+        i = 0
+        for product in ProductOption.objects.all():
+            url = reverse('main_app:product', kwargs={'pk': product.id})
+            if product.is_active and product.product.is_active and \
+                    product.product.category.is_active and \
+                    product.product.company.is_active and \
+                    product.product.company.company.is_active:
+                page_hit = PageHit.objects.filter(url=url).first().count
+                self.client.get(url)
+                page_hit_finish = PageHit.objects.filter(url=url).first().count
+                if i > 0:
+                    page_hit_finish += 1
+                self.assertNotEquals(page_hit, page_hit_finish)
+                i += 1
+
+    # def tearDown(self):
+    #     call_command('sqlsequencereset', 'main_app', 'auth_app', 'about_app',
+    #                  'cabinet_app', 'search_app')
