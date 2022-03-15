@@ -39,7 +39,7 @@
     <div class="footer a_product__option">
         {% block footer %}
             {% include 'main_app/includes/inc_paginator.html' %}
-            <p><a href="{% static 'documentation/_build/html/index.html' %}">Застрахуй братуху Corporation &copy; {% now 'Y' %}</a></p>
+            <p><a href="{% url 'main_app:index' %}">Застрахуй братуху Corporation &copy; {% now 'Y' %}</a></p>
         {% endblock %}
     </div>
 </div>
