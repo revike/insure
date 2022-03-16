@@ -7,4 +7,4 @@ venv/*
 /media/*
 /static/*
 /tmp/*
-/documentation/*
+/documentation
