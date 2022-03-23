@@ -22,8 +22,14 @@
 -------------------
 ---
 
->> * Python
->> * Django
+>> * Python 3.8
+>> * Django 4.0.1
+>> * Postgresql 14.2
+>> * MongoDB 5.0.6
+>> * Elasticsearch 7.17.0
+>> * RabbitMQ 3.9.9
+> 
+>> * Docker
 >> * Docker Compose
 
 
