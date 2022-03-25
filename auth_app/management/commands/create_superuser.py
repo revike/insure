@@ -10,6 +10,8 @@ class Command(BaseCommand):
         admin_email = settings.EMAIL_HOST_USER
         if not CompanyUser.objects.filter(is_staff=True, is_superuser=True):
             admin = CompanyUser.objects.create_superuser(
-                'admin', admin_email, 'admin')
+                username='admin', email=admin_email, password='admin',
+                last_name='admin', first_name='admin'
+            )
             CompanyUserProfile.objects.create(
                 company=admin, name='admin', tax_id=123, is_active=True)
