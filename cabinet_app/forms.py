@@ -91,6 +91,8 @@ class ProductUpdateForm(forms.ModelForm):
 
 class ProductOptionCreateForm(forms.ModelForm):
     """Форма создания опции продукта"""
+    price = forms.DecimalField(label='Цена', min_value=0)
+    rate = forms.DecimalField(label='Процентная ставка', min_value=0)
 
     class Meta:
         model = ProductOption
@@ -101,6 +103,7 @@ class ProductOptionCreateForm(forms.ModelForm):
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
             field.help_text = ''
+        self.fields['price'].widget.labels = 'цена'
 
 
 class ProductCreateForm(forms.ModelForm):
